@@ -112,13 +112,10 @@ class SessionFileCounters {
       };
 }
 
-/// Session aggregates. The JSON key `characters_no_spaces` maps to the
-/// camelCase field `charactersNoSpaces` in the codec.
 class SessionTotal {
   final String typeTarget;
   final int words;
   final int characters;
-  final int charactersNoSpaces;
   final double distanceFromTargetWords;
   final double distanceFromTargetCharacters;
   final int target;
@@ -128,7 +125,6 @@ class SessionTotal {
     this.typeTarget = '',
     this.words = 0,
     this.characters = 0,
-    this.charactersNoSpaces = 0,
     this.distanceFromTargetWords = 0,
     this.distanceFromTargetCharacters = 0,
     this.target = 0,
@@ -139,7 +135,6 @@ class SessionTotal {
         typeTarget: json['type_target'] as String? ?? '',
         words: json['words'] as int? ?? 0,
         characters: json['characters'] as int? ?? 0,
-        charactersNoSpaces: json['characters_no_spaces'] as int? ?? 0,
         distanceFromTargetWords:
             (json['distance_from_target_words'] as num?)?.toDouble() ?? 0,
         distanceFromTargetCharacters:
@@ -152,7 +147,6 @@ class SessionTotal {
         'type_target': typeTarget,
         'words': words,
         'characters': characters,
-        'characters_no_spaces': charactersNoSpaces,
         'distance_from_target_words': distanceFromTargetWords,
         'distance_from_target_characters': distanceFromTargetCharacters,
         'target': target,

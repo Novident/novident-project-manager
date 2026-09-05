@@ -1,24 +1,18 @@
 import 'package:novident_project_manager/src/project/session/session.dart';
 
 /// Live word/character measures of one node when a session closes.
-///
-/// [noSpaces] feeds the session *total* `characters_no_spaces`; per-file
-/// history entries only carry words/characters.
 class SessionNodeMeasures {
   const SessionNodeMeasures({
     required this.words,
     required this.characters,
-    required this.noSpaces,
   });
 
   final int words;
   final int characters;
-  final int noSpaces;
 
   const SessionNodeMeasures.zero()
       : words = 0,
-        characters = 0,
-        noSpaces = 0;
+        characters = 0;
 }
 
 /// The per-file counters + totals produced when a session ends.
@@ -42,11 +36,11 @@ SessionSummary buildSessionSummary({
   required int targetCharacters,
   String typeTarget = '',
 }) {
-  final Map<String, SessionFileCounters> files = <String, SessionFileCounters>{};
+  final Map<String, SessionFileCounters> files =
+      <String, SessionFileCounters>{};
 
   int words = 0;
   int characters = 0;
-  int noSpaces = 0;
 
   for (final MapEntry<String, SessionNodeMeasures> entry in current.entries) {
     final SessionFileCounters? original = originals[entry.key];
@@ -58,7 +52,6 @@ SessionSummary buildSessionSummary({
     );
     words += entry.value.words;
     characters += entry.value.characters;
-    noSpaces += entry.value.noSpaces;
   }
 
   final double distance = target > 0 ? (words / target) : 0;
@@ -71,7 +64,6 @@ SessionSummary buildSessionSummary({
       typeTarget: typeTarget,
       words: words,
       characters: characters,
-      charactersNoSpaces: noSpaces,
       distanceFromTargetWords: distance.clamp(0, 1),
       distanceFromTargetCharacters: distanceCharacters.clamp(0, 1),
       target: target,

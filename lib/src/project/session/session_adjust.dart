@@ -9,21 +9,18 @@ class CountAdjustment {
   const CountAdjustment({
     this.words = 0,
     this.characters = 0,
-    this.charactersNoSpaces = 0,
   });
 
   final int words;
   final int characters;
-  final int charactersNoSpaces;
 
-  bool get isEmpty => words == 0 && characters == 0 && charactersNoSpaces == 0;
+  bool get isEmpty => words == 0 && characters == 0;
 
   static const CountAdjustment zero = CountAdjustment();
 
   CountAdjustment operator +(CountAdjustment other) => CountAdjustment(
         words: words + other.words,
         characters: characters + other.characters,
-        charactersNoSpaces: charactersNoSpaces + other.charactersNoSpaces,
       );
 }
 
@@ -37,13 +34,10 @@ double _progress(int current, int target) =>
 SessionTotal adjustSessionTotal(SessionTotal total, CountAdjustment adjustment) {
   final int words = _atLeastZero(total.words + adjustment.words);
   final int characters = _atLeastZero(total.characters + adjustment.characters);
-  final int charactersNoSpaces =
-      _atLeastZero(total.charactersNoSpaces + adjustment.charactersNoSpaces);
   return SessionTotal(
     typeTarget: total.typeTarget,
     words: words,
     characters: characters,
-    charactersNoSpaces: charactersNoSpaces,
     distanceFromTargetWords: _progress(words, total.target),
     distanceFromTargetCharacters: _progress(characters, total.targetCharacters),
     target: total.target,

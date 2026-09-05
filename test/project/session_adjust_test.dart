@@ -21,7 +21,6 @@ Session _baseSession() {
         typeTarget: 'nanowrimo',
         words: 187,
         characters: 1030,
-        charactersNoSpaces: 950,
         target: 50000,
         targetCharacters: 275000,
       ),
@@ -37,7 +36,6 @@ void main() {
       adjustment: const CountAdjustment(
         words: 13,
         characters: 75,
-        charactersNoSpaces: 70,
       ),
     );
 
@@ -48,7 +46,6 @@ void main() {
 
     expect(adjusted.metadata.total.words, 200);
     expect(adjusted.metadata.total.characters, 1105);
-    expect(adjusted.metadata.total.charactersNoSpaces, 1020);
     expect(
       adjusted.metadata.total.distanceFromTargetWords,
       (200 / 50000).clamp(0, 1),
@@ -62,24 +59,11 @@ void main() {
       adjustment: const CountAdjustment(
         words: -50,
         characters: -200,
-        charactersNoSpaces: -180,
       ),
     );
 
     expect(adjusted.metadata.total.words, 137);
     expect(adjusted.metadata.files['nodeA']!.words, 137);
-    expect(adjusted.metadata.total.charactersNoSpaces, 770);
-  });
-
-  test('a total-only adjustment leaves file counters alone', () {
-    final Session adjusted = adjustSession(
-      _baseSession(),
-      adjustment: const CountAdjustment(charactersNoSpaces: 10),
-    );
-
-    expect(adjusted.metadata.files['nodeA']!.words, 187); // unchanged
-    expect(adjusted.metadata.total.words, 187);
-    expect(adjusted.metadata.total.charactersNoSpaces, 960);
   });
 
   test('an empty adjustment is a no-op', () {
@@ -91,10 +75,6 @@ void main() {
     expect(
       adjusted.metadata.total.characters,
       base.metadata.total.characters,
-    );
-    expect(
-      adjusted.metadata.total.charactersNoSpaces,
-      base.metadata.total.charactersNoSpaces,
     );
     expect(adjusted.metadata.files['nodeA']!.words, 187);
     expect(adjusted.metadata.files['nodeA']!.originalWords, 150);

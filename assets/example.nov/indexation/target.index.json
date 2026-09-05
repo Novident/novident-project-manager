@@ -16,7 +16,6 @@
     "b2c3d4e5-f6a7-8901-bcde-f12345678901": {
       "notify": true,
       "deadline": "2026-09-30T23:59:59Z",
-      "characters_no_spaces": 44500,
       "words": 50000,
       "characters": 275000
     }

@@ -16,7 +16,10 @@ void main() {
     final SessionSummary summary = buildSessionSummary(
       originals: originals,
       current: const <String, SessionNodeMeasures>{
-        'nodeA': SessionNodeMeasures(words: 187, characters: 1030, noSpaces: 950),
+        'nodeA': SessionNodeMeasures(
+          words: 187,
+          characters: 1030,
+        ),
       },
       target: 50000,
       targetCharacters: 275000,
@@ -33,7 +36,6 @@ void main() {
     expect(summary.total.typeTarget, 'nanowrimo');
     expect(summary.total.words, 187);
     expect(summary.total.characters, 1030);
-    expect(summary.total.charactersNoSpaces, 950);
     expect(summary.total.target, 50000);
     // 187/50000, clamped to [0,1].
     expect(summary.total.distanceFromTargetWords, 187 / 50000);
@@ -43,7 +45,10 @@ void main() {
     final SessionSummary summary = buildSessionSummary(
       originals: originals,
       current: const <String, SessionNodeMeasures>{
-        'nodeB': SessionNodeMeasures(words: 10, characters: 55, noSpaces: 50),
+        'nodeB': SessionNodeMeasures(
+          words: 10,
+          characters: 55,
+        ),
       },
       target: 1000,
       targetCharacters: 5000,
@@ -58,7 +63,10 @@ void main() {
     final SessionSummary summary = buildSessionSummary(
       originals: const <String, SessionFileCounters>{},
       current: const <String, SessionNodeMeasures>{
-        'nodeA': SessionNodeMeasures(words: 120, characters: 600, noSpaces: 500),
+        'nodeA': SessionNodeMeasures(
+          words: 120,
+          characters: 600,
+        ),
       },
       target: 100,
       targetCharacters: 1000,

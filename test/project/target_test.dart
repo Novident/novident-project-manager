@@ -50,16 +50,6 @@ void main() {
     expect(file.characters, 275000);
   });
 
-  test('TargetFile keeps the hyphenated characters_no_spaces key', () {
-    final target = TargetIndex.fromJson(fixture);
-    final files =
-        (json.decode(target.toJsonString()) as Map<String, dynamic>)['files']
-            as Map<String, dynamic>;
-    final file = files.values.single as Map<String, dynamic>;
-    expect(file.containsKey('characters_no_spaces'), isTrue);
-    expect(file.containsKey('charactersNoSpaces'), isFalse);
-  });
-
   test('TargetIndex.fromJson tolerates missing fields', () {
     final target = TargetIndex.fromJson(const <String, dynamic>{});
     expect(target.schemaVersion, isNull);
@@ -71,7 +61,6 @@ void main() {
   test('TargetFile omits optional keys when absent', () {
     final file = const TargetFile(words: 100, characters: 500).toJson();
     expect(file.containsKey('deadline'), isFalse);
-    expect(file.containsKey('characters_no_spaces'), isFalse);
     expect(file['words'], 100);
   });
 }

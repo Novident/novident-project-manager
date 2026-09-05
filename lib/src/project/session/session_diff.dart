@@ -25,7 +25,6 @@ class SessionDiff {
     required this.files,
     required this.words,
     required this.characters,
-    required this.charactersNoSpaces,
   });
 
   final String fromSessionDate;
@@ -36,7 +35,6 @@ class SessionDiff {
 
   final int words;
   final int characters;
-  final int charactersNoSpaces;
 
   /// Nodes that gained words between the two sessions.
   List<SessionFileDelta> get grownFiles =>
@@ -67,7 +65,5 @@ SessionDiff diffSessions(Session from, Session to) {
     files: files,
     words: to.metadata.total.words - from.metadata.total.words,
     characters: to.metadata.total.characters - from.metadata.total.characters,
-    charactersNoSpaces:
-        to.metadata.total.charactersNoSpaces - from.metadata.total.charactersNoSpaces,
   );
 }

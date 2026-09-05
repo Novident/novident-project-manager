@@ -22,7 +22,6 @@
       "type_target": "nanowrimo",
       "words": 385,
       "characters": 2125,
-      "characters_no_spaces": 1810,
       "distance_from_target_words": 0.15,
       "distance_from_target_characters": 0.15,
       "target": 50000,

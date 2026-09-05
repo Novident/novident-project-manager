@@ -25,7 +25,6 @@ Session _session(
         typeTarget: 'nanowrimo',
         words: words,
         characters: characters,
-        charactersNoSpaces: words - 10,
         target: 50000,
         targetCharacters: 275000,
       ),
@@ -47,7 +46,6 @@ void main() {
     expect(diff.files, isEmpty);
     expect(diff.words, 244 - 339);
     expect(diff.characters, 1345 - 1870);
-    expect(diff.charactersNoSpaces, (244 - 10) - (339 - 10));
   });
 
   test('diffSessions reports per-file deltas for shared nodes', () {

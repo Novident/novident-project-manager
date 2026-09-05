@@ -23,7 +23,6 @@ void main() {
       "type_target": "nanowrimo",
       "words": 339,
       "characters": 1870,
-      "characters_no_spaces": 1590,
       "distance_from_target_words": 0.1,
       "distance_from_target_characters": 0.1,
       "target": 50000,
@@ -51,18 +50,8 @@ void main() {
     expect(counters.words, 187);
 
     final total = session.metadata.total;
-    expect(total.charactersNoSpaces, 1590); // hyphenated key mapped
     expect(total.distanceFromTargetWords, 0.1);
     expect(total.target, 50000);
-  });
-
-  test('SessionTotal keeps the hyphenated characters_no_spaces key', () {
-    final session = Session.fromJson(fixture);
-    final total = (json.decode(session.toJsonString())
-        as Map<String, dynamic>)['metadata'] as Map<String, dynamic>;
-    final totalMap = total['total'] as Map<String, dynamic>;
-    expect(totalMap.containsKey('characters_no_spaces'), isTrue);
-    expect(totalMap.containsKey('charactersNoSpaces'), isFalse);
   });
 
   test('Session.fromJson tolerates missing fields', () {
