@@ -13,6 +13,9 @@ environment:
   sdk: ">=3.4.3 <4.0.0" 
 
 dependencies:
+  flutter:
+    sdk: flutter
+
   uuid: ^4.5.1 
   meta: ^1.16.0
   logging: ^1.3.0
@@ -25,7 +28,7 @@ dependencies:
   novident_editor_document: ^1.0.6
   novident_editor_styles: ^1.0.3
   novident_document_format: ^1.0.0
-  flutter_rust_bridge: 2.12.0
+  flutter_rust_bridge: ^2.12.0
   humanize_numbers: ^1.0.1
   intl: ^0.20.3
   rust_lib_novident_project_manager: ^1.0.0

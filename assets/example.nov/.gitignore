@@ -22,4 +22,5 @@ desktop.ini
 *.backup
 
 # Snapshots are tracked separately via the Novident snapshot system
+snapshots
 snapshots/*.zip
