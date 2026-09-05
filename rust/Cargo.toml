@@ -1,7 +1,10 @@
 [package]
 name = "rust_lib_novident_project_manager"
-version = "0.1.0"
+version = "1.0.0"
 edition = "2024"
+
+[lints.rust]
+unexpected_cfgs = { level = "warn", check-cfg = ['cfg(frb_expand)'] }
 
 [lib]
 crate-type = ["cdylib", "staticlib", "rlib"]

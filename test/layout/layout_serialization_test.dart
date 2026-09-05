@@ -1,8 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:novident_project_manager/src/layout/layout.dart';
-import 'package:novident_project_manager/src/layout/options/new_page_options.dart';
-import 'package:novident_project_manager/src/layout/options/section_attributes.dart';
-import 'package:novident_project_manager/src/layout/options/title_options.dart';
+import 'package:novident_project_manager/novident_project_manager.dart';
 
 void main() {
   test('Layout.toMap uses spec keys (snake_case, no camelCase)', () {

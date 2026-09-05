@@ -86,12 +86,11 @@ impl<'repo> BranchManager<'repo> {
         let mut result = Vec::new();
         for branch_result in branches {
             let (branch, _branch_type) = branch_result.map_err(GitServiceError::Git)?;
-            if let Some(name) = branch.name().ok().flatten() {
-                if name.starts_with(&format!("{}/", remote_name)) {
-                    if let Some(info) = self.branch_to_info(&branch, &None) {
-                        result.push(info);
-                    }
-                }
+            if let Some(name) = branch.name().ok().flatten()
+                && name.starts_with(&format!("{}/", remote_name))
+                && let Some(info) = self.branch_to_info(&branch, &None)
+            {
+                result.push(info);
             }
         }
         Ok(result)
@@ -276,7 +275,7 @@ impl<'repo> BranchManager<'repo> {
                 .name()
                 .ok()
                 .flatten()
-                .map_or(false, |n| !n.contains('/'));
+                .is_some_and(|n| !n.contains('/'));
         let is_remote = !is_local;
 
         let upstream_name = branch

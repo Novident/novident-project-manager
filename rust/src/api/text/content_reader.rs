@@ -30,7 +30,7 @@ impl Node {
         self.data
             .as_ref()
             .and_then(|data| data.get("delta"))
-            .map(|delta| Delta::from_json(delta))
+            .map(Delta::from_json)
     }
 
     /// Recursively searches the tree for a node whose `data` contains a given key-value pair.

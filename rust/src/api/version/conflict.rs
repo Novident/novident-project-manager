@@ -57,7 +57,7 @@ impl<'repo> ConflictManager<'repo> {
     /// List all conflicted files with their details.
     pub fn detect_conflicts(&self) -> GitResult<Vec<ConflictInfo>> {
         let index = self.repo.index().map_err(GitServiceError::Git)?;
-        let conflicts = index.conflicts().map_err(|e| GitServiceError::Git(e))?;
+        let conflicts = index.conflicts().map_err(GitServiceError::Git)?;
 
         let mut result = Vec::new();
 

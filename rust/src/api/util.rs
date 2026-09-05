@@ -61,7 +61,7 @@ pub mod json_string {
     use serde::{Deserialize, Deserializer, Serialize, Serializer};
 
     /// Serializes a JSON-encoded `String` as the raw JSON it represents.
-    pub fn serialize<S>(value: &String, serializer: S) -> Result<S::Ok, S::Error>
+    pub fn serialize<S>(value: &str, serializer: S) -> Result<S::Ok, S::Error>
     where
         S: Serializer,
     {

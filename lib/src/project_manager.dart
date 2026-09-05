@@ -413,7 +413,6 @@ class ProjectManager {
       measures[id] = SessionNodeMeasures(
         words: count.words,
         characters: count.characters,
-        noSpaces: count.charactersNoSpaces,
       );
     }
     return measures;

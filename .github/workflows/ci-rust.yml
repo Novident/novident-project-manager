@@ -1,0 +1,51 @@
+# CI (Rust): lints with clippy and runs the Rust engine tests (the `rust/`
+# crate) on every push to master and every pull request targeting master.
+# The Dart/Flutter side of the repository is covered by ci.yml.
+#
+# To block PRs that fail these checks, enable branch protection on master:
+#   Settings → Branches → Branch protection rules → "Require status checks
+#   to pass before merging" → select "Test (rust)".
+
+name: CI (Rust)
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  rust-test:
+    name: Test (rust)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - name: Checkout
+        uses: actions/checkout@eef61447b9ff4aafe5dcd4e0bbf5d482be7e7871 # v4.2.1
+
+      - name: Set up Rust toolchain
+        # The ubuntu-24.04 runner ships a stable Rust toolchain via rustup.
+        # Select it explicitly (installing if needed) so the active toolchain
+        # cannot drift between runner image updates. The crate targets Rust
+        # edition 2024, so a recent stable is required. The `minimal` profile
+        # does not ship clippy, so it is added explicitly below.
+        run: |
+          rustup toolchain install stable --profile minimal --no-self-update
+          rustup default stable
+          rustup component add clippy
+
+      - name: Lint (clippy)
+        # Deny warnings so lint regressions fail the build.
+        working-directory: rust
+        run: cargo clippy --all-targets -- -D warnings
+
+      - name: Test (rust)
+        working-directory: rust
+        run: cargo test

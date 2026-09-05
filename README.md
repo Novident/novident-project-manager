@@ -14,6 +14,9 @@ Dart (schema owner)  ⇄  JSON boundary  ⇄  Rust engine (I/O, git, search, dif
   `schema-v1.yaml`), search, text diff, git and snapshots.
 - `EngineClient` is the only importer of the generated FRB bindings.
 
+> [!IMPORTANT]
+> By now the **Backup**s feature is still being implemented. **Snapshots** are the safe alternative to work with.
+
 ---
 
 ## Table of contents
