@@ -27,10 +27,7 @@ pub fn default_slice_attributes(delta: &Delta, index: i32) -> Option<Attributes>
     }
 
     let prev_sliced = delta.slice(index - 1, Some(index));
-    let prev_attrs = match prev_sliced.operations.first() {
-        Some(op) => op.attributes(),
-        None => return None,
-    };
+    let prev_attrs = prev_sliced.operations.first()?.attributes();
 
     let mut prev_attributes = prev_attrs?;
 
