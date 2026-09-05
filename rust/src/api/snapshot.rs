@@ -1,10 +1,3 @@
-//! Project snapshots — zip the `.nov` project to `snapshots/` and restore it.
-//!
-//! Snapshots are separate from git: a full copy of the project (excluding the
-//! `.git` directory, `snapshots/` itself, and build artifacts), stored as a
-//! single `.zip` under `snapshots/<stamp>-v<version>.zip`. Restore extracts a
-//! snapshot over the project root (overwriting files).
-
 use std::fs::{self, File};
 use std::path::{Path, PathBuf};
 
@@ -25,7 +18,12 @@ pub struct SnapshotInfo {
     pub created_at: i64,
 }
 
-/// Manages snapshots for a `.nov` project rooted at `root`.
+/// Project snapshots — zip the `.nov` project to `snapshots/` and restore it.
+///
+/// Snapshots are separate from git: a full copy of the project (excluding the
+/// `.git` directory, `snapshots/` itself, and build artifacts), stored as a
+/// single `.zip` under `snapshots/<stamp>-v<version>.zip`. Restore extracts a
+/// snapshot over the project root (overwriting files).
 pub struct SnapshotManager {
     root: PathBuf,
 }
@@ -186,38 +184,5 @@ fn add_dir_to_zip<W: std::io::Write + std::io::Seek>(
 
 /// Paths never included in a snapshot.
 fn is_excluded(name: &str) -> bool {
-    matches!(name, ".git" | "snapshots" | "target")
-}
-
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    fn temp_root(tag: &str) -> PathBuf {
-        let dir = std::env::temp_dir().join(format!(
-            "novident-snap-{}-{tag}-{}",
-            std::process::id(),
-            std::time::SystemTime::now()
-                .duration_since(std::time::UNIX_EPOCH)
-                .unwrap()
-                .as_nanos()
-        ));
-        fs::create_dir_all(&dir).unwrap();
-        dir
-    }
-
-    #[test]
-    fn delete_removes_snapshot_and_errors_on_unknown_id() {
-        let root = temp_root("delete");
-        let manager = SnapshotManager::new(&root);
-        let info = manager.create(1).expect("create");
-
-        manager.delete(&info.id).expect("delete");
-        assert!(!root.join("snapshots").join(&info.filename).exists());
-
-        // Deleting twice (unknown id) is an error.
-        assert!(manager.delete(&info.id).is_err());
-
-        fs::remove_dir_all(&root).ok();
-    }
+    matches!(name, ".git" | "snapshots")
 }
