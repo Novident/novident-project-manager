@@ -1,0 +1,25 @@
+# Novident .gitignore — Internal Repository
+# Exclude editor lock files, OS files, and temporary artifacts
+
+# Editor lock files
+*.lock
+*.lck
+
+# OS generated files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Temporary files
+*.tmp
+*.swp
+*.swo
+*~
+~$*
+
+# Backup files
+*.bak
+*.backup
+
+# Snapshots are tracked separately via the Novident snapshot system
+snapshots/*.zip

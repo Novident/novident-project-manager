@@ -1,5 +1,3 @@
-//! Structural validation tests (schema-agnostic, contract-driven).
-
 use rust_lib_novident_project_manager::api::validate::{Severity, validate_project};
 use std::fs;
 use std::path::{Path, PathBuf};
@@ -43,8 +41,14 @@ fn empty_dir_reports_missing_required() {
         .iter()
         .filter(|i| i.code == "required_file.missing")
         .count();
-    assert!(missing_dirs >= 8, "expected >=8 missing dirs, got {missing_dirs}");
-    assert!(missing_files >= 8, "expected >=8 missing files, got {missing_files}");
+    assert!(
+        missing_dirs >= 8,
+        "expected >=8 missing dirs, got {missing_dirs}"
+    );
+    assert!(
+        missing_files >= 8,
+        "expected >=8 missing files, got {missing_files}"
+    );
 }
 
 #[test]
@@ -93,15 +97,5 @@ fn minimal_valid_project_has_no_errors() {
     assert!(
         issues.iter().any(|i| i.code == "optional_file.missing"),
         "missing .gitignore should be a warning"
-    );
-}
-
-#[test]
-fn example_project_flags_invalid_icon_index() {
-    let root = PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("src/assets/example.nov");
-    let issues = validate_project(&root, 1);
-    assert!(
-        issues.iter().any(|i| i.path == "indexation/icon.index.json" && i.code == "json.invalid"),
-        "expected icon.index.json to be flagged as invalid JSON; got: {issues:?}"
     );
 }

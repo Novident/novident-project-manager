@@ -21,12 +21,31 @@ pub enum Severity {
     Warning,
 }
 
+impl std::fmt::Display for Severity {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        match self {
+            Self::Warning => write!(f, "warning"),
+            Self::Error => write!(f, "error"),
+        }
+    }
+}
+
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct ValidationIssue {
     pub severity: Severity,
     pub path: String,
     pub code: String,
     pub message: String,
+}
+
+impl std::fmt::Display for ValidationIssue {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(
+            f,
+            "path: {}, severity: {}, code: {}, message: {}",
+            self.path, self.severity, self.code, self.message
+        )
+    }
 }
 
 impl ValidationIssue {
