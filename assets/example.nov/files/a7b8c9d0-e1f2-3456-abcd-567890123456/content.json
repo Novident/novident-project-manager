@@ -1,0 +1,96 @@
+{
+  "document": {
+    {
+      "type": "page",
+      "children": [
+        {
+          "type": "paragraph",
+          "styleRef": "heading-1",
+          "attributes": {
+            "delta": [
+              {
+                "insert": "The Guardian"
+              }
+            ]
+          }
+        },
+        {
+          "type": "paragraph",
+          "attributes": {
+            "delta": [
+              {
+                "insert": "The water passage opened into a vast chamber. Crystals hung from the ceiling like chandeliers, their aquamarine light reflecting off a lake so still it was indistinguishable from a mirror. At the center of the lake, rising from the water on a pillar of solid crystal, stood a figure."
+              }
+            ]
+          }
+        },
+        {
+          "type": "paragraph",
+          "attributes": {
+            "delta": [
+              {
+                "insert": "It was humanoid but not human—its body was composed entirely of translucent crystal facets that shifted and reformed with each breath-like movement.",
+                "attributes": {
+                  "comment": "1c7e5a3"
+                }
+              },
+              {
+                "insert": " Where its face should have been, a constellation of smaller crystals rotated slowly, and when it spoke, the voice came not from a mouth but from every crystal in the chamber resonating at once.",
+                "attributes": {
+                  "comment": "5f2c7d3"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "paragraph",
+          "attributes": {
+            "delta": [
+              {
+                "insert": "\"You have walked the water path, child of flesh.\" The voice was neither male nor female, warm nor cold. It simply "
+              },
+              {
+                "insert": "was",
+                "attributes": {
+                  "italic": true
+                }
+              },
+              {
+                "insert": ". \"Few choose the element they fear most. This speaks well of you.\""
+              }
+            ]
+          }
+        },
+        {
+          "type": "paragraph",
+          "attributes": {
+            "delta": [
+              {
+                "insert": "Kira's throat tightened. \"How do you know what I fear?\""
+              }
+            ]
+          }
+        },
+        {
+          "type": "paragraph",
+          "attributes": {
+            "delta": [
+              {
+                "insert": "\"The labyrinth knows all who walk within it. It knew you before you were born, Kira Valdris, daughter of Elara, apprentice to the cartographer.",
+                "attributes": {
+                  "comment": "4b9d2f6"
+                }
+              },
+              {
+                "insert": " It has been waiting for you since the Shattered Crown fell.\"",
+                "attributes": {
+                  "comment": "9e6a1c8"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }

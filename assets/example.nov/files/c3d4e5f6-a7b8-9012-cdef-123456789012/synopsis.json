@@ -1,0 +1,21 @@
+{
+  "type": "document",
+  "metadata": {},
+  "content": {
+    "document": {
+      "type": "page",
+      "children": [
+        {
+          "type": "paragraph",
+          "attributes": {
+            "delta": [
+              {
+                "insert": "Opens with Kira awakening in darkness. The labyrinth reveals itself through glowing crystals. Ends with the three-path choice that defines the novel's elemental structure."
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

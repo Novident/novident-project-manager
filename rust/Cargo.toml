@@ -1,0 +1,22 @@
+[package]
+name = "rust_lib_novident_project_manager"
+version = "0.1.0"
+edition = "2024"
+
+[lib]
+crate-type = ["cdylib", "staticlib", "rlib"]
+
+[dependencies]
+dissimilar = "1.0.11"
+flutter_rust_bridge = "=2.12.0"
+lru = "0.12"
+regex = "1"
+serde = { version = "1.0.229", features = ["derive"] }
+serde_json = "1.0.151"
+serde_yaml = "0.9"
+unicode-segmentation = "1.13.3"
+git2 = { version = "0.20", features = ["ssh", "https"] }
+dirs = "6.0"
+base64 = "0.22"
+uuid = { version = "1", features = ["v4"] }
+zip = "2"

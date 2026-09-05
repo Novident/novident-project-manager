@@ -1,0 +1,129 @@
+{
+  "schema_version": 1,
+  "corkboards": [
+    {
+      "element_id": "c3d4e5f6-a7b8-9012-cdef-123456789012",
+      "element_name": "Chapter 1",
+      "element_path": "files/c3d4e5f6-a7b8-9012-cdef-123456789012",
+      "values": {
+        "freeform": {
+          "world": {
+            "nodes": [
+              {
+                "node_id": "d4e5f6a7-b8c9-0123-defa-234567890123",
+                "node_name": "The Awakening",
+                "x": 120.0,
+                "y": 80.0,
+                "width": 220.0,
+                "height": 300.0
+              },
+              {
+                "node_id": "e5f6a7b8-c9d0-1234-efab-345678901234",
+                "node_name": "The First Path",
+                "x": 400.0,
+                "y": 120.0,
+                "width": 220.0,
+                "height": 300.0
+              }
+            ]
+          },
+          "viewport": {
+            "offset_x": -50.0,
+            "offset_y": -30.0
+          },
+          "z_index": [
+            "e5f6a7b8-c9d0-1234-efab-345678901234",
+            "d4e5f6a7-b8c9-0123-defa-234567890123"
+          ],
+          "selected_node_id": "e5f6a7b8-c9d0-1234-efab-345678901234",
+          "config": "default_grid_medium"
+        },
+        "ratio": 0.35,
+        "spacing": 16.0
+      }
+    },
+    {
+      "element_id": "f6a7b8c9-d0e1-2345-fabc-456789012345",
+      "element_name": "Chapter 2",
+      "element_path": "files/f6a7b8c9-d0e1-2345-fabc-456789012345",
+      "values": {
+        "freeform": {
+          "world": {
+            "nodes": [
+              {
+                "node_id": "a7b8c9d0-e1f2-3456-abcd-567890123456",
+                "node_name": "The Guardian",
+                "x": 200.0,
+                "y": 150.0,
+                "width": 240.0,
+                "height": 320.0
+              }
+            ]
+          },
+          "viewport": {
+            "offset_x": 0.0,
+            "offset_y": 0.0
+          },
+          "z_index": [
+            "a7b8c9d0-e1f2-3456-abcd-567890123456"
+          ],
+          "selected_node_id": "a7b8c9d0-e1f2-3456-abcd-567890123456",
+          "config": "default_grid_medium"
+        },
+        "ratio": 0.4,
+        "spacing": 20.0
+      }
+    },
+    {
+      "element_id": "c9d0e1f2-a3b4-5678-cdef-789012345678",
+      "element_name": "Characters",
+      "element_path": "files/c9d0e1f2-a3b4-5678-cdef-789012345678",
+      "values": {
+        "freeform": {
+          "world": {
+            "nodes": [
+              {
+                "node_id": "d0e1f2a3-b4c5-6789-defa-890123456789",
+                "node_name": "Kira Valdris",
+                "x": 100.0,
+                "y": 100.0,
+                "width": 200.0,
+                "height": 280.0
+              },
+              {
+                "node_id": "e1f2a3b4-c5d6-7890-efab-901234567890",
+                "node_name": "Lord Malachar",
+                "x": 380.0,
+                "y": 100.0,
+                "width": 200.0,
+                "height": 280.0
+              }
+            ]
+          },
+          "viewport": {
+            "offset_x": 0.0,
+            "offset_y": 0.0
+          },
+          "z_index": [
+            "d0e1f2a3-b4c5-6789-defa-890123456789",
+            "e1f2a3b4-c5d6-7890-efab-901234567890"
+          ],
+          "selected_node_id": "d0e1f2a3-b4c5-6789-defa-890123456789",
+          "config": "relationship_map"
+        },
+        "ratio": 0.5,
+        "spacing": 12.0
+      }
+    },
+    {
+      "element_id": "b2c3d4e5-f6a7-8901-bcde-f12345678901",
+      "element_name": "Draft",
+      "element_path": "files/b2c3d4e5-f6a7-8901-bcde-f12345678901",
+      "values": {
+        "freeform": null,
+        "ratio": 0.25,
+        "spacing": 8.0
+      }
+    }
+  ]
+}

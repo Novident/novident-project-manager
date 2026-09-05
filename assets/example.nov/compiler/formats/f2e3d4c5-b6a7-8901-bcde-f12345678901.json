@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "id": "f2e3d4c5-b6a7-8901-bcde-f12345678901",
+  "name": "Ebook (Kindle EPUB)",
+  "scope": "project",
+  "can_change": true,
+  "font_family": "by-layout",
+  "layouts": ["l3c4d5e6-f7a8-9012-cdef-123456789012"],
+  "replacements": {
+    "patterns": [
+      {"find": "<$projecttitle>", "replace": "The Crystal Labyrinth"},
+      {"find": "<$author>", "replace": "Elena Marlowe"}
+    ]
+  },
+  "page_setup": {
+    "paper_size": "digital",
+    "margins": {"top": 10, "bottom": 10, "left": 10, "right": 10}
+  }
+}

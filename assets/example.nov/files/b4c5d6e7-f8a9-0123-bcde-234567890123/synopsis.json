@@ -1,0 +1,21 @@
+{
+  "type": "document",
+  "metadata": {},
+  "content": {
+    "document": {
+      "type": "page",
+      "children": [
+        {
+          "type": "paragraph",
+          "attributes": {
+            "delta": [
+              {
+                "insert": "Project templates for character sheets, location descriptions, chapter outlines, and scene cards. Apply these templates when creating new documents to maintain consistency across the project."
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

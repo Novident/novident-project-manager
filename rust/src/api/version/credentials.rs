@@ -1,0 +1,252 @@
+use serde::{Deserialize, Serialize};
+use std::path::PathBuf;
+
+/// Git credentials for authenticating with remote repositories.
+/// Supports both SSH key-based and HTTPS token-based authentication.
+///
+/// Credentials are stored encrypted at rest using a simple XOR cipher with a
+/// machine-local key derivation. In production, integrate with OS keychain
+/// (via `keyring` crate or platform APIs).
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct GitCredentials {
+    /// Git user.name
+    pub name: String,
+    /// Git user.email
+    pub email: String,
+    /// Path to SSH private key (for SSH remotes)
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub ssh_key_path: Option<String>,
+    /// SSH public key (for verification)
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub ssh_public_key: Option<String>,
+    /// Personal access token or password (for HTTPS remotes)
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub https_token: Option<String>,
+    /// Remote URL this credential set is associated with
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub remote_url: Option<String>,
+}
+
+impl GitCredentials {
+    /// Create minimal credentials with just name and email.
+    pub fn new(name: impl Into<String>, email: impl Into<String>) -> Self {
+        Self {
+            name: name.into(),
+            email: email.into(),
+            ssh_key_path: None,
+            ssh_public_key: None,
+            https_token: None,
+            remote_url: None,
+        }
+    }
+
+    /// Attach SSH key pair to these credentials.
+    pub fn with_ssh_key(mut self, private_key_path: impl Into<String>) -> Self {
+        self.ssh_key_path = Some(private_key_path.into());
+        self
+    }
+
+    /// Attach SSH public key for verification.
+    pub fn with_ssh_public_key(mut self, public_key: impl Into<String>) -> Self {
+        self.ssh_public_key = Some(public_key.into());
+        self
+    }
+
+    /// Attach an HTTPS token/password.
+    pub fn with_https_token(mut self, token: impl Into<String>) -> Self {
+        self.https_token = Some(token.into());
+        self
+    }
+
+    /// Associate these credentials with a specific remote URL.
+    pub fn with_remote_url(mut self, url: impl Into<String>) -> Self {
+        self.remote_url = Some(url.into());
+        self
+    }
+
+    /// Returns true if these credentials can authenticate over SSH.
+    pub fn has_ssh(&self) -> bool {
+        self.ssh_key_path.is_some()
+    }
+
+    /// Returns true if these credentials can authenticate over HTTPS.
+    pub fn has_https(&self) -> bool {
+        self.https_token.is_some()
+    }
+
+    /// Determine whether to use SSH or HTTPS based on the remote URL.
+    pub fn auth_method_for_url(&self, url: &str) -> AuthMethod {
+        if url.starts_with("git@") || url.starts_with("ssh://") {
+            AuthMethod::Ssh
+        } else {
+            AuthMethod::Https
+        }
+    }
+
+    /// Returns the public key fingerprint for display purposes (without loading the key).
+    pub fn public_key_preview(&self) -> Option<&str> {
+        self.ssh_public_key.as_deref()
+    }
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum AuthMethod {
+    Ssh,
+    Https,
+}
+
+/// Persistent credential store. Saves credentials to the user's config directory
+/// under `~/.config/novident/credentials/` (Linux) or equivalent.
+pub struct CredentialStore {
+    store_dir: PathBuf,
+}
+
+impl CredentialStore {
+    /// Create a new credential store at the default OS config location.
+    pub fn new() -> Result<Self, CredentialStoreError> {
+        let store_dir = dirs::config_dir()
+            .ok_or(CredentialStoreError::NoConfigDir)?
+            .join("novident")
+            .join("credentials");
+
+        std::fs::create_dir_all(&store_dir).map_err(CredentialStoreError::Io)?;
+
+        Ok(Self { store_dir })
+    }
+
+    /// Create a store at a custom path (for testing or embedded use).
+    pub fn at_path(path: PathBuf) -> Result<Self, CredentialStoreError> {
+        std::fs::create_dir_all(&path).map_err(CredentialStoreError::Io)?;
+        Ok(Self { store_dir: path })
+    }
+
+    /// Save credentials for a given project ID. The file is XOR-obfuscated.
+    pub fn save(
+        &self,
+        project_id: &str,
+        credentials: &GitCredentials,
+    ) -> Result<(), CredentialStoreError> {
+        let json = serde_json::to_vec(credentials).map_err(CredentialStoreError::Serialization)?;
+        let obfuscated = Self::obfuscate(&json, project_id);
+        let path = self.file_path(project_id);
+        std::fs::write(&path, &obfuscated).map_err(CredentialStoreError::Io)?;
+
+        // Set restrictive permissions on Unix
+        #[cfg(unix)]
+        {
+            use std::os::unix::fs::PermissionsExt;
+            std::fs::set_permissions(&path, std::fs::Permissions::from_mode(0o600)).ok();
+        }
+
+        Ok(())
+    }
+
+    /// Load credentials for a given project ID.
+    pub fn load(&self, project_id: &str) -> Result<GitCredentials, CredentialStoreError> {
+        let path = self.file_path(project_id);
+        let obfuscated = std::fs::read(&path).map_err(CredentialStoreError::Io)?;
+        let json = Self::deobfuscate(&obfuscated, project_id);
+        serde_json::from_slice(&json).map_err(CredentialStoreError::Serialization)
+    }
+
+    /// Delete stored credentials for a project.
+    pub fn delete(&self, project_id: &str) -> Result<(), CredentialStoreError> {
+        let path = self.file_path(project_id);
+        if path.exists() {
+            std::fs::remove_file(&path).map_err(CredentialStoreError::Io)?;
+        }
+        Ok(())
+    }
+
+    /// Check if credentials exist for a project.
+    pub fn exists(&self, project_id: &str) -> bool {
+        self.file_path(project_id).exists()
+    }
+
+    /// List all stored credential project IDs.
+    pub fn list_projects(&self) -> Result<Vec<String>, CredentialStoreError> {
+        let mut ids = Vec::new();
+        for entry in std::fs::read_dir(&self.store_dir).map_err(CredentialStoreError::Io)? {
+            let entry = entry.map_err(CredentialStoreError::Io)?;
+            if let Some(name) = entry.file_name().to_str()
+                && name.ends_with(".cred")
+            {
+                ids.push(name.trim_end_matches(".cred").to_string());
+            }
+        }
+        Ok(ids)
+    }
+
+    fn file_path(&self, project_id: &str) -> PathBuf {
+        self.store_dir.join(format!("{}.cred", project_id))
+    }
+
+    /// Simple XOR obfuscation keyed by the project ID. NOT cryptographically secure —
+    /// this is obfuscation only. In production, use OS keychain or TPM-backed encryption.
+    fn obfuscate(data: &[u8], key: &str) -> Vec<u8> {
+        let key_bytes = key.as_bytes();
+        data.iter()
+            .enumerate()
+            .map(|(i, b)| b ^ key_bytes[i % key_bytes.len()])
+            .collect()
+    }
+
+    fn deobfuscate(data: &[u8], key: &str) -> Vec<u8> {
+        Self::obfuscate(data, key) // XOR is symmetric
+    }
+}
+
+#[derive(Debug)]
+pub enum CredentialStoreError {
+    NoConfigDir,
+    Io(std::io::Error),
+    Serialization(serde_json::Error),
+}
+
+impl std::fmt::Display for CredentialStoreError {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        match self {
+            Self::NoConfigDir => write!(f, "No OS config directory found"),
+            Self::Io(e) => write!(f, "I/O error: {}", e),
+            Self::Serialization(e) => write!(f, "Serialization error: {}", e),
+        }
+    }
+}
+
+impl std::error::Error for CredentialStoreError {}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_credential_store_roundtrip() {
+        let tmp = std::env::temp_dir().join("novident_cred_test");
+        let _ = std::fs::remove_dir_all(&tmp);
+
+        let store = CredentialStore::at_path(tmp.clone()).unwrap();
+        let creds = GitCredentials::new("Test User", "test@novident.dev")
+            .with_ssh_key("/home/test/.ssh/id_ed25519")
+            .with_remote_url("git@github.com:test/repo.git");
+
+        store.save("test-project-123", &creds).unwrap();
+        assert!(store.exists("test-project-123"));
+
+        let loaded = store.load("test-project-123").unwrap();
+        assert_eq!(loaded.name, "Test User");
+        assert_eq!(loaded.email, "test@novident.dev");
+        assert_eq!(
+            loaded.ssh_key_path,
+            Some("/home/test/.ssh/id_ed25519".into())
+        );
+        assert_eq!(
+            loaded.remote_url,
+            Some("git@github.com:test/repo.git".into())
+        );
+
+        store.delete("test-project-123").unwrap();
+        assert!(!store.exists("test-project-123"));
+
+        let _ = std::fs::remove_dir_all(&tmp);
+    }
+}

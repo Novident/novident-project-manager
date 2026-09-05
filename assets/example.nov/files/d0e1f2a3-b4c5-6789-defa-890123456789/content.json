@@ -1,0 +1,209 @@
+{
+  "document": {
+    "type": "page",
+    "children": [
+      {
+        "type": "paragraph",
+        "styleRef": "heading-1",
+        "attributes": {
+          "delta": [
+            {
+              "insert": "Kira Valdris — Protagonist Profile"
+            }
+          ]
+        }
+      },
+      {
+        "type": "paragraph",
+        "styleRef": "heading-2",
+        "attributes": {
+          "delta": [
+            {
+              "insert": "Basic Information"
+            }
+          ]
+        }
+      },
+      {
+        "type": "paragraph",
+        "attributes": {
+          "delta": [
+            {
+              "insert": "Age: ",
+              "attributes": {
+                "bold": true
+              }
+            },
+            {
+              "insert": "23"
+            }
+          ]
+        }
+      },
+      {
+        "type": "paragraph",
+        "attributes": {
+          "delta": [
+            {
+              "insert": "Occupation: ",
+              "attributes": {
+                "bold": true
+              }
+            },
+            {
+              "insert": "Cartographer's apprentice in the port city of Ashmark",
+              "attributes": {
+                "comment": "7b4e1f9"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "type": "paragraph",
+        "attributes": {
+          "delta": [
+            {
+              "insert": "Birthplace: ",
+              "attributes": {
+                "bold": true
+              }
+            },
+            {
+              "insert": "Unknown — found as an infant by her adoptive mother Elara"
+            }
+          ]
+        }
+      },
+      {
+        "type": "paragraph",
+        "attributes": {
+          "delta": [
+            {
+              "insert": "Residence: ",
+              "attributes": {
+                "bold": true
+              }
+            },
+            {
+              "insert": "A small attic room above the Mapmaker's Guild"
+            }
+          ]
+        }
+      },
+      {
+        "type": "paragraph",
+        "styleRef": "heading-2",
+        "attributes": {
+          "delta": [
+            {
+              "insert": "Physical Description"
+            }
+          ]
+        }
+      },
+      {
+        "type": "paragraph",
+        "attributes": {
+          "delta": [
+            {
+              "insert": "Amber eyes that seem to catch light differently depending on her mood. Auburn hair typically tied back in a practical braid. A small crescent-shaped scar on her left cheekbone from a childhood accident. Lean build from years of climbing to high vantage points for map surveys.",
+              "attributes": {
+                "comment": "9d1c7a6"
+              }
+            },
+            {
+              "insert": " Her hands are her most distinctive feature — long-fingered and precise, stained at the tips with ink that never quite washes out.",
+              "attributes": {
+                "comment": "5e8f3b1"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "type": "paragraph",
+        "styleRef": "heading-2",
+        "attributes": {
+          "delta": [
+            {
+              "insert": "Personality Traits"
+            }
+          ]
+        }
+      },
+      {
+        "type": "bulleted_list",
+        "attributes": {
+          "delta": [
+            {
+              "insert": "Curious ",
+              "attributes": {
+                "bold": true
+              }
+            },
+            {
+              "insert": "— almost to a fault. Her need to understand things drives the plot forward but also gets her into trouble."
+            }
+          ]
+        }
+      },
+      {
+        "type": "bulleted_list",
+        "attributes": {
+          "delta": [
+            {
+              "insert": "Stubborn ",
+              "attributes": {
+                "bold": true
+              }
+            },
+            {
+              "insert": "— once she commits to a course of action, she sees it through regardless of cost."
+            }
+          ]
+        }
+      },
+      {
+        "type": "bulleted_list",
+        "attributes": {
+          "delta": [
+            {
+              "insert": "Fear of water ",
+              "attributes": {
+                "bold": true
+              }
+            },
+            {
+              "insert": "— nearly drowned at age seven. This phobia becomes central to her character arc when she must traverse the water path.",
+              "attributes": {
+                "comment": "2c9a6d4"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "type": "paragraph",
+        "styleRef": "heading-2",
+        "attributes": {
+          "delta": [
+            {
+              "insert": "Character Arc"
+            }
+          ]
+        }
+      },
+      {
+        "type": "paragraph",
+        "attributes": {
+          "delta": [
+            {
+              "insert": "Kira begins the story as someone who maps the world without truly understanding it. Her journey through the labyrinth forces her to confront not just external dangers but the truths about her own origins. By the end, she must choose between restoring the Shattered Crown (and losing the labyrinth's magic forever) or claiming its power for herself."
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

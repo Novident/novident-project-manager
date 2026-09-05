@@ -1,0 +1,21 @@
+{
+  "type": "document",
+  "metadata": {},
+  "content": {
+    "document": {
+      "type": "page",
+      "children": [
+        {
+          "type": "paragraph",
+          "attributes": {
+            "delta": [
+              {
+                "insert": "The Draft folder containing the complete manuscript of The Crystal Labyrinth."
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

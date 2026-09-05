@@ -1,0 +1,21 @@
+{
+  "type": "document",
+  "metadata": {},
+  "content": {
+    "document": {
+      "type": "page",
+      "children": [
+        {
+          "type": "paragraph",
+          "attributes": {
+            "delta": [
+              {
+                "insert": "Character profiles for all major and supporting characters in The Crystal Labyrinth."
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

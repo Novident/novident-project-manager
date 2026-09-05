@@ -1,0 +1,70 @@
+{
+  "document": {
+    "type": "page",
+    "children": [
+      {
+        "type": "paragraph",
+        "styleRef": "heading-1",
+        "attributes": {
+          "delta": [
+            {
+              "insert": "The Cartographer's Daughter — Original Opening"
+            }
+          ]
+        }
+      },
+      {
+        "type": "paragraph",
+        "attributes": {
+          "delta": [
+            {
+              "insert": "The city of Ashmark had stood for a thousand years, its white towers piercing the coastal mist like the fingers of a drowning giant.",
+              "attributes": {
+                "comment": "4d8a1f6"
+              }
+            },
+            {
+              "insert": " It was known for three things: its fish markets, its shipyards, and the Mapmaker's Guild — the oldest and most prestigious cartographic institution in the known world.",
+              "attributes": {
+                "comment": "7e2b5c9"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "type": "paragraph",
+        "attributes": {
+          "delta": [
+            {
+              "insert": "Kira Valdris had worked in the Guild's attic for seven years, ever since her mother Elara had left her there as a girl of sixteen with nothing but a worn satchel and a cryptic note: ",
+              "attributes": {
+                "comment": "1a6f3d8"
+              }
+            },
+            {
+              "insert": "\"The maps will guide you home.\"",
+              "attributes": {
+                "italic": true
+              }
+            }
+          ]
+        }
+      },
+      {
+        "type": "paragraph",
+        "attributes": {
+          "delta": [
+            {
+              "insert": "NOTE: This opening was discarded because it starts too slowly with worldbuilding exposition. The new opening (The Awakening) drops the reader directly into the action. Some elements from this draft — the Guild, the note from Elara — should be woven into flashbacks or dialogue later.",
+              "attributes": {
+                "bold": true,
+                "italic": true
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

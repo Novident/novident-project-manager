@@ -1,0 +1,215 @@
+{
+  "document": {
+    {
+      "type": "page",
+      "children": [
+        {
+          "type": "paragraph",
+          "styleRef": "heading-1",
+          "attributes": {
+            "delta": [
+              {
+                "insert": "Crystal Resonance — Magic System"
+              }
+            ]
+          }
+        },
+        {
+          "type": "paragraph",
+          "styleRef": "heading-2""attributes": {
+            "delta": [
+              {
+                "insert": "Core Concept"
+              }
+            ]
+          }
+        },
+        {
+          "type": "paragraph",
+          "attributes": {
+            "delta": [
+              {
+                "insert": "Magic in this world operates through crystal resonance. Every crystal has a fundamental frequency at which it vibrates. Skilled practitioners — known as Crystal Weavers — can attune themselves to these frequencies and manipulate the energy that crystals emit.",
+                "attributes": {
+                  "comment": "12db1nf"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "paragraph",
+          "styleRef": "heading-2",
+          "attributes": {
+            "delta": [
+              {
+                "insert": "The Seven Crystal Types"
+              }
+            ]
+          }
+        },
+        {
+          "type": "paragraph",
+          "attributes": {
+            "delta": [
+              {
+                "insert": "1. ",
+                "attributes": {
+                  "bold": true
+                }
+              },
+              {
+                "insert": "Ignis (Ruby) — Fire resonance. Produces heat and light."
+              },
+            ]
+          }
+        },
+        {
+          "type": "paragraph",
+          "attributes": {
+            "delta": [
+              {
+                "insert": "2. ",
+                "attributes": {
+                  "bold": true
+                }
+              },
+              {
+                "insert": "Aquor (Sapphire) — Water resonance. Controls flow and pressure."
+              },
+            ]
+          }
+        },
+        {
+          "type": "paragraph",
+          "attributes": {
+            "delta": [
+              {
+                "insert": "3. ",
+                "attributes": {
+                  "bold": true
+                }
+              },
+              {
+                "insert": "Terrus (Emerald) — Earth resonance. Manipulates solid matter."
+              },
+            ]
+          }
+        },
+        {
+          "type": "paragraph",
+          "attributes": {
+            "delta": [
+              {
+                "insert": "4. ",
+                "attributes": {
+                  "bold": true
+                }
+              },
+              {
+                "insert": "Zephyr (Topaz) — Air resonance. Creates wind and sound."
+              },
+            ]
+          }
+        },
+        {
+          "type": "paragraph",
+          "attributes": {
+            "delta": [
+              {
+                "insert": "5. ",
+                "attributes": {
+                  "bold": true
+                }
+              },
+              {
+                "insert": "Lumin (Diamond) — Light resonance. Illusion and revelation."
+              },
+            ]
+          }
+        },
+        {
+          "type": "paragraph",
+          "attributes": {
+            "delta": [
+              {
+                "insert": "6. ",
+                "attributes": {
+                  "bold": true
+                }
+              },
+              {
+                "insert": "Umbra (Onyx) — Shadow resonance. Concealment and void."
+              },
+            ]
+          }
+        },
+        {
+          "type": "paragraph",
+          "attributes": {
+            "delta": [
+              {
+                "insert": "7. ",
+                "attributes": {
+                  "bold": true
+                }
+              },
+              {
+                "insert": "Aether (Opal) — Spirit resonance. The rarest type; connects to life force itself."
+              }
+            ]
+          }
+        },
+        {
+          "type": "paragraph",
+          "styleRef": "heading-2""attributes": {
+            "delta": [
+              {
+                "insert": "Harmonic Effects"
+              }
+            ]
+          }
+        },
+        {
+          "type": "paragraph",
+          "attributes": {
+            "delta": [
+              {
+                "insert": "Combining two or more crystal types creates harmonic effects — more powerful and complex than either alone. For example:• Ignis + Aquor = Steam (obscuring mist)• Terrus + Zephyr = Sandstorm (abrasive wind)• Lumin + Umbra = Twilight (reveals hidden truths)• All seven combined = the Shattered Crown effect (reality manipulation)"
+              }
+            ]
+          }
+        },
+        {
+          "type": "paragraph",
+          "styleRef": "heading-2",
+          "attributes": {
+            "delta": [
+              {
+                "insert": "Limitations and Cost"
+              }
+            ]
+          }
+        },
+        {
+          "type": "paragraph",
+          "attributes": {
+            "delta": [
+              {
+                "insert": "Crystal weaving is not without cost. Each use drains the weaver's own resonance — their connection to the natural frequencies of the world. Overuse leads to a condition called "
+              },
+              {
+                "insert": "Crystal Burn",
+                "attributes": {
+                  "bold": true
+                }
+              },
+              {
+                "insert": ", where the weaver's body begins to crystallize from the inside out. This is what is happening to Malachar."
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }

@@ -1,0 +1,93 @@
+{
+  "document": {
+    "type": "page",
+    "children": [
+      {
+        "type": "paragraph",
+        "styleRef": "heading-1",
+        "attributes": {
+          "delta": [
+            {
+              "insert": "The Awakening"
+            }
+          ]
+        }
+      },
+      {
+        "type": "paragraph",
+        "attributes": {
+          "delta": [
+            {
+              "insert": "Kira opened her eyes to darkness so complete it felt like a weight pressing against her pupils. The air was cold and carried the faint scent of minerals—",
+              "attributes": {
+                "comment": "7f3ac9b"
+              }
+            },
+            {
+              "insert": "crystals",
+              "attributes": {
+                "bold": true,
+                "italic": true
+              }
+            },
+            {
+              "insert": ", she would later learn—and something older, something that tasted of copper and ancient stone.",
+              "attributes": {
+                "comment": "5d1e7c9"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "type": "paragraph",
+        "attributes": {
+          "delta": [
+            {
+              "insert": "She couldn't remember how she'd arrived. The last thing she recalled was tracing the old trade routes on her master's maps, the lamplight flickering against parchment.",
+              "attributes": {
+                "comment": "3b8f5a2"
+              }
+            },
+            {
+              "insert": " Now there was only this—the void, the cold, the distant sound of something chiming like a thousand tiny bells.",
+              "attributes": {
+                "comment": "9c2e4d1"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "type": "paragraph",
+        "attributes": {
+          "delta": [
+            {
+              "insert": "\"Hello?\" Her voice came out as a croak, swallowed immediately by the darkness. No echo. That was wrong. In a cave, there should be an echo."
+            }
+          ]
+        }
+      },
+      {
+        "type": "paragraph",
+        "attributes": {
+          "delta": [
+            {
+              "insert": "She pushed herself up onto her elbows. The surface beneath her was smooth—unnaturally smooth, like polished glass heated to body temperature. She ran her palm across it and felt the faintest vibration, a hum that seemed to resonate in her teeth."
+            }
+          ]
+        }
+      },
+      {
+        "type": "paragraph",
+        "attributes": {
+          "delta": [
+            {
+              "insert": "And then, one by one, the walls began to glow."
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

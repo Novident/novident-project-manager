@@ -1,0 +1,21 @@
+{
+  "type": "document",
+  "metadata": {},
+  "content": {
+    "document": {
+      "type": "page",
+      "children": [
+        {
+          "type": "paragraph",
+          "attributes": {
+            "delta": [
+              {
+                "insert": "Kira must choose between three crystal paths, each humming with a different elemental energy. Despite her fear of water, she is drawn to the aquamarine passage, sensing it holds the key to understanding the labyrinth."
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

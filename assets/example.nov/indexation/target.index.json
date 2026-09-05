@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "general": {
+    "type_target": "nanowrimo",
+    "target": 50000,
+    "target_characters": 275000,
+    "deadline": "2026-11-30T23:59:59Z",
+    "genre": "Fantasy",
+    "subgenre": "High Fantasy / Coming of Age",
+    "audience": "Young Adult to Adult crossover",
+    "target_word_count": 90000,
+    "current_word_count": 970,
+    "language": "en-US"
+  },
+  "files": {
+    "b2c3d4e5-f6a7-8901-bcde-f12345678901": {
+      "notify": true,
+      "deadline": "2026-09-30T23:59:59Z",
+      "characters_no_spaces": 44500,
+      "words": 50000,
+      "characters": 275000
+    }
+  }
+}

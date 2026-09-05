@@ -1,0 +1,82 @@
+{
+  "document": {
+    "type": "page",
+    "children": [
+      {
+        "type": "paragraph",
+        "styleRef": "heading-1",
+        "attributes": {
+          "delta": [
+            {
+              "insert": "The First Path"
+            }
+          ]
+        }
+      },
+      {
+        "type": "paragraph",
+        "attributes": {
+          "delta": [
+            {
+              "insert": "The glowing walls revealed a corridor stretching ahead of her, its ceiling lost in darkness. Crystals jutted from the walls at impossible angles, each one pulsing with its own internal light—amethyst purple, emerald green, sapphire blue. They chimed at different pitches as she passed, as if her very presence were a bow drawn across invisible strings.",
+              "attributes": {
+                "comment": "2f9b7c5"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "type": "paragraph",
+        "attributes": {
+          "delta": [
+            {
+              "insert": "After what felt like hours of walking—though time seemed meaningless here—the corridor split into three passages. Each opening was framed by crystals of a different color: the left passage blazed with ruby light, heat waves shimmering at its entrance; the center passage gleamed with aquamarine, and Kira could hear the distant sound of rushing water; the right passage was lined with emerald crystals that seemed to grow like living plants from the stone.",
+              "attributes": {
+                "comment": "6e4d8a1"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "type": "paragraph",
+        "attributes": {
+          "delta": [
+            {
+              "insert": "Fire, water, earth.",
+              "attributes": {
+                "bold": true
+              }
+            },
+            {
+              "insert": " The words surfaced in her mind unbidden, as if the labyrinth had placed them there."
+            }
+          ]
+        }
+      },
+      {
+        "type": "paragraph",
+        "attributes": {
+          "delta": [
+            {
+              "insert": "She approached the center passage—the water path—despite the cold dread pooling in her stomach. She had always been afraid of deep water ever since the accident at the river when she was seven. But something about the aquamarine light felt...",
+              "attributes": {
+                "comment": "8a3c6e9"
+              }
+            },
+            {
+              "insert": "right",
+              "attributes": {
+                "italic": true
+              }
+            },
+            {
+              "insert": "."
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

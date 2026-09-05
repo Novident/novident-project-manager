@@ -1,0 +1,165 @@
+{
+  "schema_version": 1,
+  "id": "l3c4d5e6-f7a8-9012-cdef-123456789012",
+  "name": "Ebook Scene Layout",
+  "section": "scene",
+  "layout_manager": {
+    "title_section": {
+      "show": true,
+      "override_align": false,
+      "override_text_section": true,
+      "title": "",
+      "attributes": {
+        "font_size": 16.0,
+        "bold": true,
+        "italic": false,
+        "underline": false,
+        "line_height": 1.0,
+        "strikethrough": false,
+        "indent": -1,
+        "font_family": "Liberation Sans",
+        "color": null,
+        "link": null,
+        "align": "left",
+        "header_level": null
+      }
+    },
+    "metadata_section": {
+      "show": false,
+      "override_align": false,
+      "override_text_section": false,
+      "title": "__Unknown__",
+      "attributes": {
+        "font_size": 12.0,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "line_height": 1.0,
+        "strikethrough": false,
+        "indent": -1,
+        "font_family": "Liberation Sans",
+        "color": null,
+        "link": null,
+        "align": "left",
+        "header_level": 0
+      }
+    },
+    "synopsis_section": {
+      "show": false,
+      "override_align": false,
+      "override_text_section": false,
+      "title": "__Unknown__",
+      "attributes": {
+        "font_size": 12.0,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "line_height": 1.0,
+        "strikethrough": false,
+        "indent": -1,
+        "font_family": "Liberation Sans",
+        "color": null,
+        "link": null,
+        "align": "left",
+        "header_level": 0
+      }
+    },
+    "notes_section": {
+      "show": false,
+      "override_align": false,
+      "override_text_section": false,
+      "title": "__Unknown__",
+      "attributes": {
+        "font_size": 12.0,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "line_height": 1.0,
+        "strikethrough": false,
+        "indent": -1,
+        "font_family": "Liberation Sans",
+        "color": null,
+        "link": null,
+        "align": "left",
+        "header_level": 0
+      }
+    },
+    "text_section": {
+      "show": true,
+      "override_align": false,
+      "override_text_section": false,
+      "title": "",
+      "attributes": {
+        "font_size": 12.0,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "line_height": 1.5,
+        "strikethrough": false,
+        "indent": -1,
+        "font_family": "Liberation Sans",
+        "color": null,
+        "link": null,
+        "align": "left",
+        "header_level": null
+      }
+    }
+  },
+  "title_options": {
+    "prefix": "",
+    "suffix": "",
+    "letter_case_prefix": 3,
+    "letter_case_suffix": 3,
+    "letter_case_title": 3,
+    "attr_prefix": {
+      "font_size": 12.0,
+      "bold": false,
+      "italic": false,
+      "underline": false,
+      "line_height": 1.0,
+      "strikethrough": false,
+      "indent": -1,
+      "font_family": "Liberation Sans",
+      "color": null,
+      "link": null,
+      "align": "left",
+      "header_level": 0
+    },
+    "attr_suffix": {
+      "font_size": 12.0,
+      "bold": false,
+      "italic": false,
+      "underline": false,
+      "line_height": 1.0,
+      "strikethrough": false,
+      "indent": -1,
+      "font_family": "Liberation Sans",
+      "color": null,
+      "link": null,
+      "align": "left",
+      "header_level": 0
+    }
+  },
+  "new_page_options": {
+    "new_lines_count": 0,
+    "characters_to_uppercase": 0
+  },
+  "separator_options": {
+    "before": {
+      "separator_id": "2"
+    },
+    "between": {
+      "separator_id": "2"
+    },
+    "after_section": {
+      "separator_id": "2"
+    },
+    "override_separator_after": true,
+    "ignore_blank_lines_with_styles": true
+  },
+  "settings": {
+    "apply_changes": false,
+    "indent_paragraph": false,
+    "indent_just_after_first_paragraph": false
+  }
+}

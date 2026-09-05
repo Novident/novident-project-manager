@@ -1,0 +1,375 @@
+{
+  "project_id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+  "project_name": "The Crystal Labyrinth",
+  "schema_version": 1,
+  "version": 1,
+  "created_at": "2026-07-15T09:00:00Z",
+  "updated_at": "2026-07-23T14:30:00Z",
+  "tree": [
+    {
+      "id": "b2c3d4e5-f6a7-8901-bcde-f12345678901",
+      "name": "Draft",
+      "node_type": "folder",
+      "folder_type": "manuscript",
+      "attached_section": "structured-based",
+      "path": "files/b2c3d4e5-f6a7-8901-bcde-f12345678901",
+      "children": [
+        {
+          "id": "c3d4e5f6-a7b8-9012-cdef-123456789012",
+          "name": "Chapter 1",
+          "node_type": "folder",
+          "folder_type": "normal",
+          "attached_section": "chapter",
+          "path": "files/c3d4e5f6-a7b8-9012-cdef-123456789012",
+          "children": [
+            {
+              "id": "d4e5f6a7-b8c9-0123-defa-234567890123",
+              "name": "The Awakening",
+              "node_type": "document",
+              "attached_section": "scene",
+              "path": "files/d4e5f6a7-b8c9-0123-defa-234567890123",
+              "resources": []
+            },
+            {
+              "id": "e5f6a7b8-c9d0-1234-efab-345678901234",
+              "name": "The First Path",
+              "node_type": "document",
+              "attached_section": "scene",
+              "path": "files/e5f6a7b8-c9d0-1234-efab-345678901234",
+              "resources": []
+            }
+          ]
+        },
+        {
+          "id": "f6a7b8c9-d0e1-2345-fabc-456789012345",
+          "name": "Chapter 2",
+          "node_type": "folder",
+          "folder_type": "normal",
+          "attached_section": "chapter",
+          "path": "files/f6a7b8c9-d0e1-2345-fabc-456789012345",
+          "children": [
+            {
+              "id": "a7b8c9d0-e1f2-3456-abcd-567890123456",
+              "name": "The Guardian",
+              "node_type": "document",
+              "attached_section": "scene",
+              "path": "files/a7b8c9d0-e1f2-3456-abcd-567890123456",
+              "resources": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "b8c9d0e1-f2a3-4567-bcde-678901234567",
+      "name": "Research",
+      "node_type": "folder",
+      "folder_type": "research",
+      "attached_section": "structured-based",
+      "path": "files/b8c9d0e1-f2a3-4567-bcde-678901234567",
+      "children": [
+        {
+          "id": "c9d0e1f2-a3b4-5678-cdef-789012345678",
+          "name": "Characters",
+          "node_type": "folder",
+          "folder_type": "normal",
+          "attached_section": "structured-based",
+          "path": "files/c9d0e1f2-a3b4-5678-cdef-789012345678",
+          "children": [
+            {
+              "id": "d0e1f2a3-b4c5-6789-defa-890123456789",
+              "name": "Kira Valdris",
+              "node_type": "document",
+              "attached_section": "character",
+              "path": "files/d0e1f2a3-b4c5-6789-defa-890123456789",
+              "resources": [
+                "y2b3c4d5-e6f7-8901-bcde-f12345678901.png"
+              ]
+            },
+            {
+              "id": "e1f2a3b4-c5d6-7890-efab-901234567890",
+              "name": "Lord Malachar",
+              "node_type": "document",
+              "attached_section": "character",
+              "path": "files/e1f2a3b4-c5d6-7890-efab-901234567890",
+              "resources": []
+            }
+          ]
+        },
+        {
+          "id": "f2a3b4c5-d6e7-8901-fabc-012345678901",
+          "name": "World Building",
+          "node_type": "folder",
+          "folder_type": "normal",
+          "attached_section": "structured-based",
+          "path": "files/f2a3b4c5-d6e7-8901-fabc-012345678901",
+          "children": [
+            {
+              "id": "a3b4c5d6-e7f8-9012-abcd-123456789012",
+              "name": "Crystal Resonance",
+              "node_type": "document",
+              "attached_section": "worldbuilding",
+              "path": "files/a3b4c5d6-e7f8-9012-abcd-123456789012",
+              "resources": [
+                "x1a2b3c4-d5e6-7890-abcd-ef1234567890.png",
+                "z3c4d5e6-f7a8-9012-cdef-123456789012.png"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "b4c5d6e7-f8a9-0123-bcde-234567890123",
+      "name": "Templates",
+      "node_type": "folder",
+      "folder_type": "templatesSheet",
+      "attached_section": "structured-based",
+      "path": "files/b4c5d6e7-f8a9-0123-bcde-234567890123",
+      "children": []
+    },
+    {
+      "id": "c5d6e7f8-a9b0-1234-cdef-345678901234",
+      "name": "Trash",
+      "node_type": "folder",
+      "folder_type": "trash",
+      "attached_section": "structured-based",
+      "path": "files/c5d6e7f8-a9b0-1234-cdef-345678901234",
+      "children": [
+        {
+          "id": "d6e7f8a9-b0c1-2345-defa-456789012345",
+          "name": "Original Opening",
+          "node_type": "document",
+          "attached_section": "scene",
+          "path": "files/d6e7f8a9-b0c1-2345-defa-456789012345",
+          "trashed_at": "2026-07-20T11:00:00Z",
+          "expires_at": "2026-08-19T11:00:00Z",
+          "resources": []
+        }
+      ]
+    }
+  ],
+  "lookup": {
+    "b2c3d4e5-f6a7-8901-bcde-f12345678901": {
+      "name": "Draft",
+      "node_type": "folder",
+      "folder_type": "manuscript",
+      "parent_id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+      "path": "files/b2c3d4e5-f6a7-8901-bcde-f12345678901",
+      "position": [
+        0
+      ],
+      "depth": 1,
+      "child_count": 2
+    },
+    "c3d4e5f6-a7b8-9012-cdef-123456789012": {
+      "name": "Chapter 1",
+      "node_type": "folder",
+      "folder_type": "normal",
+      "parent_id": "b2c3d4e5-f6a7-8901-bcde-f12345678901",
+      "path": "files/c3d4e5f6-a7b8-9012-cdef-123456789012",
+      "position": [
+        0,
+        0
+      ],
+      "depth": 2,
+      "child_count": 2
+    },
+    "d4e5f6a7-b8c9-0123-defa-234567890123": {
+      "name": "The Awakening",
+      "node_type": "document",
+      "parent_id": "c3d4e5f6-a7b8-9012-cdef-123456789012",
+      "path": "files/d4e5f6a7-b8c9-0123-defa-234567890123",
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "depth": 3
+    },
+    "e5f6a7b8-c9d0-1234-efab-345678901234": {
+      "name": "The First Path",
+      "node_type": "document",
+      "parent_id": "c3d4e5f6-a7b8-9012-cdef-123456789012",
+      "path": "files/e5f6a7b8-c9d0-1234-efab-345678901234",
+      "position": [
+        0,
+        0,
+        1
+      ],
+      "depth": 3
+    },
+    "f6a7b8c9-d0e1-2345-fabc-456789012345": {
+      "name": "Chapter 2",
+      "node_type": "folder",
+      "folder_type": "normal",
+      "parent_id": "b2c3d4e5-f6a7-8901-bcde-f12345678901",
+      "path": "files/f6a7b8c9-d0e1-2345-fabc-456789012345",
+      "position": [
+        0,
+        1
+      ],
+      "depth": 2,
+      "child_count": 1
+    },
+    "a7b8c9d0-e1f2-3456-abcd-567890123456": {
+      "name": "The Guardian",
+      "node_type": "document",
+      "parent_id": "f6a7b8c9-d0e1-2345-fabc-456789012345",
+      "path": "files/a7b8c9d0-e1f2-3456-abcd-567890123456",
+      "position": [
+        0,
+        1,
+        0
+      ],
+      "depth": 3
+    },
+    "b8c9d0e1-f2a3-4567-bcde-678901234567": {
+      "name": "Research",
+      "node_type": "folder",
+      "folder_type": "research",
+      "parent_id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+      "path": "files/b8c9d0e1-f2a3-4567-bcde-678901234567",
+      "position": [
+        1
+      ],
+      "depth": 1,
+      "child_count": 2
+    },
+    "c9d0e1f2-a3b4-5678-cdef-789012345678": {
+      "name": "Characters",
+      "node_type": "folder",
+      "folder_type": "normal",
+      "parent_id": "b8c9d0e1-f2a3-4567-bcde-678901234567",
+      "path": "files/c9d0e1f2-a3b4-5678-cdef-789012345678",
+      "position": [
+        1,
+        0
+      ],
+      "depth": 2,
+      "child_count": 2
+    },
+    "d0e1f2a3-b4c5-6789-defa-890123456789": {
+      "name": "Kira Valdris",
+      "node_type": "document",
+      "parent_id": "c9d0e1f2-a3b4-5678-cdef-789012345678",
+      "path": "files/d0e1f2a3-b4c5-6789-defa-890123456789",
+      "position": [
+        1,
+        0,
+        0
+      ],
+      "depth": 3
+    },
+    "e1f2a3b4-c5d6-7890-efab-901234567890": {
+      "name": "Lord Malachar",
+      "node_type": "document",
+      "parent_id": "c9d0e1f2-a3b4-5678-cdef-789012345678",
+      "path": "files/e1f2a3b4-c5d6-7890-efab-901234567890",
+      "position": [
+        1,
+        0,
+        1
+      ],
+      "depth": 3
+    },
+    "f2a3b4c5-d6e7-8901-fabc-012345678901": {
+      "name": "World Building",
+      "node_type": "folder",
+      "folder_type": "normal",
+      "parent_id": "b8c9d0e1-f2a3-4567-bcde-678901234567",
+      "path": "files/f2a3b4c5-d6e7-8901-fabc-012345678901",
+      "position": [
+        1,
+        1
+      ],
+      "depth": 2,
+      "child_count": 1
+    },
+    "a3b4c5d6-e7f8-9012-abcd-123456789012": {
+      "name": "Crystal Resonance",
+      "node_type": "document",
+      "parent_id": "f2a3b4c5-d6e7-8901-fabc-012345678901",
+      "path": "files/a3b4c5d6-e7f8-9012-abcd-123456789012",
+      "position": [
+        1,
+        1,
+        0
+      ],
+      "depth": 3
+    },
+    "b4c5d6e7-f8a9-0123-bcde-234567890123": {
+      "name": "Templates",
+      "node_type": "folder",
+      "folder_type": "templatesSheet",
+      "parent_id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+      "path": "files/b4c5d6e7-f8a9-0123-bcde-234567890123",
+      "position": [
+        2
+      ],
+      "depth": 1,
+      "child_count": 0
+    },
+    "c5d6e7f8-a9b0-1234-cdef-345678901234": {
+      "name": "Trash",
+      "node_type": "folder",
+      "folder_type": "trash",
+      "parent_id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+      "path": "files/c5d6e7f8-a9b0-1234-cdef-345678901234",
+      "position": [
+        3
+      ],
+      "depth": 1,
+      "child_count": 1
+    },
+    "d6e7f8a9-b0c1-2345-defa-456789012345": {
+      "name": "Original Opening",
+      "node_type": "document",
+      "parent_id": "c5d6e7f8-a9b0-1234-cdef-345678901234",
+      "path": "files/d6e7f8a9-b0c1-2345-defa-456789012345",
+      "position": [
+        3,
+        0
+      ],
+      "depth": 2,
+      "trashed": true
+    }
+  },
+  "external_files": {
+    "x1a2b3c4-d5e6-7890-abcd-ef1234567890.png": {
+      "name": "Labyrinth Map",
+      "extension": "png",
+      "size_bytes": 0,
+      "attached_to": "f2a3b4c5-d6e7-8901-fabc-012345678901",
+      "path": "files/external/x1a2b3c4-d5e6-7890-abcd-ef1234567890.png"
+    },
+    "y2b3c4d5-e6f7-8901-bcde-f12345678901.png": {
+      "name": "Kira Character Sketch",
+      "extension": "png",
+      "size_bytes": 0,
+      "attached_to": "d0e1f2a3-b4c5-6789-defa-890123456789",
+      "path": "files/external/y2b3c4d5-e6f7-8901-bcde-f12345678901.png"
+    },
+    "z3c4d5e6-f7a8-9012-cdef-123456789012.png": {
+      "name": "Crystal Types Diagram",
+      "extension": "png",
+      "size_bytes": 0,
+      "attached_to": "a3b4c5d6-e7f8-9012-abcd-123456789012",
+      "path": "files/external/z3c4d5e6-f7a8-9012-cdef-123456789012.png"
+    },
+    "w4d5e6f7-a8b9-0123-defa-234567890123.pdf": {
+      "name": "Crystallography Reference",
+      "extension": "pdf",
+      "size_bytes": 0,
+      "attached_to": "f2a3b4c5-d6e7-8901-fabc-012345678901",
+      "path": "files/external/w4d5e6f7-a8b9-0123-defa-234567890123.pdf"
+    },
+    "v5e6f7a8-b9c0-1234-efab-345678901234.pdf": {
+      "name": "Ancient Mapmaking Techniques",
+      "extension": "pdf",
+      "size_bytes": 0,
+      "attached_to": "d0e1f2a3-b4c5-6789-defa-890123456789",
+      "path": "files/external/v5e6f7a8-b9c0-1234-efab-345678901234.pdf"
+    }
+  }
+}

@@ -1,0 +1,44 @@
+name: novident_project_manager
+description: "A new Flutter project."
+version: 1.0.0
+homepage: https://github.com/Novident/
+repository: https://github.com/Novident/novident-project-manager/
+documentation: https://github.com/Novident/novident-project-manager/
+issue_tracker: https://github.com/Novident/novident-project-manager/issues
+
+environment:
+  sdk: ">=3.4.3 <4.0.0" 
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  uuid: ^4.5.1 
+  meta: ^1.16.0
+  logging: ^1.3.0
+  collection: ^1.19.1
+  equatable: ^2.0.7 
+  numerus: ^2.3.0
+  novident_nodes: ^1.2.4
+  novident_editor_core: ^1.0.3
+  novident_editor_delta_simplify: ^1.0.0
+  novident_editor_document: ^1.0.6
+  novident_editor_styles: ^1.0.3
+  novident_document_format: ^1.0.0
+  flutter_rust_bridge: 2.12.0
+  freezed_annotation: ^2.4.4
+  humanize_numbers: ^1.0.1
+  intl: ^0.20.3
+  rust_lib_novident_project_manager: ^1.0.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+  integration_test:
+    sdk: flutter
+  build_runner: ^2.4.13
+  freezed: ^2.5.7
+
+flutter:
+  uses-material-design: true

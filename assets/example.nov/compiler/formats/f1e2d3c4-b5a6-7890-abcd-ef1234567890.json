@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "id": "f1e2d3c4-b5a6-7890-abcd-ef1234567890",
+  "name": "Standard Novel Manuscript",
+  "scope": "project",
+  "can_change": true,
+  "font_family": "Georgia",
+  "layouts": ["l1a2b3c4-d5e6-7890-abcd-ef1234567890", "l2b3c4d5-e6f7-8901-bcde-f12345678901"],
+  "replacements": {
+    "patterns": [
+      {"find": "<$projecttitle>", "replace": "The Crystal Labyrinth"},
+      {"find": "<$author>", "replace": "Elena Marlowe"},
+      {"find": "<$fullname>", "replace": "Elena Marlowe"}
+    ]
+  },
+  "page_setup": {
+    "paper_size": "letter",
+    "margins": {"top": 25.4, "bottom": 25.4, "left": 31.75, "right": 31.75},
+    "header_footer": {
+      "header_left": "<$doctitle>",
+      "header_right": "<$n>",
+      "footer_center": "<$page>"
+    }
+  }
+}

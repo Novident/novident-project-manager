@@ -1,0 +1,21 @@
+{
+  "type": "document",
+  "metadata": {},
+  "content": {
+    "document": {
+      "type": "page",
+      "children": [
+        {
+          "type": "paragraph",
+          "attributes": {
+            "delta": [
+              {
+                "insert": "Lord Malachar — the last of the Crystal Weavers, driven mad by centuries of isolation within the labyrinth. Once its greatest protector, he now seeks to seal the labyrinth forever, believing that containing its power is the only way to save the world from an ancient threat that even the Crown could not hold back."
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

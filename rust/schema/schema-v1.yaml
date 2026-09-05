@@ -1,0 +1,82 @@
+# Structural contract for the `.nov` format — version 1.
+#
+# Defines WHAT must exist and HOW files relate to each other, without entering
+# field-level schema (which is owned by Dart). Rust loads this in
+# `validate/contract.rs` and uses it for structural validation.
+#
+# This is the only piece of schema Rust retains. It is stable: it only changes
+# on a format bump (a new version of this file), never on a field addition
+# (which is Dart's responsibility).
+#
+# Versioning rule: each `.nov` format version has its own `schema-v<N>.yaml`.
+# The project's `schema_version` selects which one to apply.
+
+version: 1
+
+# Directories that must exist in a well-formed project.
+required_dirs:
+  - files
+  - files/external
+  - indexation
+  - history
+  - layouts
+  - compiler/formats
+  - compiler/exports
+  - snapshots
+
+# Files that must exist (and be parseable JSON). A missing one is a structural
+# error (reported, never aborts opening).
+required_files:
+  - files/metadata.json
+  - files/backup.json
+  - indexation/binder.index.json
+  - indexation/sections.index.json
+  - indexation/icon.index.json
+  - indexation/corkboard.index.json
+  - indexation/search.index.json
+  - indexation/target.index.json
+
+# Optional files. Missing is a warning only.
+optional_files:
+  - .gitignore
+
+# Collections: directories with one file per item, keyed by the given field.
+# `key` identifies the item's id field (used for cross-references).
+collections:
+  - dir: layouts
+    key: id
+  - dir: compiler/formats
+    key: id
+  - dir: compiler/exports
+    key: id
+  - dir: history
+    key: session_date
+
+# Integrity rules (checks). Each name maps to a validation implemented in Rust
+# (`validate/integrity.rs`). Listing a rule here enables it for this version;
+# removing it disables it without touching code.
+checks:
+  - binder_unique_ids             # tree ids are unique
+  - binder_no_cycles              # no cycles (a node is not its own ancestor)
+  - binder_lookup_consistent      # lookup matches tree (position/depth/parent)
+  - binder_path_consistent        # node.path points to files/<id>/
+  - attached_section_refs_section # attached_section ∈ sections or the sentinel
+  - sections_outline_refs_section # outline.{folder,file}.* ∈ sections
+  - layout_section_refs_section   # layouts/*.section ∈ sections
+  - format_layouts_ref_existing   # formats/*.layouts[] ∈ layouts/*.id
+  - metadata_default_format_ref_existing # compile_defaults.default_format_id ∈ formats
+  - export_format_ref_existing    # exports/*.format_id ∈ formats
+  - target_files_ref_nodes        # target.files.<id> ∈ binder ids
+  - corkboard_refs_nodes          # corkboard element_id/node_id ∈ binder ids
+  - backup_mirrors_binder         # backup.tree mirrors binder.tree
+
+# Identifier conventions (regexes + canonical values).
+conventions:
+  # UUID with hyphens.
+  id_pattern: "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$"
+  # Comment: <7 alphanumerics>[-<username>].
+  comment_id_pattern: "^[A-Za-z0-9]{7}(-[A-Za-z0-9]+)?$"
+  # Section sentinel (not a real section; never appears in outline).
+  section_sentinel: "structured-based"
+  # Canonical folder types.
+  folder_types: [manuscript, research, normal, templatesSheet, trash]

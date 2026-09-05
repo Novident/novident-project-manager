@@ -1,0 +1,21 @@
+{
+  "type": "document",
+  "metadata": {},
+  "content": {
+    "document": {
+      "type": "page",
+      "children": [
+        {
+          "type": "paragraph",
+          "attributes": {
+            "delta": [
+              {
+                "insert": "Kira meets the Guardian and learns about the Shattered Crown. The stakes are established. She must decide whether to trust the crystalline entity or find her own path."
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

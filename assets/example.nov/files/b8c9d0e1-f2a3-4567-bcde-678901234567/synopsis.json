@@ -1,0 +1,21 @@
+{
+  "type": "document",
+  "metadata": {},
+  "content": {
+    "document": {
+      "type": "page",
+      "children": [
+        {
+          "type": "paragraph",
+          "attributes": {
+            "delta": [
+              {
+                "insert": "Research materials for The Crystal Labyrinth. Contains character profiles, world building documents, location descriptions, and any reference materials used during the writing process."
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "type": "document",
+  "metadata": {},
+  "content": {
+    "document": {
+      "type": "page",
+      "children": [
+        {
+          "type": "paragraph",
+          "attributes": {
+            "delta": [
+              {
+                "insert": "Original opening chapter — discarded in favor of starting in media res with Kira already inside the labyrinth. Some worldbuilding elements from this draft should be preserved for later chapters."
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

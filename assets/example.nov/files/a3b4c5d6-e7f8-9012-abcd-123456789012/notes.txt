@@ -1,0 +1,12 @@
+Need to establish clear rules for what each crystal type can and CANNOT do. Sanderson's Laws of Magic apply here — the reader should be able to predict what's possible before Kira figures it out.
+
+Balance considerations:
+- Aether/Opal should be so rare that using it is a major plot event (maybe only 2-3 times in the whole novel)
+- Crystal Burn rate should be proportional to the power used — small effects barely drain, but the Shattered Crown nearly killed Malachar instantly
+- Kira shouldn't master all seven types. She naturally attunes to Aquor (water) due to her emotional connection to water, and later learns Lumin (light). Let her struggle with Ignis (fire) — she never quite gets it.
+
+The Shattered Crown:
+- Was an artifact made from all seven crystal types in perfect harmonic balance
+- Its purpose was to seal an ancient entity called "the Silence" — a force of absolute nothingness
+- When the Crown shattered, the seal weakened. The labyrinth formed around the Crown's remnants as a secondary containment
+- Restoring the Crown will reseal the Silence, but destroy the labyrinth and everyone inside

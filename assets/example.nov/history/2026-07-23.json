@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "session_id": "5d9e4f7a-2b3c-8901-abcd-ef2345678901",
+  "session_date": "2026-07-23T14:30:00Z",
+  "author": "Elena Marlowe",
+  "metadata": {
+    "files": {
+      "a7b8c9d0-e1f2-3456-abcd-567890123456": {
+        "original_words": 140,
+        "original_characters": 770,
+        "words": 175,
+        "characters": 965
+      },
+      "a3b4c5d6-e7f8-9012-abcd-123456789012": {
+        "original_words": 168,
+        "original_characters": 925,
+        "words": 210,
+        "characters": 1160
+      }
+    },
+    "total": {
+      "type_target": "nanowrimo",
+      "words": 385,
+      "characters": 2125,
+      "characters_no_spaces": 1810,
+      "distance_from_target_words": 0.15,
+      "distance_from_target_characters": 0.15,
+      "target": 50000,
+      "target_characters": 275000
+    }
+  }
+}

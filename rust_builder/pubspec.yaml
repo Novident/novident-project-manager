@@ -1,0 +1,41 @@
+name: rust_lib_novident_project_manager
+description: >-
+  Native (Rust) engine for novident_project_manager: verbatim .nov file I/O,
+  structural validation, full-text search, text diff, git and snapshots.
+  Built with flutter_rust_bridge via cargokit; this plugin compiles the Rust
+  crate on the consumer's machine.
+version: 1.0.0
+homepage: https://github.com/Novident/
+repository: https://github.com/Novident/novident-project-manager/
+documentation: https://github.com/Novident/novident-project-manager/
+issue_tracker: https://github.com/Novident/novident-project-manager/issues
+
+environment:
+  sdk: '>=3.3.0 <4.0.0'
+  flutter: '>=3.3.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  plugin_platform_interface: ^2.0.2
+
+dev_dependencies:
+  ffi: ^2.0.2
+  ffigen: ^11.0.0
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+flutter:
+  plugin:
+    platforms:
+      android:
+        ffiPlugin: true
+      ios:
+        ffiPlugin: true
+      linux:
+        ffiPlugin: true
+      macos:
+        ffiPlugin: true
+      windows:
+        ffiPlugin: true

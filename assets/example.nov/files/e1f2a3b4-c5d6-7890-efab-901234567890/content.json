@@ -1,0 +1,131 @@
+{
+  "document": {
+    "type": "page",
+    "children": [
+      {
+        "type": "paragraph",
+        "styleRef": "heading-1",
+        "attributes": {
+          "delta": [
+            {
+              "insert": "Lord Malachar — Antagonist Profile"
+            }
+          ]
+        }
+      },
+      {
+        "type": "paragraph",
+        "styleRef": "heading-2",
+        "attributes": {
+          "delta": [
+            {
+              "insert": "Basic Information"
+            }
+          ]
+        }
+      },
+      {
+        "type": "paragraph",
+        "attributes": {
+          "delta": [
+            {
+              "insert": "True Name: ",
+              "attributes": {
+                "bold": true
+              }
+            },
+            {
+              "insert": "Vaelor Malachar"
+            }
+          ]
+        }
+      },
+      {
+        "type": "paragraph",
+        "attributes": {
+          "delta": [
+            {
+              "insert": "Age: ",
+              "attributes": {
+                "bold": true
+              }
+            },
+            {
+              "insert": "Unknown — appears to be in his forties but has lived for centuries within the labyrinth"
+            }
+          ]
+        }
+      },
+      {
+        "type": "paragraph",
+        "attributes": {
+          "delta": [
+            {
+              "insert": "Status: ",
+              "attributes": {
+                "bold": true
+              }
+            },
+            {
+              "insert": "Neither alive nor dead — sustained by the labyrinth's energy"
+            }
+          ]
+        }
+      },
+      {
+        "type": "paragraph",
+        "styleRef": "heading-2",
+        "attributes": {
+          "delta": [
+            {
+              "insert": "Motivation"
+            }
+          ]
+        }
+      },
+      {
+        "type": "paragraph",
+        "attributes": {
+          "delta": [
+            {
+              "insert": "Malachar is not evil in the traditional sense. He was once the greatest of the Crystal Weavers, sworn to protect the labyrinth and the Crown. When the Crown shattered, he made a desperate choice: he bound his own life force to the labyrinth to prevent its collapse. The cost was his sanity.",
+              "attributes": {
+                "comment": "3f6b9c2"
+              }
+            },
+            {
+              "insert": " Centuries of isolation have twisted his noble intentions into something dark. He now believes that the only way to protect the world is to seal the labyrinth permanently — even if it means trapping himself and anyone else inside for eternity.",
+              "attributes": {
+                "comment": "8c1e4a7"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "type": "paragraph",
+        "styleRef": "heading-2",
+        "attributes": {
+          "delta": [
+            {
+              "insert": "Connection to Kira"
+            }
+          ]
+        }
+      },
+      {
+        "type": "paragraph",
+        "attributes": {
+          "delta": [
+            {
+              "insert": "Malachar knew Kira's mother, Elara. In fact, Elara was the last person to hold a fragment of the Shattered Crown before she disappeared. Malachar believes that Kira has inherited her mother's attunement to the crystals — and that she may be the key to either restoring the Crown or destroying it forever. He is simultaneously Kira's greatest threat and her most valuable source of information.",
+              "attributes": {
+                "comment": "6a9d2f5"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

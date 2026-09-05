@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "defaults": {
+    "file": {
+      "icon": "file",
+      "type": "internal",
+      "variations": {
+        "exp:empty": "empty_file",
+        "state:trashed": "opaque-file"
+      },
+      "path": null
+    },
+    "folder": {
+      "icon": "folder",
+      "type": "internal",
+      "variations": {
+        "exp:empty&expanded": "empty_folder",
+        "exp:empty": "empty_folder",
+        "state:trashed": "opaque-folder"
+      },
+      "path": null
+    },
+    "trash": {
+      "icon": "trash",
+      "type": "internal",
+      "variations": {
+        "exp:empty": "empty_folder"
+      },
+      "path": null
+    },
+    "templatesSheet": {
+      "icon": "template",
+      "type": "internal",
+      "path": null
+    },
+    "research": {
+      "icon": "research",
+      "type": "internal",
+      "variations": {
+        "exp:child-count:1&child:0:image": "research-photo"
+      },
+      "path": null
+    }
+  },
+  "a1b2c3d4-e5f6-7890-abcd-ef1234567890": {
+    "icon": "manuscript",
+    "type": "internal",
+    "path": null
+  },
+  "c9d0e1f2-a3b4-5678-cdef-789012345678": {
+    "icon": "characters",
+    "type": "internal",
+    "path": null
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "id": "e1a2b3c4-d5e6-7890-abcd-ef1234567890",
+  "name": "PDF Export — Standard Novel",
+  "format_id": "f1e2d3c4-b5a6-7890-abcd-ef1234567890",
+  "output_type": "pdf",
+  "last_exported": null,
+  "config": {
+    "include_title_page": true,
+    "include_toc": true,
+    "include_copyright": true,
+    "embed_fonts": true,
+    "image_quality": 90
+  }
+}

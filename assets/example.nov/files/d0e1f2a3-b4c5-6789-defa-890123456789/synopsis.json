@@ -1,0 +1,21 @@
+{
+  "type": "document",
+  "metadata": {},
+  "content": {
+    "document": {
+      "type": "page",
+      "children": [
+        {
+          "type": "paragraph",
+          "attributes": {
+            "delta": [
+              {
+                "insert": "Kira Valdris — 23-year-old cartographer's apprentice who stumbles into the crystal labyrinth while investigating a mysterious map left by her missing mother. Her skills as a mapmaker become unexpectedly vital as she navigates the ever-shifting corridors, and she discovers that the labyrinth has been waiting specifically for her."
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

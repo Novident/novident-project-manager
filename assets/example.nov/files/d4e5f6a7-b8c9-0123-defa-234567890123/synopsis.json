@@ -1,0 +1,21 @@
+{
+  "type": "document",
+  "metadata": {},
+  "content": {
+    "document": {
+      "type": "page",
+      "children": [
+        {
+          "type": "paragraph",
+          "attributes": {
+            "delta": [
+              {
+                "insert": "The protagonist awakens in a mysterious crystal labyrinth with no memory of how she arrived. As the walls begin to glow, she discovers she is not alone — the labyrinth itself seems alive, responding to her presence with chiming sounds and subtle vibrations."
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

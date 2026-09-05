@@ -1,0 +1,21 @@
+{
+  "type": "document",
+  "metadata": {},
+  "content": {
+    "document": {
+      "type": "page",
+      "children": [
+        {
+          "type": "paragraph",
+          "attributes": {
+            "delta": [
+              {
+                "insert": "Seven types of crystals, each resonating at a unique elemental frequency. Crystal Weavers can attune to these frequencies to produce magical effects, and combining crystal types creates powerful harmonic reactions. The cost of overuse is Crystal Burn — the gradual crystallization of the weaver's own body."
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

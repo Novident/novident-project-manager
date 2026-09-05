@@ -1,0 +1,21 @@
+{
+  "type": "document",
+  "metadata": {},
+  "content": {
+    "document": {
+      "type": "page",
+      "children": [
+        {
+          "type": "paragraph",
+          "attributes": {
+            "delta": [
+              {
+                "insert": "Deep within the labyrinth, Kira encounters an ancient guardian made of living crystal. The Guardian reveals that the labyrinth has been waiting for her since the mythical Shattered Crown fell, hinting at a destiny she never knew she had."
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

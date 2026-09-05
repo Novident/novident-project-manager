@@ -1,0 +1,21 @@
+{
+  "type": "document",
+  "metadata": {},
+  "content": {
+    "document": {
+      "type": "page",
+      "children": [
+        {
+          "type": "paragraph",
+          "attributes": {
+            "delta": [
+              {
+                "insert": "Deleted and discarded content. Items remain here for 30 days before permanent deletion."
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

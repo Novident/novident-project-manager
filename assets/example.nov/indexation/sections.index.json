@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "sections": [
+    "structured-based",
+    "chapter",
+    "scene",
+    "character",
+    "worldbuilding"
+  ],
+  "outline": {
+    "folder": {
+      "0": "chapter",
+      "1": "chapter",
+      "2": "scene"
+    },
+    "file": {
+      "0": "scene",
+      "1": "scene",
+      "2": "scene"
+    }
+  }
+}
