@@ -3,7 +3,7 @@ use std::path::{Path, PathBuf};
 use super::branch::BranchManager;
 use super::conflict::ConflictManager;
 use super::content_diff::{TreeDiff, diff_json_documents};
-use super::credentials::{CredentialStore, GitCredentials};
+use super::credentials::{GitCredentials};
 use super::git_service::{GitResult, GitService, GitServiceError, MergeResult, StatusEntry};
 
 /// High-level manager for a Novident project backed by a Git repository.
@@ -437,40 +437,5 @@ impl NovidentRepo {
             }
             (None, None) => Ok(None),
         }
-    }
-}
-
-/// Convenience: create a full credential + repo workflow from scratch.
-pub struct NovidentWorkflow;
-
-impl NovidentWorkflow {
-    /// Save credentials securely, then clone a project.
-    pub fn clone_with_saved_credentials(
-        project_id: &str,
-        remote_url: &str,
-        into_path: impl AsRef<Path>,
-        credentials: &GitCredentials,
-    ) -> GitResult<NovidentRepo> {
-        let store = CredentialStore::new()
-            .map_err(|e| GitServiceError::Other(format!("Credential store error: {}", e)))?;
-        store
-            .save(project_id, credentials)
-            .map_err(|e| GitServiceError::Other(format!("Failed to save credentials: {}", e)))?;
-
-        NovidentRepo::clone(remote_url, into_path, credentials)
-    }
-
-    /// Load saved credentials and open a local project.
-    pub fn open_with_saved_credentials(
-        project_id: &str,
-        project_path: impl AsRef<Path>,
-    ) -> GitResult<(NovidentRepo, GitCredentials)> {
-        let store = CredentialStore::new()
-            .map_err(|e| GitServiceError::Other(format!("Credential store error: {}", e)))?;
-        let credentials = store.load(project_id).map_err(|e| {
-            GitServiceError::Other(format!("No credentials found for {}: {}", project_id, e))
-        })?;
-        let repo = NovidentRepo::open(project_path)?;
-        Ok((repo, credentials))
     }
 }

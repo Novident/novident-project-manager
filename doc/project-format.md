@@ -28,7 +28,7 @@ layouts/l<uuid>.json         # per-section presentation (Dart = source of truth)
 compiler/formats/f<uuid>.json # format = layout ids + replacements + page_setup
 compiler/exports/e<uuid>.json # export records (output_type, config, format_id)
 history/<yyyy-MM-dd>.json     # one writing session per day
-snapshots/                    # engine snapshots, zip named date-v<version>
+snapshots/                    # engine snapshots: <stamp>-v<version>.zip (stamp = UTC YYYY-MM-DD_HH-MM-SS)
 .gitignore  .git/
 ```
 
@@ -190,6 +190,70 @@ persist (never trusted from disk).
   }
 }
 ```
+
+## Snapshots
+
+**Snapshots** are engine-created full copies of the project stored as a single
+`.zip` under `snapshots/`. They are separate from git: git history is excluded,
+so a snapshot is a point-in-time copy of the working tree that can be restored
+independently of any commit.
+
+```
+snapshots/
+  <stamp>-v<version>.zip   # e.g. 2026-08-28_00-24-24-v1.zip
+```
+
+### Naming
+
+Each snapshot file is named `<stamp>-v<version>.zip`, where:
+
+* `<stamp>` is the UTC creation time in filesystem-safe form
+  (`YYYY-MM-DD_HH-MM-SS`, from `now_file_stamp()`), e.g. `2026-08-28_00-24-24`.
+* `<version>` is the caller-supplied format/iteration counter (an integer,
+  starting at `1`).
+
+The **id** of a snapshot is the filename without the `.zip` extension
+(e.g. `2026-08-28_00-24-24-v1`). Ids are used by delete/restore.
+
+### Contents
+
+A snapshot zips the **entire project root** — the archive has no wrapping
+folder, so entry names are project-relative paths (`metadata.json`,
+`files/<id>/content.json`, `indexation/…`). Files are stored with Deflate
+compression and Unix permissions `0644`.
+
+The following names are **excluded at any depth** (matched by file name):
+
+* `.git` — history is not part of a snapshot;
+* `snapshots` — a snapshot never contains other snapshots.
+
+### Metadata
+
+Every snapshot carries a `SnapshotInfo` record:
+
+```json
+{ "id": "2026-08-28_00-24-24-v1",
+  "filename": "2026-08-28_00-24-24-v1.zip",
+  "created_at": 1785356664 }
+```
+
+* **id**: filename stem (`<stamp>-v<version>`).
+* **filename**: full file name including `.zip`.
+* **created_at**: file modification time in Unix epoch seconds.
+
+### Operations (engine `snapshot_*` API)
+
+* **create** — writes `snapshots/<stamp>-v<version>.zip` (creating `snapshots/`
+  on demand) and returns its `SnapshotInfo`.
+* **list** — returns all `*.zip` under `snapshots/` as `SnapshotInfo`, newest
+  first by `created_at`. An empty/missing `snapshots/` directory yields an
+  empty list (not an error).
+* **delete** — removes `snapshots/<id>.zip`; an unknown id is an error.
+* **restore** — extracts the archive over the project root, overwriting
+  existing files and creating missing directories. Entry names are validated
+  so no path can escape the project root (zip-slip guard); an unsafe entry
+  aborts the restore with an error. Files not present in the snapshot are
+  **not** removed — restore never deletes.
 
 ## Conventions
 

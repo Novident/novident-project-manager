@@ -29,7 +29,7 @@ starting.
    - `Binder*`/`Node*`/domain prefixes per the taxonomy.
 3. **Tests first** where the change is pure logic; engine-backed changes get
    Rust tests (real temp repos) and Dart DTO/parse tests + `analyze`.
-4. If you change a schema shape, update `rust/src/assets/example.nov` and keep
+4. If you change a schema shape, update `assets/example.nov` and keep
    `test/golden/example_nov_golden_test.dart` green.
 5. If you change `rust/src/api/manager.rs`, regenerate FRB
    (`flutter_rust_bridge_codegen generate`) — commit both generated outputs.

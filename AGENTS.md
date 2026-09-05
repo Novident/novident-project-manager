@@ -71,7 +71,6 @@ test/                               # Dart tests (mirrors lib/, + ast/, compiler
 | `docs/engine.md` | Explanation: how the Rust engine works + JSON boundary |
 | `docs/project-format.md` | Explanation/reference: the `.nov` format |
 | `docs/parsers-to-ast.md` | Reference: Layout/editor to AST parsers (usage + output formats) |
-| `docs/dart-project-manager-plan.md`, `docs/dart-classes-touch-plan.md`, `docs/git-snapshots-complete-plan.md` | Working plans |
 | `SECURITY.md`, `CONTRIBUTING.md` | Security + contribution process |
 
 ## Code quality (expected)

@@ -50,7 +50,6 @@ the only layer that parses and writes schema files.
   façade method → `flutter_rust_bridge_codegen generate` → add a typed method
   on `EngineClient`. The full git/snapshot surface is implemented internally
   (`version/{branch,conflict,content_diff,credentials,repo_manager}.rs`); see
-  `docs/git-snapshots-complete-plan.md` for the façade wiring plan.
 
 ### Dart schema layer (`lib/`)
 
@@ -166,5 +165,4 @@ test/                               # Dart tests (mirrors lib/, + ast/, compiler
 | `docs/engine.md` | Explanation: how the Rust engine works + JSON boundary |
 | `docs/project-format.md` | Explanation/reference: the `.nov` format |
 | `docs/parsers-to-ast.md` | Reference: Layout/editor to AST parsers (usage + output formats) |
-| `docs/dart-project-manager-plan.md`, `docs/dart-classes-touch-plan.md`, `docs/git-snapshots-complete-plan.md` | Working plans |
 | `SECURITY.md`, `CONTRIBUTING.md` | Security + contribution process |

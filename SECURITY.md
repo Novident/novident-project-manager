@@ -21,12 +21,11 @@ project as untrusted input until validated.
   imported editor documents). Open those with the OS/browser stack of the host
   app.
 - It does **not** encrypt project content at rest.
-- The Rust `CredentialStore` XOR obfuscation is **not** cryptography; treat it
-  as convenience storage. Production deployments should use the OS keychain.
+- Dart and Rust does **not** save any git credentials passed to the git related methods.
 
 ## Security rules for maintainers
 
-1. Never log raw credentials, git tokens, or full file contents of external
+1. Never saves in the project structure the credentials, git tokens, or full file contents of external
    files at debug level.
 2. New engine entry points that accept user-controlled strings must keep the
    `safe_component`/path checks; add a regression test for traversal.
@@ -43,5 +42,3 @@ maintainers (see `CONTRIBUTING.md` for contacts/process) or report to novidentte
 
 - affected version(s) and a minimal repro (`.nov` fixture if possible),
 - impact scenario and suggested severity.
-
-We will acknowledge within 5 business days and coordinate a fix + disclosure.

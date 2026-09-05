@@ -116,8 +116,7 @@ await manager.removeNodeTarget('chapter-1');
 
 Snapshot with a metadata version bump (`saveProjectSnapshot`), list, restore and
 delete; plus full git: branches, fetch, conflicts, content/commit diffs and
-remotes (see [docs/git-snapshots-complete-plan.md](docs/git-snapshots-complete-plan.md)
-for the full surface):
+remotes:
 
 ```dart
 final snapshot = await manager.saveProjectSnapshot();

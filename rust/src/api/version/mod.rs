@@ -48,6 +48,6 @@ pub mod repo_manager;
 pub use branch::{BranchInfo, BranchManager};
 pub use conflict::{ConflictInfo, ConflictManager, ConflictResolution};
 pub use content_diff::{ContentChange, TreeDiff, diff_json_documents, diff_trees};
-pub use credentials::{AuthMethod, CredentialStore, GitCredentials};
+pub use credentials::{AuthMethod, GitCredentials};
 pub use git_service::{GitResult, GitService, GitServiceError, MergeResult, StatusEntry};
-pub use repo_manager::{CommitDiff, FileDiff, NovidentProject, NovidentRepo, NovidentWorkflow};
+pub use repo_manager::{CommitDiff, FileDiff, NovidentProject, NovidentRepo};
