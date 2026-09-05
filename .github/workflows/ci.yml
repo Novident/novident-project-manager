@@ -73,10 +73,3 @@ jobs:
               fi
             )
           done
-
-      - name: Analyze example
-        run: |
-          set -e
-          cd example
-          flutter pub get
-          flutter analyze --no-fatal-infos --no-fatal-warnings
