@@ -12,7 +12,7 @@ project as untrusted input until validated.
 | Newer schema files | Downgrade/corruption | `SchemaMigrator` rejects `schema_version > current` (`SchemaTooNewException`) before any write |
 | Path traversal (`..`, absolute) | Escape the project directory | Rust `safe_component` + engine path handling rejects traversal on semantic paths |
 | Attached/binary files (`files/external/`) | Payload delivery | Stored only as project resources; the app must scan with the platform's own tools before opening |
-| Git remotes | Credential theft / malicious history | Credentials passed per call; persistence is XOR-obfuscated **only** (see below) |
+| Git remotes | Credential theft / malicious history | Credentials passed per call; We never persist credentials |
 | Replay of backups/snapshots | Restore overwrites work | `restoreSnapshot` is explicit and overwrites; document that a manual backup is the recovery path |
 
 ## What this package does NOT do
