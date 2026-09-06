@@ -18,6 +18,7 @@ export 'src/layout/processor_context.dart';
 export 'src/layout/separators/layout_separator.dart';
 
 // API Defaults
+export 'src/project/synopsis/synopsis.dart';
 export 'src/project/author/author.dart';
 export 'src/project/backup/backup.dart';
 export 'src/project/comments/comments.dart';
