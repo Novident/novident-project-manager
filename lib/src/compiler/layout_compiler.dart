@@ -65,8 +65,8 @@ class LayoutCompiler {
         layout.newPageOptions.newLinesCount.value > 0) {
       context.shouldWritePageOptions = false;
       // adds all the new lines before the content
-      page.insert(
-          Paragraph(value: NewPageOptionsBuilder.getNewLines(layout.newPageOptions)));
+      page.insert(Paragraph(
+          value: NewPageOptionsBuilder.getNewLines(layout.newPageOptions)));
     }
 
     final title = LayoutSectionBuilder.build(
@@ -94,8 +94,7 @@ class LayoutCompiler {
         context: context,
         assignFamilyBySection: assignFamilyBySection,
         fontFamily: fontFamily,
-        content: ContentParser.parseDocument(
-            context.getNodeSynopsis<nov.Document>(doc.id).value),
+        content: ContentParser.parseDocument(context.getNodeSynopsis<nov.Document>(doc.id)),
         ignorePreffixSuffix: true,
       );
       if (synopsis != null) {
@@ -110,7 +109,7 @@ class LayoutCompiler {
         context: context,
         assignFamilyBySection: assignFamilyBySection,
         fontFamily: fontFamily,
-        content: context.getNodeContent(file.id),
+        content: context.getNodeNotes<String>(file.id),
         ignorePreffixSuffix: true,
       );
       if (notes != null) {

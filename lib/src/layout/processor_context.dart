@@ -34,10 +34,10 @@ abstract class Context<T> {
   ProjectMetadata metadata;
 
   NovidentStyleDefinition? getStyle(String id);
-  UniversalValue<T> getNodeContent(String id);
-  UniversalValue<R> getNodeComment<R>(String id);
-  UniversalValue<R> getNodeSynopsis<R>(String id);
-  UniversalValue<R> getNodeNotes<R>(String id);
+  T getNodeContent(String id);
+  R getNodeComment<R>(String id);
+  R getNodeSynopsis<R>(String id);
+  R getNodeNotes<R>(String id);
 
   /// this is a way that must be defined when the Context is created
   ///
