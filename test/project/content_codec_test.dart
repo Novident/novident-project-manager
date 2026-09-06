@@ -38,13 +38,7 @@ void main() {
     // The envelope is rebuilt with type/metadata and the same inner content.
     expect(map['type'], 'document');
     expect(map['metadata'], isEmpty);
-    expect(map['content'], (json.decode(synopsis) as Map<String, dynamic>)['content']);
-  });
-
-  test('SynopsisCodec throws a clear error without a content block', () {
-    expect(
-      () => SynopsisCodec.decode('{"type":"document","metadata":{}}'),
-      throwsFormatException,
-    );
+    expect(map['content'],
+        (json.decode(synopsis) as Map<String, dynamic>)['content']);
   });
 }

@@ -3,6 +3,8 @@ import 'package:novident_editor_document/novident_editor_document.dart';
 
 import '../ast/ast.dart';
 
+typedef CustomNodeToContent = List<Content> Function(Node);
+
 /// Converts a `novident_editor_document` [Document] into the AST content model.
 ///
 /// This is the structural “agnostic parser”: every editor block is mapped to
@@ -24,6 +26,9 @@ import '../ast/ast.dart';
 /// is not lost, with the block type kept in metadata.
 class ContentParser {
   const ContentParser._();
+
+  static final Map<String, CustomNodeToContent>
+      customNodeToAstCallbacksRegistry = {};
 
   /// Parses the whole [document] into AST content (pre-order).
   static List<Content> parseDocument(Document document) {
@@ -65,6 +70,17 @@ class ContentParser {
 
     if (node.delta != null && node.delta!.isNotEmpty) {
       contents.add(_paragraph(node));
+    }
+
+    if (customNodeToAstCallbacksRegistry[node.type] != null) {
+      final custom = customNodeToAstCallbacksRegistry[node.type]!.call(node);
+      assert(
+        custom.every((content) =>
+            content is! LayoutDocument && content is! DocumentPage),
+        'LayoutDocument or DocumentPage are not accepted as part '
+        'of the available AST nodes to be returned on custom ast callbacks',
+      );
+      contents.addAll(custom);
     }
 
     // Recurse so nested/unknown blocks keep their text in order.
@@ -165,8 +181,10 @@ class ContentParser {
 
     for (final Node cell in node.children) {
       if (cell.type != TableCellBlockKeys.type) continue;
-      final int col = cell.attributes[TableCellBlockKeys.colPosition] as int? ?? 0;
-      final int row = cell.attributes[TableCellBlockKeys.rowPosition] as int? ?? 0;
+      final int col =
+          cell.attributes[TableCellBlockKeys.colPosition] as int? ?? 0;
+      final int row =
+          cell.attributes[TableCellBlockKeys.rowPosition] as int? ?? 0;
       final List<Content> cellContent = <Content>[];
       for (final Node contentNode in cell.children) {
         cellContent.addAll(parseNode(contentNode));

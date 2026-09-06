@@ -46,11 +46,11 @@ class IconIndex {
 
   Map<String, dynamic> toJson() => <String, dynamic>{
         if (schemaVersion != null) 'schema_version': schemaVersion,
-        'defaults': defaults.map(
-            (String key, IconRule rule) => MapEntry(key, rule.toJson())),
+        'defaults': defaults
+            .map((String key, IconRule rule) => MapEntry(key, rule.toJson())),
         // Overrides are flattened at the top level on disk.
-        ...overrides.map(
-            (String key, IconRule rule) => MapEntry(key, rule.toJson())),
+        ...overrides
+            .map((String key, IconRule rule) => MapEntry(key, rule.toJson())),
       };
 
   String toJsonString() => json.encode(toJson());
@@ -81,8 +81,8 @@ class IconRule {
       icon: json['icon'] as String? ?? '',
       type: json['type'] as String? ?? '',
       variations: rawVariations is Map<String, dynamic>
-          ? rawVariations.map((String key, dynamic value) =>
-              MapEntry(key, value as String))
+          ? rawVariations.map(
+              (String key, dynamic value) => MapEntry(key, value as String))
           : const <String, String>{},
       path: json['path'] as String?,
     );

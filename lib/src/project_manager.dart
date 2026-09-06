@@ -20,6 +20,7 @@ import 'package:novident_project_manager/src/project/session/session.dart';
 import 'package:novident_project_manager/src/project/session/session_adjust.dart';
 import 'package:novident_project_manager/src/project/session/session_builder.dart';
 import 'package:novident_project_manager/src/project/session/session_history.dart';
+import 'package:novident_project_manager/src/project/synopsis/synopsis.dart';
 import 'package:novident_project_manager/src/project/target/target.dart';
 import 'package:novident_project_manager/src/project/target/target_resolver.dart';
 import 'package:novident_project_manager/src/reducer/binder_actions.dart';
@@ -242,13 +243,13 @@ class ProjectManager {
   }
 
   /// Loads a node's synopsis, or `null` when none is stored.
-  Future<editor.Document?> nodeSynopsis(String nodeId) async {
+  Future<Synopsis?> nodeSynopsis(String nodeId) async {
     final String? raw = await _engine.readNodeSynopsis(nodeId);
     return raw == null ? null : SynopsisCodec.decode(raw);
   }
 
   /// Stores a node's synopsis (wrapped in the `synopsis.json` envelope).
-  Future<void> setNodeSynopsis(String nodeId, editor.Document synopsis) =>
+  Future<void> setNodeSynopsis(String nodeId, Synopsis synopsis) =>
       _engine.writeNodeSynopsis(nodeId, SynopsisCodec.encode(synopsis));
 
   /// Loads a node's plain-text notes, or `null` when none is stored.
@@ -267,6 +268,19 @@ class ProjectManager {
   /// Stores a node's comments.
   Future<void> setNodeComments(String nodeId, Comments comments) =>
       _engine.writeNodeComments(nodeId, comments.toJsonString());
+
+  /// Reads `files/styles.json` as raw JSON, or `null` when missing.
+  /// Generic to allow custom implementations of `styles.json` format
+  Future<T?> readStyles<T>({T? Function(String? styles)? decode}) async =>
+      decode?.call(await _engine.readStyles()) ??
+      await _engine.readStyles() as T?;
+
+  /// Writes `files/styles.json` from its raw JSON string.
+  /// Generic to allow custom implementations of `styles.json` format
+  Future<void> writeStyles<T>(String json) => _engine.writeStyles(json);
+
+  /// Deletes `files/styles.json` when present.
+  Future<void> deleteStyles() => _engine.deleteStyle();
 
   /// Reads `files/metadata.json` (migrating older schema versions), caching it.
   Future<Metadata> readMetadata({bool refresh = false}) async {

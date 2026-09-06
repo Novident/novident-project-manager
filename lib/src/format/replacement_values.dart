@@ -21,7 +21,11 @@ class ReplacementsValues {
   factory ReplacementsValues.fromJson(Map<String, dynamic> json) {
     return ReplacementsValues(
       replacements: (json['patterns'] as List? ?? const <dynamic>[])
-          .map((p) => Replacement.fromJson(p as Map<String, dynamic>))
+          .map(
+            (p) => Replacement.fromJson(
+              p as Map<String, dynamic>,
+            ),
+          )
           .toSet(),
     );
   }
@@ -29,20 +33,20 @@ class ReplacementsValues {
 
 /// A single find-and-replace pattern used during compilation.
 ///
-/// The pattern replaces [matchCase] with [replacement] while the document is
+/// The pattern replaces [find] with [replace] while the document is
 /// compiled. It can be disabled or treated as a regular expression; matching
 /// is case-sensitive by default.
 class Replacement {
   /// Text (or, when [isRegexp], pattern) to look for.
-  final String matchCase;
+  final String find;
 
   /// Text that replaces every match.
-  final String replacement;
+  final String replace;
 
   /// Whether the pattern is active (disabled patterns are ignored).
   final bool enabled;
 
-  /// Whether [matchCase] is interpreted as a regular expression.
+  /// Whether [find] is interpreted as a regular expression.
   final bool isRegexp;
 
   /// Whether the match respects letter case.
@@ -50,26 +54,34 @@ class Replacement {
 
   /// Builds a replacement with the given values.
   Replacement({
-    this.matchCase = '',
-    this.replacement = '',
-    this.enabled = false,
+    required this.find,
+    required this.replace,
     this.isRegexp = false,
     this.caseSensitive = true,
+    this.enabled = true,
   });
 
-  /// Compiled regular expression of [matchCase], or `null` when [isRegexp] is
+  Replacement.disabled({
+    this.find = '',
+    this.replace = '',
+    this.isRegexp = false,
+    this.caseSensitive = true,
+    this.enabled = false,
+  });
+
+  /// Compiled regular expression of [find], or `null` when [isRegexp] is
   /// false.
   RegExp? get regexp => !isRegexp
       ? null
       : RegExp(
-          matchCase,
+          find,
           caseSensitive: caseSensitive,
         );
 
   /// Serializes the pattern to its on-disk JSON shape.
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'match_case': matchCase,
-        'replacement': replacement,
+        'find': find,
+        'replace': replace,
         'enabled': enabled,
         'is_regexp': isRegexp,
         'case_sensitive': caseSensitive,
@@ -78,8 +90,8 @@ class Replacement {
   /// Parses the pattern from its on-disk JSON shape (tolerant of missing
   /// fields).
   factory Replacement.fromJson(Map<String, dynamic> json) => Replacement(
-        matchCase: json['match_case'] as String? ?? '',
-        replacement: json['replacement'] as String? ?? '',
+        find: json['find'] as String? ?? '',
+        replace: json['replace'] as String? ?? '',
         enabled: json['enabled'] as bool? ?? false,
         isRegexp: json['is_regexp'] as bool? ?? false,
         caseSensitive: json['case_sensitive'] as bool? ?? true,

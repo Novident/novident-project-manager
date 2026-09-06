@@ -36,14 +36,14 @@ class Author {
 
   /// Builds the author; every field defaults to an empty string.
   const Author({
-    this.name = "",
-    this.stateAndCountry = "",
-    this.street = "",
-    this.city = "",
-    this.zipAndPostCode = "",
-    this.email = "",
-    this.phoneNumber = "",
-    this.website = "",
+    this.name = '',
+    this.stateAndCountry = '',
+    this.street = '',
+    this.city = '',
+    this.zipAndPostCode = '',
+    this.email = '',
+    this.phoneNumber = '',
+    this.website = '',
   });
 
   /// Splits [name] into individual author names (comma-separated).

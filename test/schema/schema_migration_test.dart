@@ -98,8 +98,7 @@ void main() {
   test('a missing migration step raises a version gap error', () {
     final migrator = SchemaMigrator(currentVersion: 2);
     expect(
-      () => migrator
-          .migrateMap(const <String, dynamic>{'schema_version': 1}),
+      () => migrator.migrateMap(const <String, dynamic>{'schema_version': 1}),
       throwsA(isA<SchemaVersionGapException>()
           .having((e) => e.fromVersion, 'fromVersion', 1)
           .having((e) => e.currentVersion, 'currentVersion', 2)),

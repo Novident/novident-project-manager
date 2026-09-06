@@ -41,6 +41,8 @@ abstract class ProjectManager implements RustOpaqueInterface {
 
   Future<void> deleteSession({required String date});
 
+  Future<void> deleteStyle();
+
   /// Diffs two Quill deltas (JSON op arrays) and returns the result delta (JSON).
   Future<String> diffDelta(
       {required String beforeJson, required String afterJson});
@@ -181,6 +183,8 @@ abstract class ProjectManager implements RustOpaqueInterface {
 
   Future<String?> readSession({required String date});
 
+  Future<String?> readStyles();
+
   Future<String?> readTarget();
 
   /// Rebuilds the search index by reading the binder structurally and persisting
@@ -241,6 +245,8 @@ abstract class ProjectManager implements RustOpaqueInterface {
   Future<void> writeSections({required String json});
 
   Future<void> writeSession({required String date, required String json});
+
+  Future<void> writeStyles({required String json});
 
   Future<void> writeTarget({required String json});
 }

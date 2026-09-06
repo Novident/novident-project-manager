@@ -27,7 +27,9 @@ void main() {
     test('structural types', () {
       final ListItem listItem = ListItem(
         value: <Content>[Paragraph.empty()],
-        metadata: const <String, dynamic>{'list': <String, dynamic>{'kind': 'bulleted'}},
+        metadata: const <String, dynamic>{
+          'list': <String, dynamic>{'kind': 'bulleted'}
+        },
       );
       expect(listItem.type, 'list');
       expect(listItem.isEmpty, isFalse);
@@ -79,7 +81,8 @@ void main() {
 
     test('text spans only merge when metadata matches', () {
       final TextSpan a = TextSpan(value: 'foo');
-      final TextSpan b = TextSpan(value: 'bar', metadata: const <String, dynamic>{'x': 1});
+      final TextSpan b =
+          TextSpan(value: 'bar', metadata: const <String, dynamic>{'x': 1});
       expect(a.canMerge, isTrue);
       a.merge(b);
       // Different metadata → nothing is merged.
@@ -87,10 +90,12 @@ void main() {
     });
 
     test('structural types do not merge', () {
-      expect(ListItem(value: <Content>[], metadata: const {}).canMerge, isFalse);
+      expect(
+          ListItem(value: <Content>[], metadata: const {}).canMerge, isFalse);
       expect(Column(value: <Content>[], metadata: const {}).canMerge, isFalse);
       expect(Columns(value: <Column>[], metadata: const {}).canMerge, isFalse);
-      expect(Table(value: <List<Content>>[], metadata: const {}).canMerge, isFalse);
+      expect(Table(value: <List<Content>>[], metadata: const {}).canMerge,
+          isFalse);
       expect(NewLine().canMerge, isFalse);
     });
   });

@@ -1,4 +1,3 @@
-
 /// Scope of a compilation format.
 ///
 /// This enum is managed automatically by Novident; the user never picks one
@@ -19,4 +18,3 @@ enum FormatScope {
   /// Reserved for the default layout.
   noScope,
 }
-

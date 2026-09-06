@@ -26,9 +26,9 @@ class TitleOptionsBuilder {
         NovidentProjectDefaults.kDefaultLayoutNewlineRepresentation,
       );
       for (final String str in tokenized) {
-        final bool isNewline =
-            str == NovidentProjectDefaults.kDefaultLayoutNewlineRepresentation ||
-                str == '\n';
+        final bool isNewline = str ==
+                NovidentProjectDefaults.kDefaultLayoutNewlineRepresentation ||
+            str == '\n';
         if (isNewline) {
           contents.add(paragraph);
           paragraph = Paragraph.empty(style: defaultStyle);
@@ -60,9 +60,9 @@ class TitleOptionsBuilder {
         NovidentProjectDefaults.kDefaultLayoutNewlineRepresentation,
       );
       for (final String str in tokenized) {
-        final bool isNewline =
-            str == NovidentProjectDefaults.kDefaultLayoutNewlineRepresentation ||
-                str == '\n';
+        final bool isNewline = str ==
+                NovidentProjectDefaults.kDefaultLayoutNewlineRepresentation ||
+            str == '\n';
         if (isNewline) {
           contents.add(paragraph);
           paragraph = Paragraph.empty(style: defaultStyle);

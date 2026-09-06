@@ -41,7 +41,11 @@ void main() {
   test('Comments.fromJson ignores non-object values', () {
     final comments = Comments.fromJson(const <String, dynamic>{
       'garbage': 'not a comment',
-      'ok': <String, dynamic>{'path': <int>[1], 'date': '', 'content': ''},
+      'ok': <String, dynamic>{
+        'path': <int>[1],
+        'date': '',
+        'content': ''
+      },
     });
     expect(comments.comments.length, 1);
     expect(comments.comments.containsKey('garbage'), isFalse);

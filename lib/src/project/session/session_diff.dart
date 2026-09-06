@@ -49,7 +49,8 @@ class SessionDiff {
 SessionDiff diffSessions(Session from, Session to) {
   final List<SessionFileDelta> files = <SessionFileDelta>[];
 
-  for (final MapEntry<String, SessionFileCounters> entry in from.metadata.files.entries) {
+  for (final MapEntry<String, SessionFileCounters> entry
+      in from.metadata.files.entries) {
     final SessionFileCounters? later = to.metadata.files[entry.key];
     if (later == null) continue; // node was not active in the later session
     files.add(SessionFileDelta(

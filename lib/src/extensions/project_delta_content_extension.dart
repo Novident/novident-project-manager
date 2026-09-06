@@ -19,8 +19,9 @@ extension ProjectDeltaContentExtension on Document {
   /// receiver is not modified.
   Document replacePlaceholders(
     Context context, {
-    PlaceholderRules rules = NovidentConstants.kDefaultPlaceholderRules,
+    PlaceholderRules? rules,
   }) {
+    rules ??= NovidentConstants.kDefaultPlaceholderRules;
     return rules.applyRules(
       this,
       TypePlaceholder.all,
@@ -34,8 +35,9 @@ extension ProjectDeltaContentExtension on Document {
   /// Returns a new [Document]; the receiver is not modified.
   Document replaceIndexKeys(
     Context context, {
-    PlaceholderRules rules = NovidentConstants.kDefaultPlaceholderRules,
+    PlaceholderRules? rules,
   }) {
+    rules ??= NovidentConstants.kDefaultPlaceholderRules;
     return rules.applyRules(
       this,
       TypePlaceholder.indexes,
@@ -53,8 +55,9 @@ extension ProjectDeltaContentExtension on Document {
   Document replaceProjectKeys(
     String name,
     Context context, {
-    PlaceholderRules rules = NovidentConstants.kDefaultPlaceholderRules,
+    PlaceholderRules? rules,
   }) {
+    rules ??= NovidentConstants.kDefaultPlaceholderRules;
     return rules.applyRules(
       this,
       TypePlaceholder.projectInfo,
@@ -68,8 +71,9 @@ extension ProjectDeltaContentExtension on Document {
   /// Returns a new [Document]; the receiver is not modified.
   Document replaceDateKeys(
     Context context, {
-    PlaceholderRules rules = NovidentConstants.kDefaultPlaceholderRules,
+    PlaceholderRules? rules,
   }) {
+    rules ??= NovidentConstants.kDefaultPlaceholderRules;
     return rules.applyRules(
       this,
       TypePlaceholder.dates,

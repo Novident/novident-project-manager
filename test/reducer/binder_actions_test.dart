@@ -69,7 +69,8 @@ void main() {
     expect(BinderActions.nameOf(draft), 'Draft');
     expect(BinderActions.nameOf(d1), 'The Awakening');
     expect(BinderActions.sectionOf(d1), 'scene');
-    expect(BinderActions.sectionOf(draft), NovidentDefaults.kStructuredBasedSectionId);
+    expect(BinderActions.sectionOf(draft),
+        NovidentDefaults.kStructuredBasedSectionId);
     expect(BinderActions.isTrashed(d1), isFalse);
   });
 
@@ -95,7 +96,8 @@ void main() {
     expect(doc.owner?.id, 'sub');
     // The container stores a level-corrected clone; resolve it by id.
     expect(BinderActions.requireNode(root, 'nf1').id, folder.id);
-    expect(BinderActions.nameOf(BinderActions.requireNode(root, 'nf1')), 'Act 1');
+    expect(
+        BinderActions.nameOf(BinderActions.requireNode(root, 'nf1')), 'Act 1');
   });
 
   test('createDocument rejects a non-folder parent and the trash folder', () {
@@ -117,7 +119,8 @@ void main() {
   test('renameNode replaces the node keeping its position and type', () {
     final Folder root = buildRoot();
 
-    final Node renamed = BinderActions.renameNode(root, 'd1', 'The Reawakening');
+    final Node renamed =
+        BinderActions.renameNode(root, 'd1', 'The Reawakening');
     final Folder draft = BinderActions.requireFolder(root, 'draft');
 
     expect(BinderActions.nameOf(renamed), 'The Reawakening');
@@ -128,7 +131,8 @@ void main() {
   test('setNodeSection updates the section', () {
     final Folder root = buildRoot();
     BinderActions.setNodeSection(root, 'd1', 'chapter');
-    expect(BinderActions.sectionOf(BinderActions.requireNode(root, 'd1')), 'chapter');
+    expect(BinderActions.sectionOf(BinderActions.requireNode(root, 'd1')),
+        'chapter');
   });
 
   test('moveNode moves between folders and guards cycles', () {
@@ -140,7 +144,8 @@ void main() {
 
     // Moving a folder into one of its own descendants must be rejected.
     expect(
-      () => BinderActions.moveNode(root, nodeId: 'draft', targetFolderId: 'sub'),
+      () =>
+          BinderActions.moveNode(root, nodeId: 'draft', targetFolderId: 'sub'),
       throwsA(isA<InvalidMoveException>()),
     );
     // Moving into the trash is only allowed through trashNode.
@@ -153,12 +158,15 @@ void main() {
   test('trashNode moves into the trash and trashes descendants too', () {
     final Folder root = buildRoot();
     // sub holds no documents yet; add one to check recursive trashing.
-    BinderActions.createDocument(root, parentId: 'sub', name: 'Inside', id: 'nested');
+    BinderActions.createDocument(root,
+        parentId: 'sub', name: 'Inside', id: 'nested');
     BinderActions.trashNode(root, 'sub');
 
     expect(BinderActions.requireNode(root, 'sub').owner?.id, 'trash');
-    expect(BinderActions.isTrashed(BinderActions.requireNode(root, 'sub')), isTrue);
-    expect(BinderActions.isTrashed(BinderActions.requireNode(root, 'nested')), isTrue);
+    expect(BinderActions.isTrashed(BinderActions.requireNode(root, 'sub')),
+        isTrue);
+    expect(BinderActions.isTrashed(BinderActions.requireNode(root, 'nested')),
+        isTrue);
   });
 
   test('trashNode rejects special folders and the root', () {
@@ -180,7 +188,8 @@ void main() {
   test('restoreNode clears the trashing feature when leaving the trash', () {
     final Folder root = buildRoot();
     BinderActions.trashNode(root, 'd1');
-    expect(BinderActions.isTrashed(BinderActions.requireNode(root, 'd1')), isTrue);
+    expect(
+        BinderActions.isTrashed(BinderActions.requireNode(root, 'd1')), isTrue);
 
     // Restoring into the trash itself is not allowed.
     expect(
@@ -190,7 +199,8 @@ void main() {
 
     BinderActions.restoreNode(root, id: 'd1', targetFolderId: 'draft');
     expect(BinderActions.requireNode(root, 'd1').owner?.id, 'draft');
-    expect(BinderActions.isTrashed(BinderActions.requireNode(root, 'd1')), isFalse);
+    expect(BinderActions.isTrashed(BinderActions.requireNode(root, 'd1')),
+        isFalse);
   });
 
   test('purgeNode removes the node and returns owned document dirs', () {

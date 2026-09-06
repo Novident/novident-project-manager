@@ -2,7 +2,9 @@ import 'package:meta/meta.dart';
 import 'package:novident_editor_core/novident_editor_core.dart';
 import 'package:novident_editor_delta_simplify/novident_editor_delta_simplify.dart';
 import 'package:novident_editor_document/novident_editor_document.dart';
+import 'package:novident_project_manager/src/format/format.dart';
 import 'package:novident_project_manager/src/rule/placeholder/placeholder_rule_mixin.dart';
+import 'package:novident_project_manager/src/rule/placeholder/rules/replacement_value_rule.dart';
 import 'package:novident_project_manager/src/rule/placeholder/type_placeholder_enum.dart';
 import '../../layout/processor_context.dart';
 import 'rules/rules.dart';
@@ -20,6 +22,7 @@ final class PlaceholderRules {
     this.indexRules = _indexRules,
     this.dateRules = _dateRules,
     this.projectInfoRules = _projectInfoRules,
+    this.customReplacements,
   });
 
   /// Rules that resolve counters and numbering tokens (`<$n>`, …).
@@ -31,6 +34,8 @@ final class PlaceholderRules {
   /// Rules that resolve project metadata and count tokens (`<$projecttitle>`,
   /// author, word/character counts, image, ISBN…).
   final List<PlaceholderRule> projectInfoRules;
+
+  final ReplacementsValues? customReplacements;
 
   /// Matches any `<$…>` token inside a delta.
   static final RegExp _commonPlaceholderDetector = RegExp(r'<\$[^>]+>');
@@ -99,6 +104,21 @@ final class PlaceholderRules {
   ) {
     final clone = Document(root: document.root.deepCopy());
     if (context.placeholderDisabled || clone.isEmpty) return document;
+    final replacements = compileReplacementValues(customReplacements!);
+    if (indexRules.isEmpty &&
+        projectInfoRules.isEmpty &&
+        dateRules.isEmpty &&
+        replacements.isEmpty) {
+      return document;
+    }
+    // to avoid recomputing every time this list, we can just catch it before the loop
+    final all = type == TypePlaceholder.all
+        ? <PlaceholderRule>[
+            ...indexRules,
+            ...dateRules,
+            ...projectInfoRules,
+          ]
+        : null;
     for (int index = 0; index < clone.root.length; index++) {
       if (document.root.children[index].delta == null) {
         continue;
@@ -117,8 +137,8 @@ final class PlaceholderRules {
       // a block whose only content is an image placeholder is converted into
       // an image block instead of leaving a text delta behind.
       if (delta.operations.length == 1 &&
-          _projectInfoRules[2].checkIfNeedApply(delta)) {
-        final newDelta = _projectInfoRules[2].apply(
+          _projectInfoRules[3].checkIfNeedApply(delta)) {
+        final newDelta = _projectInfoRules[3].apply(
           delta,
           context,
         );
@@ -144,26 +164,31 @@ final class PlaceholderRules {
       }
 
       QueryDelta query = QueryDelta(delta: delta);
-      if (type == TypePlaceholder.all) {
-        for (final PlaceholderRule rule in <PlaceholderRule>[
-          ...indexRules,
-          ...dateRules,
-          ...projectInfoRules,
-        ]) {
+
+      if (customReplacements != null) {
+        for (final PlaceholderRule rule in replacements) {
           if (rule.checkIfNeedApply(delta)) {
             query = rule.setConditionRule(query, context);
           }
         }
       }
 
-      if (type == TypePlaceholder.indexes) {
+      if (type == TypePlaceholder.all) {
+        for (final PlaceholderRule rule in all!) {
+          if (rule.checkIfNeedApply(delta)) {
+            query = rule.setConditionRule(query, context);
+          }
+        }
+      }
+
+      if (type == TypePlaceholder.indexes && indexRules.isNotEmpty) {
         for (final PlaceholderRule rule in indexRules) {
           if (rule.checkIfNeedApply(delta)) {
             query = rule.setConditionRule(query, context);
           }
         }
       }
-      if (type == TypePlaceholder.dates) {
+      if (type == TypePlaceholder.dates && dateRules.isNotEmpty) {
         context.time = DateTime.now();
         for (final PlaceholderRule rule in dateRules) {
           if (rule.checkIfNeedApply(delta)) {
@@ -171,7 +196,7 @@ final class PlaceholderRules {
           }
         }
       }
-      if (type == TypePlaceholder.projectInfo) {
+      if (type == TypePlaceholder.projectInfo && projectInfoRules.isNotEmpty) {
         for (final PlaceholderRule rule in projectInfoRules) {
           if (rule.checkIfNeedApply(delta)) {
             query = rule.setConditionRule(query, context);
@@ -182,5 +207,26 @@ final class PlaceholderRules {
       clone.root.children[index].attributes['delta'] = query.build().delta;
     }
     return clone;
+  }
+
+  List<PlaceholderRule> compileReplacementValues(ReplacementsValues values) {
+    final replacements = values.replacements;
+    final rules = <PlaceholderRule>[];
+    for (int index = 0; index < replacements.length; index++) {
+      final replacement = replacements.elementAt(index);
+      if (!replacement.enabled) continue;
+      rules.add(
+        ReplacementValueRule(
+          regexp: replacement.isRegexp
+              ? replacement.regexp!
+              : RegExp(
+                  replacement.find,
+                  caseSensitive: replacement.caseSensitive,
+                ),
+          replacement: replacement.replace,
+        ),
+      );
+    }
+    return rules;
   }
 }

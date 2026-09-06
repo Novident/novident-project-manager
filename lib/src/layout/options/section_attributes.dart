@@ -94,7 +94,7 @@ class SectionAttributes {
     double? fontSize,
   }) {
     return SectionAttributes(
-      align: align ?? "left",
+      align: align ?? 'left',
       bold: bold ?? false,
       italic: italic ?? false,
       strikethrough: false,
@@ -146,18 +146,17 @@ class SectionAttributes {
   /// [fontFamily] overrides the configured family when given.
   NovidentStyleDefinition toStyle({String? fontFamily}) {
     return NovidentStyleDefinition(
-      id: '__compiled__',
-      name: 'compiled',
-      fontSize: fontSize,
-      bold: bold,
-      italic: italic,
-      underline: underline,
-      strikethrough: strikethrough,
-      fontFamily: fontFamily ?? this.fontFamily,
-      textColor: color != null ? Color(int.parse('#$color')) : null,
-      alignment: _align(),
-      spacing: NovidentStyleSpacing(lineHeight: lineHeight)
-    );
+        id: '__compiled__',
+        name: 'compiled',
+        fontSize: fontSize,
+        bold: bold,
+        italic: italic,
+        underline: underline,
+        strikethrough: strikethrough,
+        fontFamily: fontFamily ?? this.fontFamily,
+        textColor: color != null ? Color(int.parse('#$color')) : null,
+        alignment: _align(),
+        spacing: NovidentStyleSpacing(lineHeight: lineHeight));
   }
 
   TextAlign _align() {

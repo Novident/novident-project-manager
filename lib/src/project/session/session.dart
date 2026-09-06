@@ -66,8 +66,8 @@ class SessionMetadata {
     final rawFiles = json['files'];
     return SessionMetadata(
       files: rawFiles is Map<String, dynamic>
-          ? rawFiles.map((String id, dynamic value) => MapEntry(id,
-              SessionFileCounters.fromJson(value as Map<String, dynamic>)))
+          ? rawFiles.map((String id, dynamic value) => MapEntry(
+              id, SessionFileCounters.fromJson(value as Map<String, dynamic>)))
           : const <String, SessionFileCounters>{},
       total: SessionTotal.fromJson(
           json['total'] as Map<String, dynamic>? ?? const {}),

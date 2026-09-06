@@ -9,37 +9,41 @@ Map<String, dynamic> roundtrip<T>(SchemaFile<T> file, String source) =>
     json.decode(file.encode(file.decode(source))) as Map<String, dynamic>;
 
 /// Roundtrips a collection item through its own typed codec.
-Map<String, dynamic> roundtripCollection<T>(SchemaCollection<T> collection,
-        String source) =>
+Map<String, dynamic> roundtripCollection<T>(
+        SchemaCollection<T> collection, String source) =>
     json.decode(collection.encode(collection.decode(source)))
         as Map<String, dynamic>;
 
 void main() {
   group('structural contract mirrors schema-v1.yaml', () {
     test('required dirs', () {
-      expect(SchemaRegistry.requiredDirs, containsAll(<String>[
-        'files',
-        'files/external',
-        'indexation',
-        'history',
-        'layouts',
-        'compiler/formats',
-        'compiler/exports',
-        'snapshots',
-      ]));
+      expect(
+          SchemaRegistry.requiredDirs,
+          containsAll(<String>[
+            'files',
+            'files/external',
+            'indexation',
+            'history',
+            'layouts',
+            'compiler/formats',
+            'compiler/exports',
+            'snapshots',
+          ]));
     });
 
     test('required files', () {
-      expect(SchemaRegistry.requiredFiles, containsAll(<String>[
-        'files/metadata.json',
-        'files/backup.json',
-        'indexation/binder.index.json',
-        'indexation/sections.index.json',
-        'indexation/icon.index.json',
-        'indexation/corkboard.index.json',
-        'indexation/search.index.json',
-        'indexation/target.index.json',
-      ]));
+      expect(
+          SchemaRegistry.requiredFiles,
+          containsAll(<String>[
+            'files/metadata.json',
+            'files/backup.json',
+            'indexation/binder.index.json',
+            'indexation/sections.index.json',
+            'indexation/icon.index.json',
+            'indexation/corkboard.index.json',
+            'indexation/search.index.json',
+            'indexation/target.index.json',
+          ]));
     });
 
     test('every writeable required file has a typed binding path', () {
@@ -53,12 +57,14 @@ void main() {
     });
 
     test('collection dirs + item key match the contract', () {
-      expect(SchemaRegistry.collectionDirs, containsAll(<(String, String)>[
-        ('layouts', 'id'),
-        ('compiler/formats', 'id'),
-        ('compiler/exports', 'id'),
-        ('history', 'session_date'),
-      ]));
+      expect(
+          SchemaRegistry.collectionDirs,
+          containsAll(<(String, String)>[
+            ('layouts', 'id'),
+            ('compiler/formats', 'id'),
+            ('compiler/exports', 'id'),
+            ('history', 'session_date'),
+          ]));
     });
   });
 
@@ -89,8 +95,8 @@ void main() {
       expect(binder.projectId, 'p1');
       expect((binder.root.children.single as Document).name, 'Doc');
 
-      final map =
-          json.decode(SchemaRegistry.binder.encode(binder)) as Map<String, dynamic>;
+      final map = json.decode(SchemaRegistry.binder.encode(binder))
+          as Map<String, dynamic>;
       expect(map['project_id'], 'p1');
       expect((map['tree'] as List).length, 1);
     });

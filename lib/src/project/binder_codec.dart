@@ -68,10 +68,11 @@ class BinderCodec {
   }) {
     final tree = <Map<String, dynamic>>[];
     final lookup = <String, Map<String, dynamic>>{};
-    final encodedExternal =
-        <String, Map<String, dynamic>>{...?externalFiles?.map(
-      (String key, ExternalFile file) => MapEntry(key, file.toJson()),
-    )};
+    final encodedExternal = <String, Map<String, dynamic>>{
+      ...?externalFiles?.map(
+        (String key, ExternalFile file) => MapEntry(key, file.toJson()),
+      )
+    };
 
     for (var i = 0; i < root.children.length; i++) {
       final encoded = _encodeNode(
@@ -278,14 +279,13 @@ class BinderCodec {
 
     if (nodeType == 'folder') {
       final children = <Node>[
-        for (final child in (node['children'] as List?)
-                ?.cast<Map<String, dynamic>>() ??
-            const <Map<String, dynamic>>[])
+        for (final child
+            in (node['children'] as List?)?.cast<Map<String, dynamic>>() ??
+                const <Map<String, dynamic>>[])
           _decodeNode(child, externalFiles),
       ];
-      for (final resourceId in (node['resources'] as List?)
-              ?.cast<String>() ??
-          const <String>[]) {
+      for (final resourceId
+          in (node['resources'] as List?)?.cast<String>() ?? const <String>[]) {
         final ext = externalFiles[resourceId] as Map<String, dynamic>?;
         if (ext != null) {
           children.add(_decodeResource(resourceId, ext));

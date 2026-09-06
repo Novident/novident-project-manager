@@ -28,8 +28,8 @@ class LayoutSectionBuilder {
     required String fontFamily,
     required dynamic content,
   }) {
-    final defaultStyle = section.attributes.toStyle(
-        fontFamily: assignFamilyBySection ? fontFamily : null);
+    final defaultStyle = section.attributes
+        .toStyle(fontFamily: assignFamilyBySection ? fontFamily : null);
     Paragraph paragraph = Paragraph.empty(
       style: defaultStyle,
     );

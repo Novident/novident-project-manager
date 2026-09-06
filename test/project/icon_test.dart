@@ -40,11 +40,14 @@ void main() {
     final icons = IconIndex.fromJson(fixture);
 
     expect(icons.schemaVersion, 1);
-    expect(icons.defaults.keys, containsAll(<String>['file', 'templatesSheet']));
-    expect(icons.overrides.keys, containsAll(<String>[
-      'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
-      'c9d0e1f2-a3b4-5678-cdef-789012345678',
-    ]));
+    expect(
+        icons.defaults.keys, containsAll(<String>['file', 'templatesSheet']));
+    expect(
+        icons.overrides.keys,
+        containsAll(<String>[
+          'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
+          'c9d0e1f2-a3b4-5678-cdef-789012345678',
+        ]));
 
     final file = icons.defaults['file']!;
     expect(file.icon, 'file');

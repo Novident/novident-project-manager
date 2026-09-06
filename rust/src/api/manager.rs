@@ -80,6 +80,7 @@ pub fn open_project(path: String) -> Result<ProjectManager, ProjectError> {
 #[frb(sync)]
 pub fn create_project_skeleton(path: String) -> Result<(), ProjectError> {
     let root = PathBuf::from(path);
+    //TODO: we need to replace the version with a constant var
     let contract = Contract::load(1)
         .ok_or_else(|| ProjectError::internal("no bundled contract for schema version 1"))?;
     for dir in &contract.required_dirs {
@@ -132,6 +133,18 @@ impl ProjectManager {
     }
 
     // -- schema files (semantic; one method per role) --------------------------
+
+    pub fn delete_style(&self) -> Result<(), ProjectError> {
+        self.delete_file(String::from("files/styles.json"))
+    }
+
+    pub fn read_styles(&self) -> Option<String> {
+        io::read_file(&self.path, "files/styles.json")
+    }
+
+    pub fn write_styles(&self, json: String) -> Result<(), ProjectError> {
+        io::write_file(&self.path, "files/styles.json", &json).map_err(ProjectError::io)
+    }
 
     pub fn read_metadata(&self) -> Option<String> {
         io::read_file(&self.path, "files/metadata.json")
@@ -730,8 +743,7 @@ impl ProjectManager {
         if self.path.join(".git").exists() {
             return Ok("{}".to_string());
         }
-        NovidentRepo::init(&self.path)
-            .map_err(|e| ProjectError::git(format!("git init: {e}")))?;
+        NovidentRepo::init(&self.path).map_err(|e| ProjectError::git(format!("git init: {e}")))?;
         Ok("{}".to_string())
     }
 

@@ -142,7 +142,8 @@ class Format extends Equatable {
       fontFamily: map['font_family'] as String? ??
           NovidentProjectDefaults.kDefaultFormatFontFamily,
       replacements: ReplacementsValues.fromJson(
-          map['replacements'] as Map<String, dynamic>? ?? const {}),
+        map['replacements'] as Map<String, dynamic>? ?? const {},
+      ),
       canChange: map['can_change'] as bool? ?? false,
       pageSetup: map['page_setup'] is Map<String, dynamic>
           ? PageSetup.fromJson(map['page_setup'] as Map<String, dynamic>)

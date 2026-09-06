@@ -65,7 +65,7 @@ export 'src/rule/project_rules/project_rules.dart';
 export 'src/rule/project_rules/project_status_response.dart';
 export 'src/rule/project_rules/project_rule_mixin.dart';
 
-// Extensions 
+// Extensions
 export 'src/extensions/string_extension.dart';
 export 'src/extensions/cast_extension.dart';
 export 'src/extensions/project_extensions.dart';

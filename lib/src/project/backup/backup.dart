@@ -1,9 +1,11 @@
 import 'dart:convert';
 
+import 'package:meta/meta.dart';
 import 'package:novident_project_manager/src/schema/registry.dart';
 
 /// Backup manifest (`files/backup.json`): a compact mirror of the binder with
 /// a checksum. Generated on save, never user-edited.
+@experimental
 class Backup {
   final int? schemaVersion;
   final String format;
@@ -57,6 +59,7 @@ class Backup {
 /// Compact tree mirror. The on-disk entry keys are single letters (`n`/`t`/
 /// `p`/`c`/`x`/`a`); the Dart fields use descriptive names and the codec maps
 /// them so the serialized form stays byte-compatible with the format.
+@experimental
 class BackupTree {
   final String root;
   final Map<String, BackupFolder> folders;
@@ -103,6 +106,7 @@ class BackupTree {
 }
 
 /// `{n, t, p, c}` — name, folder type, parent id (null at top level), children.
+@experimental
 class BackupFolder {
   final String name;
   final String type;
@@ -132,6 +136,7 @@ class BackupFolder {
 }
 
 /// `{n, p, x?}` — name, parent id, trashed flag (only present when true).
+@experimental
 class BackupDocument {
   final String name;
   final String parent;
@@ -143,8 +148,7 @@ class BackupDocument {
     this.trashed = false,
   });
 
-  factory BackupDocument.fromJson(Map<String, dynamic> json) =>
-      BackupDocument(
+  factory BackupDocument.fromJson(Map<String, dynamic> json) => BackupDocument(
         name: json['n'] as String? ?? '',
         parent: json['p'] as String? ?? '',
         trashed: json['x'] as bool? ?? false,
@@ -158,6 +162,7 @@ class BackupDocument {
 }
 
 /// `{n, a}` — name and the node id it is attached to.
+@experimental
 class BackupExternal {
   final String name;
   final String attachedTo;

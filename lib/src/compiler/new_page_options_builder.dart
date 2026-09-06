@@ -24,8 +24,7 @@ class NewPageOptionsBuilder {
       newLine: customNewLine ?? '\n',
       suffix: comma,
     );
-    if ((newLines == null || newLines < 1) &&
-        options.newLinesCount.value < 1) {
+    if ((newLines == null || newLines < 1) && options.newLinesCount.value < 1) {
       return <NewLine>[];
     }
     return newLines != null

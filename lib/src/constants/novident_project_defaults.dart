@@ -9,16 +9,15 @@ import 'package:meta/meta.dart';
 class NovidentProjectDefaults {
   const NovidentProjectDefaults._();
   static const String kStructuredBasedSectionId =
-      "018dbf0d-f756-7c76-8e46-c33daa3ca236687ae53e-339c-4eac-9dc5-7450b2554b01";
-  static const String kDefaultFrontMatterName = "Front Matter";
-  static const String kDefaultBackMatterName = "Back Matter";
-  static const String kDefaultManuscriptName = "Draft";
-  static const String kDefaultBasicLayoutName = "As is";
+      '018dbf0d-f756-7c76-8e46-c33daa3ca236687ae53e-339c-4eac-9dc5-7450b2554b01';
+  static const String kDefaultFrontMatterName = 'Front Matter';
+  static const String kDefaultBackMatterName = 'Back Matter';
+  static const String kDefaultManuscriptName = 'Draft';
+  static const String kDefaultBasicLayoutName = 'As is';
   static const String kDefaultLayoutNewlineRepresentation = '¶';
-  static const String kDefaultDateFormatZone = "yyyy-MM-dd HH:mm:ss Z";
-  static const String kDefaultFormatFontFamily = "by-layout";
+  static const String kDefaultDateFormatZone = 'yyyy-MM-dd HH:mm:ss Z';
+  static const String kDefaultFormatFontFamily = 'by-layout';
   static const String kDefaultUnnamedLayout = 'Untitled layout';
-
 
   /// this is used by the app to generate the file only recognized by the project
   ///
@@ -26,7 +25,7 @@ class NovidentProjectDefaults {
   /// ```
   /// dir.nov
   /// ```
-  static const String kProjectExtension = ".nov";
+  static const String kProjectExtension = '.nov';
 
   /// Reset placeholder invokation. When this is founded
   /// all the placeholders will restart their counts

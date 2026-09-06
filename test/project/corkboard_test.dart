@@ -75,8 +75,10 @@ void main() {
   });
 
   test('CorkboardValues.freeform may be null', () {
-    final values = CorkboardIndex.fromJson(fixture).corkboards.last.toJson()[
-        'values'] as Map<String, dynamic>;
+    final values = CorkboardIndex.fromJson(fixture)
+        .corkboards
+        .last
+        .toJson()['values'] as Map<String, dynamic>;
     expect(values.containsKey('freeform'), isTrue);
     expect(values['freeform'], isNull);
   });

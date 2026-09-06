@@ -4,6 +4,7 @@ import 'package:novident_document_format/novident_document_format.dart';
 import 'package:novident_editor_document/novident_editor_document.dart' as nov;
 
 import 'package:novident_project_manager/src/compiler/new_page_options_builder.dart';
+import 'package:novident_project_manager/src/rule/placeholder/placeholder_rules.dart';
 import '../constants/novident_project_defaults.dart';
 import '../extensions/cast_extension.dart';
 import '../extensions/project_delta_content_extension.dart';
@@ -31,12 +32,13 @@ class LayoutCompiler {
   /// replacement when the context does not defer it).
   ///
   /// Returns `null` for non-normal folders.
-  static DocumentPage? compileLayout(
+  static Future<DocumentPage?> compileLayout(
     Layout layout,
     Node file,
     Context context, {
     String? fontFamily,
-  }) {
+    PlaceholderRules? placeholderRules,
+  }) async {
     fontFamily = getDefaultFont();
     final DocumentPage page = DocumentPage.empty();
     // we do not accept non normal folders
@@ -48,13 +50,12 @@ class LayoutCompiler {
     bool assignFamilyBySection = false;
     if (fontFamily.equals(NovidentProjectDefaults.kDefaultFormatFontFamily,
         caseSensitive: false)) {
-      fontFamily = "";
+      fontFamily = '';
       assignFamilyBySection = true;
     }
     Document? doc;
     if (file is Document) doc = file;
     final LayoutSection titleMapped = layout.layoutManager.titleSection;
-    final LayoutSection metadataMapped = layout.layoutManager.metadataSection;
     final LayoutSection synopsisMapped = layout.layoutManager.synopsisSection;
     final LayoutSection notesMapped = layout.layoutManager.notesSection;
     final LayoutSection textMapped = layout.layoutManager.textSection;
@@ -81,35 +82,33 @@ class LayoutCompiler {
     if (title != null && title.isNotEmpty) {
       page.addAll(title);
     }
-    // metadata section
-    // TODO: how should we add this? (kept from the legacy implementation)
-    if (metadataMapped.show) {
-      throw UnimplementedError('metadata section is not implemented yet');
-    }
     // synopsis section
     if (showSynopsis && doc != null) {
-      final synopsis = LayoutSectionBuilder.build(
-        synopsisMapped,
-        options: layout.titleOptions,
-        context: context,
-        assignFamilyBySection: assignFamilyBySection,
-        fontFamily: fontFamily,
-        content: ContentParser.parseDocument(context.getNodeSynopsis<nov.Document>(doc.id)),
-        ignorePreffixSuffix: true,
-      );
-      if (synopsis != null) {
-        page.addAll(synopsis);
+      final synopsis = await context.getNodeSynopsis(doc.id);
+      if (synopsis?.isDocument ?? false) {
+        final content = LayoutSectionBuilder.build(
+          synopsisMapped,
+          options: layout.titleOptions,
+          context: context,
+          assignFamilyBySection: assignFamilyBySection,
+          fontFamily: fontFamily,
+          content: ContentParser.parseDocument(synopsis!.content.cast()),
+          ignorePreffixSuffix: true,
+        );
+        if (content != null) {
+          page.addAll(content);
+        }
       }
     }
     // notes section (kept from the legacy implementation)
-    if (notesMapped.show) {
+    if (notesMapped.show && (await context.getNodeNotes(file.id) != null)) {
       final notes = LayoutSectionBuilder.build(
         notesMapped,
         options: layout.titleOptions,
         context: context,
         assignFamilyBySection: assignFamilyBySection,
         fontFamily: fontFamily,
-        content: context.getNodeNotes<String>(file.id),
+        content: await context.getNodeNotes(file.id),
         ignorePreffixSuffix: true,
       );
       if (notes != null) {
@@ -121,11 +120,13 @@ class LayoutCompiler {
       if (fontFamily.isEmpty) {
         fontFamily = textMapped.attributes.fontFamily;
       }
-      final nov.Document content = context.getNodeContent(file.id).value;
-      final nov.Document effective = context.processPlaceholderAtEnd
+      final nov.Document? content = await context.getNodeContent(file.id);
+      final nov.Document? effective = context.processPlaceholderAtEnd
           ? content
-          : content.replacePlaceholders(context);
-      page.addAll(ContentParser.parseDocument(effective));
+          : content?.replacePlaceholders(context, rules: placeholderRules);
+      if (content != null && effective != null) {
+        page.addAll(ContentParser.parseDocument(effective));
+      }
     }
     return page;
   }

@@ -78,8 +78,8 @@ void main() {
   });
 
   test('should fail research check', () {
-    root.removeWhere((node) =>
-        node is Folder && node.type == FolderType.research);
+    root.removeWhere(
+        (node) => node is Folder && node.type == FolderType.research);
     expect(
       () => ProjectRules.checkProjectState(root),
       throwsA(

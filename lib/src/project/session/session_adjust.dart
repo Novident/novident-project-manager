@@ -31,7 +31,8 @@ double _progress(int current, int target) =>
 
 /// Returns [total] with the [adjustment] applied and its distance-to-target
 /// recomputed (never negative, progress clamped to 0.0–1.0).
-SessionTotal adjustSessionTotal(SessionTotal total, CountAdjustment adjustment) {
+SessionTotal adjustSessionTotal(
+    SessionTotal total, CountAdjustment adjustment) {
   final int words = _atLeastZero(total.words + adjustment.words);
   final int characters = _atLeastZero(total.characters + adjustment.characters);
   return SessionTotal(

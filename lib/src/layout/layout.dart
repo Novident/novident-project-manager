@@ -4,29 +4,16 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/widgets.dart';
 import 'package:novident_nodes/novident_nodes.dart';
 
-import 'package:novident_project_manager/src/layout/options/title_options.dart'
-    show TitleOptions;
-import 'package:novident_project_manager/src/layout/processor_context.dart';
+import '../../novident_project_manager.dart';
 
-import '../ast/ast.dart';
-import '../compiler/layout_compiler.dart';
-import '../constants/constants.dart';
-import '../schema/registry.dart';
-import 'options/layout_indents.dart';
-import 'options/layout_manager.dart';
-import 'options/layout_sections.dart';
-import 'options/new_page_options.dart';
-import 'options/section_attributes.dart';
-import 'options/section_separators_options.dart';
-
-export 'options/new_page_options.dart'; 
-export 'options/layout_manager.dart'; 
-export 'options/layout_sections.dart'; 
-export 'options/layout_indents.dart'; 
-export 'options/section_separators_options.dart'; 
-export 'options/section_attributes.dart'; 
-export 'options/title_options.dart'; 
-export 'separators/layout_separator.dart'; 
+export 'options/new_page_options.dart';
+export 'options/layout_manager.dart';
+export 'options/layout_sections.dart';
+export 'options/layout_indents.dart';
+export 'options/section_separators_options.dart';
+export 'options/section_attributes.dart';
+export 'options/title_options.dart';
+export 'separators/layout_separator.dart';
 export 'enums.dart';
 export 'processor_context.dart';
 
@@ -81,7 +68,7 @@ final class Layout extends Equatable {
     required this.id,
     required this.name,
     required this.layoutManager,
-    this.assignedSection = "",
+    this.assignedSection = '',
     SeparatorOptions? separatorSections,
     TitleOptions? titleOptions,
     NewPageOptions? newPageOptions,
@@ -133,7 +120,7 @@ final class Layout extends Equatable {
         separatorSections: separatorOptions,
         settings: settings,
         newPageOptions: newPageOptions,
-        assignedSection: assigned ?? "",
+        assignedSection: assigned ?? '',
         name: name ?? NovidentProjectDefaults.kDefaultUnnamedLayout,
         layoutManager: LayoutSectionManager(
           titleSection: LayoutSection(
@@ -150,24 +137,12 @@ final class Layout extends Equatable {
                 : titleAttr ??
                     SectionAttributes.common(
                       lineHeight: titleLineSpacing,
-                      align: titleAlign ?? "left",
+                      align: titleAlign ?? 'left',
                       bold: boldTitle ?? false,
                       underline: underlineTitle ?? false,
                       automaticIndent: false,
                       fontSize: fontSize ?? 16,
                     ),
-          ),
-          metadataSection: LayoutSection(
-            show: showMetadata,
-            title: 'Metadata',
-            attributes: shareThisAttributesToAll ??
-                metaAttr ??
-                SectionAttributes.common(
-                  align: "left",
-                  fontSize: 12,
-                  automaticIndent: false,
-                  bold: false,
-                ),
           ),
           synopsisSection: LayoutSection(
             show: showSynopsis,
@@ -175,7 +150,7 @@ final class Layout extends Equatable {
             attributes: shareThisAttributesToAll ??
                 synopsisAttr ??
                 SectionAttributes.common(
-                  align: "left",
+                  align: 'left',
                   fontSize: 12,
                   automaticIndent: false,
                   bold: false,
@@ -187,7 +162,7 @@ final class Layout extends Equatable {
             attributes: shareThisAttributesToAll ??
                 notesAttr ??
                 SectionAttributes.common(
-                  align: "left",
+                  align: 'left',
                   fontSize: 12,
                   automaticIndent: false,
                   bold: false,
@@ -207,7 +182,7 @@ final class Layout extends Equatable {
                 : textAttr ??
                     SectionAttributes.common(
                       lineHeight: textLineSpacing ?? 1.0,
-                      align: "left",
+                      align: 'left',
                       fontSize: 12,
                       automaticIndent: false,
                     ),
@@ -287,13 +262,19 @@ final class Layout extends Equatable {
   ///
   /// This is a thin delegate to the external [LayoutCompiler]; the conversion
   /// logic lives there so data-class changes do not rewrite it.
-  DocumentPage? applyLayout(
+  Future<DocumentPage?> applyLayout(
     Node file,
     Context context, {
     String? fontFamily,
+    PlaceholderRules? placeholderRules,
   }) =>
-      LayoutCompiler.compileLayout(this, file, context,
-          fontFamily: fontFamily);
+      LayoutCompiler.compileLayout(
+        this,
+        file,
+        context,
+        fontFamily: fontFamily,
+        placeholderRules: placeholderRules,
+      );
 
   @override
   List<Object?> get props => <Object?>[

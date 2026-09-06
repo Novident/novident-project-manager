@@ -48,16 +48,16 @@ class NewPageOptions extends Equatable {
   NewPageOptions({
     required int newLinesCount,
     required int charactersToUpperCase,
-  }) : newLinesCount = ObjectValue(value: newLinesCount),
-       charactersToUpperCase = ObjectValue(value: charactersToUpperCase),
-       assert(
-         charactersToUpperCase <= 10 && charactersToUpperCase >= 0,
-         'charactersToUpperCase must be between 0 and 10',
-       ),
-       assert(
-         newLinesCount >= 0,
-         'newLinesCount must be greater than or equal to zero',
-       );
+  })  : newLinesCount = ObjectValue(value: newLinesCount),
+        charactersToUpperCase = ObjectValue(value: charactersToUpperCase),
+        assert(
+          charactersToUpperCase <= 10 && charactersToUpperCase >= 0,
+          'charactersToUpperCase must be between 0 and 10',
+        ),
+        assert(
+          newLinesCount >= 0,
+          'newLinesCount must be greater than or equal to zero',
+        );
 
   /// Defaults: no new lines and no uppercasing.
   factory NewPageOptions.common() {
@@ -121,8 +121,7 @@ class NewPageOptions extends Equatable {
   }
 
   @override
-  String toString() =>
-      'NewPageOptions('
+  String toString() => 'NewPageOptions('
       'newLinesCount: $newLinesCount, '
       'charactersToUpperCase: $charactersToUpperCase'
       ')';

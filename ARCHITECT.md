@@ -119,7 +119,7 @@ lib/
 │   ├── engine/                       # EngineClient (only FRB importer) + engine_types DTOs
 │   ├── project_manager.dart          # ProjectManager façade (lifecycle, stores, reducer conveniences)
 │   ├── project/                      # Dart schema layer: models, codecs, stores, adapters
-│   │   ├── author/ section/ target/ icon/ corkboard/ session/ export/ backup/ comments/
+│   │   ├── author/ section/ target/ synopsis/ icon/ corkboard/ session/ export/ backup/ comments/
 │   │   ├── binder_types.dart       # typed LookupEntry + ExternalFile (lookup/external_files)
 │   │   ├── binder_codec.dart       # binder.index.json ⇄ novident_nodes tree
 │   │   ├── binder_store.dart       # BinderIo + BinderStore (header-preserving persistence)

@@ -32,7 +32,8 @@ fn write_read_roundtrip_is_verbatim() {
     let pm = open_project(t.0.to_string_lossy().to_string()).unwrap();
 
     // A schema file with a "future" field Dart might add — must survive verbatim.
-    let json = r#"{"schema_version":1,"project":{"name":"X"},"future_field":123,"nested":{"a":true}}"#;
+    let json =
+        r#"{"schema_version":1,"project":{"name":"X"},"future_field":123,"nested":{"a":true}}"#;
     pm.write_file("files/metadata.json".to_string(), json.to_string())
         .unwrap();
 
@@ -78,4 +79,32 @@ fn list_files_lists_sorted() {
         pm.list_files("layouts".to_string()),
         vec!["a.json".to_string(), "b.json".to_string()]
     );
+}
+
+#[test]
+fn create_styles_file_and_read() {
+    let t = TempDir::new("styles");
+    create_project_skeleton(t.0.to_string_lossy().to_string()).unwrap();
+    let pm = open_project(t.0.to_string_lossy().to_string()).unwrap();
+
+    let json = r#"{"id": "heading-1", "name": "Heading 1", "font-size": 12, "font-family": null, "bold": true}"#;
+    pm.write_styles(json.to_owned()).unwrap();
+
+    assert_eq!(pm.read_styles().unwrap_or("{}".to_string()), json);
+}
+
+#[test]
+fn delete_styles_file() {
+    let t = TempDir::new("styles");
+    create_project_skeleton(t.0.to_string_lossy().to_string()).unwrap();
+    let pm = open_project(t.0.to_string_lossy().to_string()).unwrap();
+
+    let json = r#"{"id": "heading-1", "name": "Heading 1", "font-size": 12, "font-family": null, "bold": true}"#;
+    pm.write_styles(json.to_owned()).unwrap();
+
+    assert_eq!(pm.read_styles().unwrap_or("{}".to_string()), json);
+
+    let result = pm.delete_style();
+    assert!(result.is_ok());
+    assert_eq!(pm.read_styles(), None);
 }

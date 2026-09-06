@@ -53,4 +53,3 @@ class LayoutDocument with Mergable {
   @override
   Set<Type> get mergeableTypesSupported => {LayoutDocument};
 }
-

@@ -50,6 +50,15 @@ class EngineClient {
   /// Lists the file names (not full paths) inside [dir], relative to the root.
   Future<List<String>> listFiles(String dir) => _engine.listFiles(dir: dir);
 
+  /// Reads `files/styles.json` as raw JSON, or `null` when missing.
+  Future<String?> readStyles() => _engine.readStyles();
+
+  /// Writes `files/styles.json` from its raw JSON string.
+  Future<void> writeStyles(String json) => _engine.writeStyles(json: json);
+
+  /// Deletes `files/styles.json` when present.
+  Future<void> deleteStyle() => _engine.deleteStyle();
+
   /// Reads `files/metadata.json` as raw JSON, or `null` when missing.
   Future<String?> readMetadata() => _engine.readMetadata();
 

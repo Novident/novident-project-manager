@@ -94,8 +94,7 @@ void main() {
       expect(lookup.containsKey('doc-1'), isTrue);
       expect(lookup['doc-1']['parent_id'], 'folder-manuscript');
 
-      final externalFiles =
-          encoded['external_files'] as Map<String, dynamic>;
+      final externalFiles = encoded['external_files'] as Map<String, dynamic>;
       expect(externalFiles.containsKey('res-1'), isTrue);
       expect(externalFiles['res-1']['attached_to'], 'folder-manuscript');
 

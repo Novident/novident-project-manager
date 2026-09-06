@@ -530,8 +530,7 @@ class GitFileDiff {
         path: json['path'] as String? ?? '',
         status: json['status'] as String? ?? '',
         contentDiff: json['content_diff'] is Map<String, dynamic>
-            ? GitTreeDiff.fromJson(
-                json['content_diff'] as Map<String, dynamic>)
+            ? GitTreeDiff.fromJson(json['content_diff'] as Map<String, dynamic>)
             : null,
       );
 }

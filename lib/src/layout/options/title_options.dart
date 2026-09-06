@@ -72,8 +72,8 @@ class TitleOptions {
   /// default attributes.
   factory TitleOptions.common({String? preffix, String? suffix}) {
     return TitleOptions(
-      titlePrefix: preffix ?? "",
-      titleSuffix: suffix ?? "",
+      titlePrefix: preffix ?? '',
+      titleSuffix: suffix ?? '',
       lettercasePrefix: LetterCase.normal,
       lettercaseSuffix: LetterCase.normal,
       lettercaseTitle: LetterCase.normal,
@@ -130,10 +130,12 @@ class TitleOptions {
       lettercaseSuffix: _readLetterCase(map['letter_case_suffix']),
       lettercaseTitle: _readLetterCase(map['letter_case_title']),
       attrPrefix: map['attr_prefix'] is Map<String, dynamic>
-          ? SectionAttributes.fromMap(map['attr_prefix'] as Map<String, dynamic>)
+          ? SectionAttributes.fromMap(
+              map['attr_prefix'] as Map<String, dynamic>)
           : SectionAttributes.common(),
       attrSuffix: map['attr_suffix'] is Map<String, dynamic>
-          ? SectionAttributes.fromMap(map['attr_suffix'] as Map<String, dynamic>)
+          ? SectionAttributes.fromMap(
+              map['attr_suffix'] as Map<String, dynamic>)
           : SectionAttributes.common(),
     );
   }

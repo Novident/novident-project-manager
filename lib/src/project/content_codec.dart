@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:novident_editor_document/novident_editor_document.dart';
+import 'package:novident_project_manager/src/project/synopsis/synopsis.dart';
 
 /// Thin typed wrapper around `novident_editor_document`'s `Document`.
 ///
@@ -22,31 +23,14 @@ class ContentCodec {
   }
 }
 
-/// Codec for `synopsis.json`, which wraps the same editor `Document` in an
-/// outer envelope:
-/// ```json
-/// { "type": "document", "metadata": {}, "content": { "document": … } }
-/// ```
 class SynopsisCodec {
   SynopsisCodec._();
 
-  /// Extracts the inner editor `Document` from a `synopsis.json` string.
-  static Document decode(String synopsisJson) {
-    final Map<String, dynamic> outer =
-        jsonDecode(synopsisJson) as Map<String, dynamic>;
-    final Object? content = outer['content'];
-    if (content is! Map<String, dynamic>) {
-      throw const FormatException('synopsis.json has no content block');
-    }
-    return Document.fromJson(content);
+  static Synopsis decode(String synopsisJson) {
+    return Synopsis.fromJson(jsonDecode(synopsisJson));
   }
 
-  /// Wraps an editor `Document` into the `synopsis.json` envelope.
-  static String encode(Document document) {
-    return jsonEncode(<String, dynamic>{
-      'type': 'document',
-      'metadata': <String, dynamic>{},
-      'content': document.toJson(),
-    });
+  static String encode(Synopsis synopsis) {
+    return jsonEncode(synopsis.toJson());
   }
 }

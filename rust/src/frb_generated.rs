@@ -39,7 +39,7 @@ flutter_rust_bridge::frb_generated_boilerplate!(
     default_rust_auto_opaque = RustAutoOpaqueMoi,
 );
 pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_VERSION: &str = "2.12.0";
-pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_CONTENT_HASH: i32 = 1623801953;
+pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_CONTENT_HASH: i32 = -506130878;
 
 // Section: executor
 
@@ -410,6 +410,56 @@ fn wire__crate__api__manager__ProjectManager_delete_session_impl(
                         &*api_that_guard,
                         api_date,
                     )?;
+                    Ok(output_ok)
+                })())
+            }
+        },
+    )
+}
+fn wire__crate__api__manager__ProjectManager_delete_style_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "ProjectManager_delete_style",
+            port: Some(port_),
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+        },
+        move || {
+            let message = unsafe {
+                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
+                    ptr_,
+                    rust_vec_len_,
+                    data_len_,
+                )
+            };
+            let mut deserializer =
+                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_that = <RustOpaqueMoi<
+                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<ProjectManager>,
+            >>::sse_decode(&mut deserializer);
+            deserializer.end();
+            move |context| {
+                transform_result_sse::<_, crate::api::error::ProjectError>((move || {
+                    let mut api_that_guard = None;
+                    let decode_indices_ =
+                        flutter_rust_bridge::for_generated::lockable_compute_decode_order(vec![
+                            flutter_rust_bridge::for_generated::LockableOrderInfo::new(
+                                &api_that, 0, false,
+                            ),
+                        ]);
+                    for i in decode_indices_ {
+                        match i {
+                            0 => api_that_guard = Some(api_that.lockable_decode_sync_ref()),
+                            _ => unreachable!(),
+                        }
+                    }
+                    let api_that_guard = api_that_guard.unwrap();
+                    let output_ok =
+                        crate::api::manager::ProjectManager::delete_style(&*api_that_guard)?;
                     Ok(output_ok)
                 })())
             }
@@ -3037,6 +3087,57 @@ fn wire__crate__api__manager__ProjectManager_read_session_impl(
         },
     )
 }
+fn wire__crate__api__manager__ProjectManager_read_styles_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "ProjectManager_read_styles",
+            port: Some(port_),
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+        },
+        move || {
+            let message = unsafe {
+                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
+                    ptr_,
+                    rust_vec_len_,
+                    data_len_,
+                )
+            };
+            let mut deserializer =
+                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_that = <RustOpaqueMoi<
+                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<ProjectManager>,
+            >>::sse_decode(&mut deserializer);
+            deserializer.end();
+            move |context| {
+                transform_result_sse::<_, ()>((move || {
+                    let mut api_that_guard = None;
+                    let decode_indices_ =
+                        flutter_rust_bridge::for_generated::lockable_compute_decode_order(vec![
+                            flutter_rust_bridge::for_generated::LockableOrderInfo::new(
+                                &api_that, 0, false,
+                            ),
+                        ]);
+                    for i in decode_indices_ {
+                        match i {
+                            0 => api_that_guard = Some(api_that.lockable_decode_sync_ref()),
+                            _ => unreachable!(),
+                        }
+                    }
+                    let api_that_guard = api_that_guard.unwrap();
+                    let output_ok = Result::<_, ()>::Ok(
+                        crate::api::manager::ProjectManager::read_styles(&*api_that_guard),
+                    )?;
+                    Ok(output_ok)
+                })())
+            }
+        },
+    )
+}
 fn wire__crate__api__manager__ProjectManager_read_target_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
@@ -4319,6 +4420,59 @@ fn wire__crate__api__manager__ProjectManager_write_session_impl(
         },
     )
 }
+fn wire__crate__api__manager__ProjectManager_write_styles_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "ProjectManager_write_styles",
+            port: Some(port_),
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+        },
+        move || {
+            let message = unsafe {
+                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
+                    ptr_,
+                    rust_vec_len_,
+                    data_len_,
+                )
+            };
+            let mut deserializer =
+                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_that = <RustOpaqueMoi<
+                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<ProjectManager>,
+            >>::sse_decode(&mut deserializer);
+            let api_json = <String>::sse_decode(&mut deserializer);
+            deserializer.end();
+            move |context| {
+                transform_result_sse::<_, crate::api::error::ProjectError>((move || {
+                    let mut api_that_guard = None;
+                    let decode_indices_ =
+                        flutter_rust_bridge::for_generated::lockable_compute_decode_order(vec![
+                            flutter_rust_bridge::for_generated::LockableOrderInfo::new(
+                                &api_that, 0, false,
+                            ),
+                        ]);
+                    for i in decode_indices_ {
+                        match i {
+                            0 => api_that_guard = Some(api_that.lockable_decode_sync_ref()),
+                            _ => unreachable!(),
+                        }
+                    }
+                    let api_that_guard = api_that_guard.unwrap();
+                    let output_ok = crate::api::manager::ProjectManager::write_styles(
+                        &*api_that_guard,
+                        api_json,
+                    )?;
+                    Ok(output_ok)
+                })())
+            }
+        },
+    )
+}
 fn wire__crate__api__manager__ProjectManager_write_target_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
@@ -4645,445 +4799,463 @@ fn pde_ffi_dispatcher_primary_impl(
             rust_vec_len,
             data_len,
         ),
-        8 => wire__crate__api__manager__ProjectManager_diff_delta_impl(
+        8 => wire__crate__api__manager__ProjectManager_delete_style_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        9 => wire__crate__api__manager__ProjectManager_git_abort_merge_impl(
+        9 => wire__crate__api__manager__ProjectManager_diff_delta_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        10 => wire__crate__api__manager__ProjectManager_git_branch_create_impl(
+        10 => wire__crate__api__manager__ProjectManager_git_abort_merge_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        11 => wire__crate__api__manager__ProjectManager_git_branch_create_from_commit_impl(
+        11 => wire__crate__api__manager__ProjectManager_git_branch_create_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        12 => wire__crate__api__manager__ProjectManager_git_branch_delete_impl(
+        12 => wire__crate__api__manager__ProjectManager_git_branch_create_from_commit_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        13 => wire__crate__api__manager__ProjectManager_git_branch_merge_impl(
+        13 => wire__crate__api__manager__ProjectManager_git_branch_delete_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        14 => wire__crate__api__manager__ProjectManager_git_branch_switch_impl(
+        14 => wire__crate__api__manager__ProjectManager_git_branch_merge_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        15 => wire__crate__api__manager__ProjectManager_git_branches_impl(
+        15 => wire__crate__api__manager__ProjectManager_git_branch_switch_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        16 => wire__crate__api__manager__ProjectManager_git_checkout_impl(
+        16 => wire__crate__api__manager__ProjectManager_git_branches_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        17 => wire__crate__api__manager__ProjectManager_git_commit_impl(
+        17 => wire__crate__api__manager__ProjectManager_git_checkout_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        18 => wire__crate__api__manager__ProjectManager_git_conflict_detect_impl(
+        18 => wire__crate__api__manager__ProjectManager_git_commit_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        19 => wire__crate__api__manager__ProjectManager_git_conflict_finish_impl(
+        19 => wire__crate__api__manager__ProjectManager_git_conflict_detect_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        20 => wire__crate__api__manager__ProjectManager_git_conflict_resolve_all_impl(
+        20 => wire__crate__api__manager__ProjectManager_git_conflict_finish_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        21 => wire__crate__api__manager__ProjectManager_git_current_branch_impl(
+        21 => wire__crate__api__manager__ProjectManager_git_conflict_resolve_all_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        22 => wire__crate__api__manager__ProjectManager_git_diff_between_commits_impl(
+        22 => wire__crate__api__manager__ProjectManager_git_current_branch_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        23 => wire__crate__api__manager__ProjectManager_git_diff_documents_impl(
+        23 => wire__crate__api__manager__ProjectManager_git_diff_between_commits_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        24 => wire__crate__api__manager__ProjectManager_git_diff_json_documents_impl(
+        24 => wire__crate__api__manager__ProjectManager_git_diff_documents_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        25 => wire__crate__api__manager__ProjectManager_git_fetch_impl(
+        25 => wire__crate__api__manager__ProjectManager_git_diff_json_documents_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        26 => wire__crate__api__manager__ProjectManager_git_init_impl(
+        26 => wire__crate__api__manager__ProjectManager_git_fetch_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        27 => wire__crate__api__manager__ProjectManager_git_last_commit_diff_impl(
+        27 => wire__crate__api__manager__ProjectManager_git_init_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        28 => wire__crate__api__manager__ProjectManager_git_log_impl(
+        28 => wire__crate__api__manager__ProjectManager_git_last_commit_diff_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        29 => wire__crate__api__manager__ProjectManager_git_pull_impl(
+        29 => wire__crate__api__manager__ProjectManager_git_log_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        30 => wire__crate__api__manager__ProjectManager_git_push_impl(
+        30 => wire__crate__api__manager__ProjectManager_git_pull_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        31 => wire__crate__api__manager__ProjectManager_git_remote_url_impl(
+        31 => wire__crate__api__manager__ProjectManager_git_push_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        32 => wire__crate__api__manager__ProjectManager_git_remotes_impl(
+        32 => wire__crate__api__manager__ProjectManager_git_remote_url_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        33 => wire__crate__api__manager__ProjectManager_git_resolve_conflict_impl(
+        33 => wire__crate__api__manager__ProjectManager_git_remotes_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        34 => wire__crate__api__manager__ProjectManager_git_set_remote_impl(
+        34 => wire__crate__api__manager__ProjectManager_git_resolve_conflict_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        35 => wire__crate__api__manager__ProjectManager_git_status_impl(
+        35 => wire__crate__api__manager__ProjectManager_git_set_remote_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        36 => wire__crate__api__manager__ProjectManager_list_exports_impl(
+        36 => wire__crate__api__manager__ProjectManager_git_status_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        37 => wire__crate__api__manager__ProjectManager_list_files_impl(
+        37 => wire__crate__api__manager__ProjectManager_list_exports_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        38 => wire__crate__api__manager__ProjectManager_list_formats_impl(
+        38 => wire__crate__api__manager__ProjectManager_list_files_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        39 => wire__crate__api__manager__ProjectManager_list_layouts_impl(
+        39 => wire__crate__api__manager__ProjectManager_list_formats_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        40 => wire__crate__api__manager__ProjectManager_list_sessions_impl(
+        40 => wire__crate__api__manager__ProjectManager_list_layouts_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        41 => {
+        41 => wire__crate__api__manager__ProjectManager_list_sessions_impl(
+            port,
+            ptr,
+            rust_vec_len,
+            data_len,
+        ),
+        42 => {
             wire__crate__api__manager__ProjectManager_path_impl(port, ptr, rust_vec_len, data_len)
         }
-        42 => wire__crate__api__manager__ProjectManager_read_backup_impl(
+        43 => wire__crate__api__manager__ProjectManager_read_backup_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        43 => wire__crate__api__manager__ProjectManager_read_binder_impl(
+        44 => wire__crate__api__manager__ProjectManager_read_binder_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        44 => wire__crate__api__manager__ProjectManager_read_corkboard_impl(
+        45 => wire__crate__api__manager__ProjectManager_read_corkboard_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        45 => wire__crate__api__manager__ProjectManager_read_export_impl(
+        46 => wire__crate__api__manager__ProjectManager_read_export_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        46 => wire__crate__api__manager__ProjectManager_read_file_impl(
+        47 => wire__crate__api__manager__ProjectManager_read_file_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        47 => wire__crate__api__manager__ProjectManager_read_format_impl(
+        48 => wire__crate__api__manager__ProjectManager_read_format_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        48 => wire__crate__api__manager__ProjectManager_read_icon_impl(
+        49 => wire__crate__api__manager__ProjectManager_read_icon_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        49 => wire__crate__api__manager__ProjectManager_read_layout_impl(
+        50 => wire__crate__api__manager__ProjectManager_read_layout_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        50 => wire__crate__api__manager__ProjectManager_read_metadata_impl(
+        51 => wire__crate__api__manager__ProjectManager_read_metadata_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        51 => wire__crate__api__manager__ProjectManager_read_node_comments_impl(
+        52 => wire__crate__api__manager__ProjectManager_read_node_comments_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        52 => wire__crate__api__manager__ProjectManager_read_node_content_impl(
+        53 => wire__crate__api__manager__ProjectManager_read_node_content_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        53 => wire__crate__api__manager__ProjectManager_read_node_notes_impl(
+        54 => wire__crate__api__manager__ProjectManager_read_node_notes_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        54 => wire__crate__api__manager__ProjectManager_read_node_synopsis_impl(
+        55 => wire__crate__api__manager__ProjectManager_read_node_synopsis_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        55 => wire__crate__api__manager__ProjectManager_read_search_impl(
+        56 => wire__crate__api__manager__ProjectManager_read_search_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        56 => wire__crate__api__manager__ProjectManager_read_sections_impl(
+        57 => wire__crate__api__manager__ProjectManager_read_sections_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        57 => wire__crate__api__manager__ProjectManager_read_session_impl(
+        58 => wire__crate__api__manager__ProjectManager_read_session_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        58 => wire__crate__api__manager__ProjectManager_read_target_impl(
+        59 => wire__crate__api__manager__ProjectManager_read_styles_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        59 => wire__crate__api__manager__ProjectManager_reindex_search_impl(
+        60 => wire__crate__api__manager__ProjectManager_read_target_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        60 => {
+        61 => wire__crate__api__manager__ProjectManager_reindex_search_impl(
+            port,
+            ptr,
+            rust_vec_len,
+            data_len,
+        ),
+        62 => {
             wire__crate__api__manager__ProjectManager_search_impl(port, ptr, rust_vec_len, data_len)
         }
-        61 => wire__crate__api__manager__ProjectManager_search_status_impl(
+        63 => wire__crate__api__manager__ProjectManager_search_status_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        62 => wire__crate__api__manager__ProjectManager_snapshot_create_impl(
+        64 => wire__crate__api__manager__ProjectManager_snapshot_create_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        63 => wire__crate__api__manager__ProjectManager_snapshot_delete_impl(
+        65 => wire__crate__api__manager__ProjectManager_snapshot_delete_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        64 => wire__crate__api__manager__ProjectManager_snapshot_list_impl(
+        66 => wire__crate__api__manager__ProjectManager_snapshot_list_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        65 => wire__crate__api__manager__ProjectManager_snapshot_restore_impl(
+        67 => wire__crate__api__manager__ProjectManager_snapshot_restore_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        66 => wire__crate__api__manager__ProjectManager_validate_impl(
+        68 => wire__crate__api__manager__ProjectManager_validate_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        67 => wire__crate__api__manager__ProjectManager_write_backup_impl(
+        69 => wire__crate__api__manager__ProjectManager_write_backup_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        68 => wire__crate__api__manager__ProjectManager_write_binder_impl(
+        70 => wire__crate__api__manager__ProjectManager_write_binder_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        69 => wire__crate__api__manager__ProjectManager_write_corkboard_impl(
+        71 => wire__crate__api__manager__ProjectManager_write_corkboard_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        70 => wire__crate__api__manager__ProjectManager_write_export_impl(
+        72 => wire__crate__api__manager__ProjectManager_write_export_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        71 => wire__crate__api__manager__ProjectManager_write_file_impl(
+        73 => wire__crate__api__manager__ProjectManager_write_file_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        72 => wire__crate__api__manager__ProjectManager_write_format_impl(
+        74 => wire__crate__api__manager__ProjectManager_write_format_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        73 => wire__crate__api__manager__ProjectManager_write_icon_impl(
+        75 => wire__crate__api__manager__ProjectManager_write_icon_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        74 => wire__crate__api__manager__ProjectManager_write_layout_impl(
+        76 => wire__crate__api__manager__ProjectManager_write_layout_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        75 => wire__crate__api__manager__ProjectManager_write_metadata_impl(
+        77 => wire__crate__api__manager__ProjectManager_write_metadata_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        76 => wire__crate__api__manager__ProjectManager_write_node_comments_impl(
+        78 => wire__crate__api__manager__ProjectManager_write_node_comments_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        77 => wire__crate__api__manager__ProjectManager_write_node_content_impl(
+        79 => wire__crate__api__manager__ProjectManager_write_node_content_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        78 => wire__crate__api__manager__ProjectManager_write_node_notes_impl(
+        80 => wire__crate__api__manager__ProjectManager_write_node_notes_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        79 => wire__crate__api__manager__ProjectManager_write_node_synopsis_impl(
+        81 => wire__crate__api__manager__ProjectManager_write_node_synopsis_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        80 => wire__crate__api__manager__ProjectManager_write_sections_impl(
+        82 => wire__crate__api__manager__ProjectManager_write_sections_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        81 => wire__crate__api__manager__ProjectManager_write_session_impl(
+        83 => wire__crate__api__manager__ProjectManager_write_session_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        82 => wire__crate__api__manager__ProjectManager_write_target_impl(
+        84 => wire__crate__api__manager__ProjectManager_write_styles_impl(
+            port,
+            ptr,
+            rust_vec_len,
+            data_len,
+        ),
+        85 => wire__crate__api__manager__ProjectManager_write_target_impl(
             port,
             ptr,
             rust_vec_len,
@@ -5101,9 +5273,9 @@ fn pde_ffi_dispatcher_sync_impl(
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     // Codec=Pde (Serialization + dispatch), see doc to use other codecs
     match func_id {
-        83 => wire__crate__api__manager__create_project_skeleton_impl(ptr, rust_vec_len, data_len),
-        84 => wire__crate__api__manager__open_project_impl(ptr, rust_vec_len, data_len),
-        85 => wire__crate__api__manager__write_gitignore_impl(ptr, rust_vec_len, data_len),
+        86 => wire__crate__api__manager__create_project_skeleton_impl(ptr, rust_vec_len, data_len),
+        87 => wire__crate__api__manager__open_project_impl(ptr, rust_vec_len, data_len),
+        88 => wire__crate__api__manager__write_gitignore_impl(ptr, rust_vec_len, data_len),
         _ => unreachable!(),
     }
 }

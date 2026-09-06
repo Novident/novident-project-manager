@@ -77,7 +77,8 @@ void main() {
     expect(again, same(binder));
   });
 
-  test('persist recomputes lookup and keeps header, bumping updated_at', () async {
+  test('persist recomputes lookup and keeps header, bumping updated_at',
+      () async {
     final io = _FakeBinderIo(_binderFixture);
     final store = BinderStore(io: io);
     await store.load();

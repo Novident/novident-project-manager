@@ -151,11 +151,11 @@ abstract final class SchemaRegistry {
     decode: (String json) =>
         BinderCodec.decode(jsonDecode(json) as Map<String, dynamic>),
     encode: (Binder value) => jsonEncode(BinderCodec.encode(
-          projectId: value.projectId,
-          projectName: value.projectName,
-          root: value.root,
-          externalFiles: value.externalFiles,
-        )),
+      projectId: value.projectId,
+      projectName: value.projectName,
+      root: value.root,
+      externalFiles: value.externalFiles,
+    )),
   );
 
   /// `indexation/sections.index.json` → [SectionManager].
@@ -175,7 +175,8 @@ abstract final class SchemaRegistry {
   );
 
   /// `indexation/corkboard.index.json` → [CorkboardIndex].
-  static final SchemaFile<CorkboardIndex> corkboard = SchemaFile<CorkboardIndex>(
+  static final SchemaFile<CorkboardIndex> corkboard =
+      SchemaFile<CorkboardIndex>(
     role: 'corkboard',
     path: 'indexation/corkboard.index.json',
     decode: CorkboardIndex.fromJsonString,

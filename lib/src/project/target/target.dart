@@ -24,8 +24,8 @@ class TargetIndex {
       general: TargetGeneral.fromJson(
           json['general'] as Map<String, dynamic>? ?? const {}),
       files: rawFiles is Map<String, dynamic>
-          ? rawFiles.map((String id, dynamic value) => MapEntry(
-              id, TargetFile.fromJson(value as Map<String, dynamic>)))
+          ? rawFiles.map((String id, dynamic value) =>
+              MapEntry(id, TargetFile.fromJson(value as Map<String, dynamic>)))
           : const <String, TargetFile>{},
     );
   }
@@ -33,8 +33,8 @@ class TargetIndex {
   Map<String, dynamic> toJson() => <String, dynamic>{
         if (schemaVersion != null) 'schema_version': schemaVersion,
         'general': general.toJson(),
-        'files': files.map(
-            (String id, TargetFile file) => MapEntry(id, file.toJson())),
+        'files': files
+            .map((String id, TargetFile file) => MapEntry(id, file.toJson())),
       };
 
   String toJsonString() => json.encode(toJson());

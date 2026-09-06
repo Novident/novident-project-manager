@@ -108,7 +108,7 @@ class DocumentCache {
     }
 
     timers.clear();
-    _cache.clear(); 
+    _cache.clear();
     _pending.clear();
   }
 }

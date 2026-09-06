@@ -108,7 +108,8 @@ void main() {
     expect(words.totalWords, 100);
   });
 
-  test('a document trashed in place counts as trash even inside manuscript', () {
+  test('a document trashed in place counts as trash even inside manuscript',
+      () {
     final Folder root = buildRoot();
     // Move d1 into the trash folder through the real trash action.
     BinderActions.trashNode(root, 'd1');

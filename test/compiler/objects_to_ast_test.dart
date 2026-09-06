@@ -55,7 +55,9 @@ void main() {
         <String, dynamic>{
           'type': 'numbered_list',
           'data': <String, dynamic>{
-            'delta': <dynamic>[<String, dynamic>{'insert': 'Step'}],
+            'delta': <dynamic>[
+              <String, dynamic>{'insert': 'Step'}
+            ],
             'number': 5,
           },
         },
@@ -99,8 +101,7 @@ void main() {
       ],
     });
 
-    final Table table =
-        ContentParser.parseDocument(document).single as Table;
+    final Table table = ContentParser.parseDocument(document).single as Table;
     expect(table.value.length, 2); // two columns
     expect((table.value[0].single as Paragraph).value.single.value, 'Name');
     expect((table.value[1].single as Paragraph).value.single.value, 'Role');
@@ -113,7 +114,9 @@ void main() {
         <String, dynamic>{
           'type': 'quote',
           'data': <String, dynamic>{
-            'delta': <dynamic>[<String, dynamic>{'insert': 'Quoted'}],
+            'delta': <dynamic>[
+              <String, dynamic>{'insert': 'Quoted'}
+            ],
           },
         },
       ],

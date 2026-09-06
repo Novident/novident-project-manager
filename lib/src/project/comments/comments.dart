@@ -1,5 +1,3 @@
-// ignore_for_file: non_constant_identifier_names
-
 import 'dart:convert';
 
 /// Inline comments of a node (`files/<id>/comments.json`).
@@ -26,8 +24,8 @@ class Comments {
   }
 
   /// Serializes the collection to its on-disk JSON object.
-  Map<String, dynamic> toJson() => comments.map(
-      (String key, Comment comment) => MapEntry(key, comment.toJson()));
+  Map<String, dynamic> toJson() => comments
+      .map((String key, Comment comment) => MapEntry(key, comment.toJson()));
 
   /// Serializes the collection to a JSON string.
   String toJsonString() => json.encode(toJson());

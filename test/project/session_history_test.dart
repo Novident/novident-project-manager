@@ -45,7 +45,8 @@ void main() {
     expect(session.metadata.total.words, 0);
   });
 
-  test('openSession continues the active session instead of duplicating', () async {
+  test('openSession continues the active session instead of duplicating',
+      () async {
     await history.openSession(
       DateTime.utc(2026, 7, 20),
       author: 'Elena Marlowe',
@@ -63,7 +64,8 @@ void main() {
     expect(await history.listDates(), <String>['2026-07-20']);
   });
 
-  test('saveSession persists under the day key derived from the date', () async {
+  test('saveSession persists under the day key derived from the date',
+      () async {
     final session = await history.openSession(
       DateTime.utc(2026, 7, 20),
       author: 'Elena Marlowe',

@@ -23,7 +23,8 @@ final class ReplaceTodayPlaceholderRule with PlaceholderRule {
     return delta.toQuery
         .replace(
           target: pattern.pattern,
-          replace: '${NovidentConstants.kMonths[context.time?.month]!.capitalize()} '
+          replace:
+              '${NovidentConstants.kMonths[context.time?.month]!.capitalize()} '
               '${context.time?.day}, '
               '${context.time?.year}',
           range: null,
@@ -37,7 +38,8 @@ final class ReplaceTodayPlaceholderRule with PlaceholderRule {
   QueryDelta setConditionRule(QueryDelta query, Context context) {
     return query.replace(
       target: pattern.pattern,
-      replace: '${NovidentConstants.kMonths[context.time?.month]!.capitalize()} '
+      replace:
+          '${NovidentConstants.kMonths[context.time?.month]!.capitalize()} '
           '${context.time?.day}, '
           '${context.time?.year}',
       range: null,

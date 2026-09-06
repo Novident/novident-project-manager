@@ -48,7 +48,9 @@ class BinderActions {
 
   /// Display name of a node, through [UniversalName].
   static String nameOf(Node node) {
-    if (node is! UniversalName) throw NodeTypeException(node.id, 'a named node');
+    if (node is! UniversalName) {
+      throw NodeTypeException(node.id, 'a named node');
+    }
     return (node as UniversalName).objectName;
   }
 
@@ -77,7 +79,8 @@ class BinderActions {
   }) {
     final Folder parent = _writableFolder(root, parentId);
     final Document document = Document(
-      details: NodeDetails.byId(level: level, id: id ?? NodeDetails.createNodeId()),
+      details:
+          NodeDetails.byId(level: level, id: id ?? NodeDetails.createNodeId()),
       name: name,
       attachedSection: section ?? NovidentDefaults.kStructuredBasedSectionId,
     );

@@ -83,8 +83,8 @@ void main() {
 
     test('jsonEncode/jsonDecode roundtrip preserves data', () {
       final metadata = Metadata.fromJson(_fullMetadata());
-      final decoded = jsonDecode(jsonEncode(metadata.toJson()))
-          as Map<String, dynamic>;
+      final decoded =
+          jsonDecode(jsonEncode(metadata.toJson())) as Map<String, dynamic>;
 
       expect(Metadata.fromJson(decoded), metadata);
     });

@@ -57,7 +57,6 @@ void main() {
 
     final layoutManager = map['layout_manager'] as Map<String, dynamic>;
     expect(layoutManager.containsKey('title_section'), isTrue);
-    expect(layoutManager.containsKey('metadata_section'), isTrue);
     expect(layoutManager.containsKey('synopsis_section'), isTrue);
     expect(layoutManager.containsKey('notes_section'), isTrue);
     expect(layoutManager.containsKey('text_section'), isTrue);
@@ -68,7 +67,8 @@ void main() {
     expect(separatorOptions.containsKey('between'), isTrue);
     expect(separatorOptions.containsKey('after_section'), isTrue);
     expect(separatorOptions.containsKey('override_separator_after'), isTrue);
-    expect(separatorOptions.containsKey('ignore_blank_lines_with_styles'), isTrue);
+    expect(
+        separatorOptions.containsKey('ignore_blank_lines_with_styles'), isTrue);
 
     final settings = map['settings'] as Map<String, dynamic>;
     expect(settings.containsKey('apply_changes'), isTrue);

@@ -1,11 +1,13 @@
 import 'package:novident_document_format/novident_document_format.dart';
+import 'package:novident_editor_document/novident_editor_document.dart' as nov;
 import 'package:novident_editor_styles/novident_editor_styles.dart';
+import 'package:novident_project_manager/src/project/synopsis/synopsis.dart';
 
 import '../format/replacement_values.dart';
 import '../project/author/author.dart';
 import '../project/processor_metadata.dart';
 
-abstract class Context<T> {
+abstract class Context {
   List<DocumentResource> resources;
   Map<String, int> documentVariables;
   bool shouldWritePageOptions;
@@ -33,11 +35,11 @@ abstract class Context<T> {
   Author author;
   ProjectMetadata metadata;
 
+  Future<Map<String, dynamic>?> getNodeMetadata(String id) async => null;
   NovidentStyleDefinition? getStyle(String id);
-  T getNodeContent(String id);
-  R getNodeComment<R>(String id);
-  R getNodeSynopsis<R>(String id);
-  R getNodeNotes<R>(String id);
+  Future<nov.Document?> getNodeContent(String id);
+  Future<Synopsis?> getNodeSynopsis(String id);
+  Future<String?> getNodeNotes(String id);
 
   /// this is a way that must be defined when the Context is created
   ///
@@ -68,5 +70,4 @@ abstract class Context<T> {
     required this.metadata,
     required this.jumpToDocument,
   });
-
 }

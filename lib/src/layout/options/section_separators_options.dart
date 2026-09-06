@@ -97,8 +97,7 @@ class SeparatorOptions {
     }
 
     return SeparatorOptions(
-      separateBeforeSection:
-          read('before', defaults.separateBeforeSection),
+      separateBeforeSection: read('before', defaults.separateBeforeSection),
       separatorBetweenSection:
           read('between', defaults.separatorBetweenSection),
       separatorAfterSection:

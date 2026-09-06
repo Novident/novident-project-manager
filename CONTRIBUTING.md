@@ -23,7 +23,6 @@ starting.
 1. **Pick a scope** and keep it small; prefer one concern per PR.
 2. Follow the file/naming rules and code-quality expectations in `AGENTS.md`:
    - English everywhere (code, comments, docs, commits);
-   - snake_case JSON keys mirroring Dart fields; tolerant `fromJson`;
    - no direct `NodeContainer.children` mutation; read node state through
      mixins;
    - `Binder*`/`Node*`/domain prefixes per the taxonomy.

@@ -39,6 +39,7 @@ required_files:
 # Optional files. Missing is a warning only.
 optional_files:
   - .gitignore
+  - files/styles.json 
 
 # Collections: directories with one file per item, keyed by the given field.
 # `key` identifies the item's id field (used for cross-references).

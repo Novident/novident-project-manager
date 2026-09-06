@@ -25,7 +25,8 @@ void main() {
       expect(decoded.sections.length, 3);
       expect(decoded.sections[1].id, 'chapter');
       expect(decoded.sections[1].name, 'chapter');
-      expect(decoded.config.outlineFolder, <String, String>{'0': 'chapter', '1': 'scene'});
+      expect(decoded.config.outlineFolder,
+          <String, String>{'0': 'chapter', '1': 'scene'});
       expect(decoded.config.outlineDocs, <String, String>{'0': 'scene'});
     });
 

@@ -14,9 +14,6 @@ class LayoutSectionManager extends Equatable {
   /// Configuration of the title section.
   final LayoutSection titleSection;
 
-  /// Configuration of the metadata section.
-  final LayoutSection metadataSection;
-
   /// Configuration of the synopsis section.
   final LayoutSection synopsisSection;
 
@@ -29,7 +26,6 @@ class LayoutSectionManager extends Equatable {
   /// Builds the manager with one section configuration per part.
   const LayoutSectionManager({
     required this.titleSection,
-    required this.metadataSection,
     required this.synopsisSection,
     required this.notesSection,
     required this.textSection,
@@ -39,7 +35,6 @@ class LayoutSectionManager extends Equatable {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'title_section': titleSection.toMap(),
-      'metadata_section': metadataSection.toMap(),
       'synopsis_section': synopsisSection.toMap(),
       'notes_section': notesSection.toMap(),
       'text_section': textSection.toMap(),
@@ -65,7 +60,6 @@ class LayoutSectionManager extends Equatable {
   factory LayoutSectionManager.fromMap(Map<String, dynamic> map) {
     return LayoutSectionManager(
       titleSection: _read('title_section', map),
-      metadataSection: _read('metadata_section', map),
       synopsisSection: _read('synopsis_section', map),
       notesSection: _read('notes_section', map),
       textSection: _read('text_section', map),
@@ -82,14 +76,12 @@ class LayoutSectionManager extends Equatable {
   /// Returns a copy with the given sections replaced.
   LayoutSectionManager copyWith({
     LayoutSection? titleSection,
-    LayoutSection? metadataSection,
     LayoutSection? synopsisSection,
     LayoutSection? notesSection,
     LayoutSection? textSection,
   }) {
     return LayoutSectionManager(
       titleSection: titleSection ?? this.titleSection,
-      metadataSection: metadataSection ?? this.metadataSection,
       synopsisSection: synopsisSection ?? this.synopsisSection,
       notesSection: notesSection ?? this.notesSection,
       textSection: textSection ?? this.textSection,
@@ -100,7 +92,6 @@ class LayoutSectionManager extends Equatable {
   List<Object> get props {
     return <Object>[
       titleSection,
-      metadataSection,
       synopsisSection,
       notesSection,
       textSection,

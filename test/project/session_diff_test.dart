@@ -8,12 +8,15 @@ Session _session(
   int characters, {
   Map<String, (int, int)> files = const {},
 }) {
-  final fileCounters = files.map((String id, (int, int) counts) =>
-      MapEntry<String, SessionFileCounters>(
-        id,
-        SessionFileCounters(originalWords: 0, originalCharacters: 0,
-            words: counts.$1, characters: counts.$2),
-      ));
+  final fileCounters = files.map(
+      (String id, (int, int) counts) => MapEntry<String, SessionFileCounters>(
+            id,
+            SessionFileCounters(
+                originalWords: 0,
+                originalCharacters: 0,
+                words: counts.$1,
+                characters: counts.$2),
+          ));
   return Session(
     schemaVersion: 1,
     sessionId: 's-$date',

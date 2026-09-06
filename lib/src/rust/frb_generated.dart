@@ -69,7 +69,7 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
   String get codegenVersion => '2.12.0';
 
   @override
-  int get rustContentHash => 1623801953;
+  int get rustContentHash => -506130878;
 
   static const kDefaultExternalLibraryLoaderConfig =
       ExternalLibraryLoaderConfig(
@@ -101,6 +101,9 @@ abstract class RustLibApi extends BaseApi {
 
   Future<void> crateApiManagerProjectManagerDeleteSession(
       {required ProjectManager that, required String date});
+
+  Future<void> crateApiManagerProjectManagerDeleteStyle(
+      {required ProjectManager that});
 
   Future<String> crateApiManagerProjectManagerDiffDelta(
       {required ProjectManager that,
@@ -276,6 +279,9 @@ abstract class RustLibApi extends BaseApi {
   Future<String?> crateApiManagerProjectManagerReadSession(
       {required ProjectManager that, required String date});
 
+  Future<String?> crateApiManagerProjectManagerReadStyles(
+      {required ProjectManager that});
+
   Future<String?> crateApiManagerProjectManagerReadTarget(
       {required ProjectManager that});
 
@@ -355,6 +361,9 @@ abstract class RustLibApi extends BaseApi {
       required String date,
       required String json});
 
+  Future<void> crateApiManagerProjectManagerWriteStyles(
+      {required ProjectManager that, required String json});
+
   Future<void> crateApiManagerProjectManagerWriteTarget(
       {required ProjectManager that, required String json});
 
@@ -405,8 +414,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   TaskConstMeta get kCrateApiManagerProjectManagerCloseConstMeta =>
       const TaskConstMeta(
-        debugName: "ProjectManager_close",
-        argNames: ["that"],
+        debugName: 'ProjectManager_close',
+        argNames: ['that'],
       );
 
   @override
@@ -433,8 +442,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   TaskConstMeta get kCrateApiManagerProjectManagerDeleteExportConstMeta =>
       const TaskConstMeta(
-        debugName: "ProjectManager_delete_export",
-        argNames: ["that", "id"],
+        debugName: 'ProjectManager_delete_export',
+        argNames: ['that', 'id'],
       );
 
   @override
@@ -461,8 +470,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   TaskConstMeta get kCrateApiManagerProjectManagerDeleteFileConstMeta =>
       const TaskConstMeta(
-        debugName: "ProjectManager_delete_file",
-        argNames: ["that", "relativePath"],
+        debugName: 'ProjectManager_delete_file',
+        argNames: ['that', 'relativePath'],
       );
 
   @override
@@ -489,8 +498,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   TaskConstMeta get kCrateApiManagerProjectManagerDeleteFormatConstMeta =>
       const TaskConstMeta(
-        debugName: "ProjectManager_delete_format",
-        argNames: ["that", "id"],
+        debugName: 'ProjectManager_delete_format',
+        argNames: ['that', 'id'],
       );
 
   @override
@@ -517,8 +526,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   TaskConstMeta get kCrateApiManagerProjectManagerDeleteLayoutConstMeta =>
       const TaskConstMeta(
-        debugName: "ProjectManager_delete_layout",
-        argNames: ["that", "id"],
+        debugName: 'ProjectManager_delete_layout',
+        argNames: ['that', 'id'],
       );
 
   @override
@@ -545,8 +554,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   TaskConstMeta get kCrateApiManagerProjectManagerDeleteNodeFilesConstMeta =>
       const TaskConstMeta(
-        debugName: "ProjectManager_delete_node_files",
-        argNames: ["that", "id"],
+        debugName: 'ProjectManager_delete_node_files',
+        argNames: ['that', 'id'],
       );
 
   @override
@@ -573,8 +582,35 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   TaskConstMeta get kCrateApiManagerProjectManagerDeleteSessionConstMeta =>
       const TaskConstMeta(
-        debugName: "ProjectManager_delete_session",
-        argNames: ["that", "date"],
+        debugName: 'ProjectManager_delete_session',
+        argNames: ['that', 'date'],
+      );
+
+  @override
+  Future<void> crateApiManagerProjectManagerDeleteStyle(
+      {required ProjectManager that}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProjectManager(
+            that, serializer);
+        pdeCallFfi(generalizedFrbRustBinding, serializer,
+            funcId: 8, port: port_);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: sse_decode_project_error,
+      ),
+      constMeta: kCrateApiManagerProjectManagerDeleteStyleConstMeta,
+      argValues: [that],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta get kCrateApiManagerProjectManagerDeleteStyleConstMeta =>
+      const TaskConstMeta(
+        debugName: 'ProjectManager_delete_style',
+        argNames: ['that'],
       );
 
   @override
@@ -590,7 +626,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_String(beforeJson, serializer);
         sse_encode_String(afterJson, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 8, port: port_);
+            funcId: 9, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_String,
@@ -604,8 +640,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   TaskConstMeta get kCrateApiManagerProjectManagerDiffDeltaConstMeta =>
       const TaskConstMeta(
-        debugName: "ProjectManager_diff_delta",
-        argNames: ["that", "beforeJson", "afterJson"],
+        debugName: 'ProjectManager_diff_delta',
+        argNames: ['that', 'beforeJson', 'afterJson'],
       );
 
   @override
@@ -617,7 +653,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProjectManager(
             that, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 9, port: port_);
+            funcId: 10, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_String,
@@ -631,8 +667,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   TaskConstMeta get kCrateApiManagerProjectManagerGitAbortMergeConstMeta =>
       const TaskConstMeta(
-        debugName: "ProjectManager_git_abort_merge",
-        argNames: ["that"],
+        debugName: 'ProjectManager_git_abort_merge',
+        argNames: ['that'],
       );
 
   @override
@@ -645,7 +681,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             that, serializer);
         sse_encode_String(name, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 10, port: port_);
+            funcId: 11, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_String,
@@ -659,8 +695,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   TaskConstMeta get kCrateApiManagerProjectManagerGitBranchCreateConstMeta =>
       const TaskConstMeta(
-        debugName: "ProjectManager_git_branch_create",
-        argNames: ["that", "name"],
+        debugName: 'ProjectManager_git_branch_create',
+        argNames: ['that', 'name'],
       );
 
   @override
@@ -676,7 +712,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_String(name, serializer);
         sse_encode_String(commitOid, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 11, port: port_);
+            funcId: 12, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_String,
@@ -692,8 +728,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TaskConstMeta
       get kCrateApiManagerProjectManagerGitBranchCreateFromCommitConstMeta =>
           const TaskConstMeta(
-            debugName: "ProjectManager_git_branch_create_from_commit",
-            argNames: ["that", "name", "commitOid"],
+            debugName: 'ProjectManager_git_branch_create_from_commit',
+            argNames: ['that', 'name', 'commitOid'],
           );
 
   @override
@@ -709,7 +745,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_String(name, serializer);
         sse_encode_bool(force, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 12, port: port_);
+            funcId: 13, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_String,
@@ -723,40 +759,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   TaskConstMeta get kCrateApiManagerProjectManagerGitBranchDeleteConstMeta =>
       const TaskConstMeta(
-        debugName: "ProjectManager_git_branch_delete",
-        argNames: ["that", "name", "force"],
+        debugName: 'ProjectManager_git_branch_delete',
+        argNames: ['that', 'name', 'force'],
       );
 
   @override
   Future<String> crateApiManagerProjectManagerGitBranchMerge(
-      {required ProjectManager that, required String name}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProjectManager(
-            that, serializer);
-        sse_encode_String(name, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 13, port: port_);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_String,
-        decodeErrorData: sse_decode_project_error,
-      ),
-      constMeta: kCrateApiManagerProjectManagerGitBranchMergeConstMeta,
-      argValues: [that, name],
-      apiImpl: this,
-    ));
-  }
-
-  TaskConstMeta get kCrateApiManagerProjectManagerGitBranchMergeConstMeta =>
-      const TaskConstMeta(
-        debugName: "ProjectManager_git_branch_merge",
-        argNames: ["that", "name"],
-      );
-
-  @override
-  Future<String> crateApiManagerProjectManagerGitBranchSwitch(
       {required ProjectManager that, required String name}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
@@ -771,6 +779,34 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeSuccessData: sse_decode_String,
         decodeErrorData: sse_decode_project_error,
       ),
+      constMeta: kCrateApiManagerProjectManagerGitBranchMergeConstMeta,
+      argValues: [that, name],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta get kCrateApiManagerProjectManagerGitBranchMergeConstMeta =>
+      const TaskConstMeta(
+        debugName: 'ProjectManager_git_branch_merge',
+        argNames: ['that', 'name'],
+      );
+
+  @override
+  Future<String> crateApiManagerProjectManagerGitBranchSwitch(
+      {required ProjectManager that, required String name}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProjectManager(
+            that, serializer);
+        sse_encode_String(name, serializer);
+        pdeCallFfi(generalizedFrbRustBinding, serializer,
+            funcId: 15, port: port_);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_String,
+        decodeErrorData: sse_decode_project_error,
+      ),
       constMeta: kCrateApiManagerProjectManagerGitBranchSwitchConstMeta,
       argValues: [that, name],
       apiImpl: this,
@@ -779,8 +815,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   TaskConstMeta get kCrateApiManagerProjectManagerGitBranchSwitchConstMeta =>
       const TaskConstMeta(
-        debugName: "ProjectManager_git_branch_switch",
-        argNames: ["that", "name"],
+        debugName: 'ProjectManager_git_branch_switch',
+        argNames: ['that', 'name'],
       );
 
   @override
@@ -792,7 +828,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProjectManager(
             that, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 15, port: port_);
+            funcId: 16, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_String,
@@ -806,8 +842,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   TaskConstMeta get kCrateApiManagerProjectManagerGitBranchesConstMeta =>
       const TaskConstMeta(
-        debugName: "ProjectManager_git_branches",
-        argNames: ["that"],
+        debugName: 'ProjectManager_git_branches',
+        argNames: ['that'],
       );
 
   @override
@@ -820,7 +856,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             that, serializer);
         sse_encode_String(target, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 16, port: port_);
+            funcId: 17, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_String,
@@ -834,8 +870,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   TaskConstMeta get kCrateApiManagerProjectManagerGitCheckoutConstMeta =>
       const TaskConstMeta(
-        debugName: "ProjectManager_git_checkout",
-        argNames: ["that", "target"],
+        debugName: 'ProjectManager_git_checkout',
+        argNames: ['that', 'target'],
       );
 
   @override
@@ -851,7 +887,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_String(message, serializer);
         sse_encode_String(authorJson, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 17, port: port_);
+            funcId: 18, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_String,
@@ -865,39 +901,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   TaskConstMeta get kCrateApiManagerProjectManagerGitCommitConstMeta =>
       const TaskConstMeta(
-        debugName: "ProjectManager_git_commit",
-        argNames: ["that", "message", "authorJson"],
+        debugName: 'ProjectManager_git_commit',
+        argNames: ['that', 'message', 'authorJson'],
       );
 
   @override
   Future<String> crateApiManagerProjectManagerGitConflictDetect(
-      {required ProjectManager that}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProjectManager(
-            that, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 18, port: port_);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_String,
-        decodeErrorData: sse_decode_project_error,
-      ),
-      constMeta: kCrateApiManagerProjectManagerGitConflictDetectConstMeta,
-      argValues: [that],
-      apiImpl: this,
-    ));
-  }
-
-  TaskConstMeta get kCrateApiManagerProjectManagerGitConflictDetectConstMeta =>
-      const TaskConstMeta(
-        debugName: "ProjectManager_git_conflict_detect",
-        argNames: ["that"],
-      );
-
-  @override
-  Future<String> crateApiManagerProjectManagerGitConflictFinish(
       {required ProjectManager that}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
@@ -911,6 +920,33 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeSuccessData: sse_decode_String,
         decodeErrorData: sse_decode_project_error,
       ),
+      constMeta: kCrateApiManagerProjectManagerGitConflictDetectConstMeta,
+      argValues: [that],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta get kCrateApiManagerProjectManagerGitConflictDetectConstMeta =>
+      const TaskConstMeta(
+        debugName: 'ProjectManager_git_conflict_detect',
+        argNames: ['that'],
+      );
+
+  @override
+  Future<String> crateApiManagerProjectManagerGitConflictFinish(
+      {required ProjectManager that}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProjectManager(
+            that, serializer);
+        pdeCallFfi(generalizedFrbRustBinding, serializer,
+            funcId: 20, port: port_);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_String,
+        decodeErrorData: sse_decode_project_error,
+      ),
       constMeta: kCrateApiManagerProjectManagerGitConflictFinishConstMeta,
       argValues: [that],
       apiImpl: this,
@@ -919,8 +955,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   TaskConstMeta get kCrateApiManagerProjectManagerGitConflictFinishConstMeta =>
       const TaskConstMeta(
-        debugName: "ProjectManager_git_conflict_finish",
-        argNames: ["that"],
+        debugName: 'ProjectManager_git_conflict_finish',
+        argNames: ['that'],
       );
 
   @override
@@ -933,7 +969,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             that, serializer);
         sse_encode_String(resolutionJson, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 20, port: port_);
+            funcId: 21, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_String,
@@ -948,8 +984,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TaskConstMeta
       get kCrateApiManagerProjectManagerGitConflictResolveAllConstMeta =>
           const TaskConstMeta(
-            debugName: "ProjectManager_git_conflict_resolve_all",
-            argNames: ["that", "resolutionJson"],
+            debugName: 'ProjectManager_git_conflict_resolve_all',
+            argNames: ['that', 'resolutionJson'],
           );
 
   @override
@@ -961,7 +997,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProjectManager(
             that, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 21, port: port_);
+            funcId: 22, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_String,
@@ -975,8 +1011,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   TaskConstMeta get kCrateApiManagerProjectManagerGitCurrentBranchConstMeta =>
       const TaskConstMeta(
-        debugName: "ProjectManager_git_current_branch",
-        argNames: ["that"],
+        debugName: 'ProjectManager_git_current_branch',
+        argNames: ['that'],
       );
 
   @override
@@ -992,7 +1028,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_String(oldOid, serializer);
         sse_encode_String(newOid, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 22, port: port_);
+            funcId: 23, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_String,
@@ -1007,8 +1043,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TaskConstMeta
       get kCrateApiManagerProjectManagerGitDiffBetweenCommitsConstMeta =>
           const TaskConstMeta(
-            debugName: "ProjectManager_git_diff_between_commits",
-            argNames: ["that", "oldOid", "newOid"],
+            debugName: 'ProjectManager_git_diff_between_commits',
+            argNames: ['that', 'oldOid', 'newOid'],
           );
 
   @override
@@ -1024,7 +1060,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_String(oldUuid, serializer);
         sse_encode_String(newUuid, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 23, port: port_);
+            funcId: 24, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_String,
@@ -1038,8 +1074,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   TaskConstMeta get kCrateApiManagerProjectManagerGitDiffDocumentsConstMeta =>
       const TaskConstMeta(
-        debugName: "ProjectManager_git_diff_documents",
-        argNames: ["that", "oldUuid", "newUuid"],
+        debugName: 'ProjectManager_git_diff_documents',
+        argNames: ['that', 'oldUuid', 'newUuid'],
       );
 
   @override
@@ -1055,7 +1091,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_String(oldJson, serializer);
         sse_encode_String(newJson, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 24, port: port_);
+            funcId: 25, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_String,
@@ -1070,8 +1106,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TaskConstMeta
       get kCrateApiManagerProjectManagerGitDiffJsonDocumentsConstMeta =>
           const TaskConstMeta(
-            debugName: "ProjectManager_git_diff_json_documents",
-            argNames: ["that", "oldJson", "newJson"],
+            debugName: 'ProjectManager_git_diff_json_documents',
+            argNames: ['that', 'oldJson', 'newJson'],
           );
 
   @override
@@ -1087,7 +1123,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_String(remoteName, serializer);
         sse_encode_String(credentialsJson, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 25, port: port_);
+            funcId: 26, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_String,
@@ -1101,8 +1137,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   TaskConstMeta get kCrateApiManagerProjectManagerGitFetchConstMeta =>
       const TaskConstMeta(
-        debugName: "ProjectManager_git_fetch",
-        argNames: ["that", "remoteName", "credentialsJson"],
+        debugName: 'ProjectManager_git_fetch',
+        argNames: ['that', 'remoteName', 'credentialsJson'],
       );
 
   @override
@@ -1114,7 +1150,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProjectManager(
             that, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 26, port: port_);
+            funcId: 27, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_String,
@@ -1128,8 +1164,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   TaskConstMeta get kCrateApiManagerProjectManagerGitInitConstMeta =>
       const TaskConstMeta(
-        debugName: "ProjectManager_git_init",
-        argNames: ["that"],
+        debugName: 'ProjectManager_git_init',
+        argNames: ['that'],
       );
 
   @override
@@ -1142,7 +1178,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             that, serializer);
         sse_encode_String(branch, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 27, port: port_);
+            funcId: 28, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_String,
@@ -1156,8 +1192,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   TaskConstMeta get kCrateApiManagerProjectManagerGitLastCommitDiffConstMeta =>
       const TaskConstMeta(
-        debugName: "ProjectManager_git_last_commit_diff",
-        argNames: ["that", "branch"],
+        debugName: 'ProjectManager_git_last_commit_diff',
+        argNames: ['that', 'branch'],
       );
 
   @override
@@ -1170,7 +1206,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             that, serializer);
         sse_encode_i_32(maxCount, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 28, port: port_);
+            funcId: 29, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_String,
@@ -1184,43 +1220,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   TaskConstMeta get kCrateApiManagerProjectManagerGitLogConstMeta =>
       const TaskConstMeta(
-        debugName: "ProjectManager_git_log",
-        argNames: ["that", "maxCount"],
+        debugName: 'ProjectManager_git_log',
+        argNames: ['that', 'maxCount'],
       );
 
   @override
   Future<String> crateApiManagerProjectManagerGitPull(
-      {required ProjectManager that,
-      required String branch,
-      required String credentialsJson}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProjectManager(
-            that, serializer);
-        sse_encode_String(branch, serializer);
-        sse_encode_String(credentialsJson, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 29, port: port_);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_String,
-        decodeErrorData: sse_decode_project_error,
-      ),
-      constMeta: kCrateApiManagerProjectManagerGitPullConstMeta,
-      argValues: [that, branch, credentialsJson],
-      apiImpl: this,
-    ));
-  }
-
-  TaskConstMeta get kCrateApiManagerProjectManagerGitPullConstMeta =>
-      const TaskConstMeta(
-        debugName: "ProjectManager_git_pull",
-        argNames: ["that", "branch", "credentialsJson"],
-      );
-
-  @override
-  Future<String> crateApiManagerProjectManagerGitPush(
       {required ProjectManager that,
       required String branch,
       required String credentialsJson}) {
@@ -1238,6 +1243,37 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeSuccessData: sse_decode_String,
         decodeErrorData: sse_decode_project_error,
       ),
+      constMeta: kCrateApiManagerProjectManagerGitPullConstMeta,
+      argValues: [that, branch, credentialsJson],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta get kCrateApiManagerProjectManagerGitPullConstMeta =>
+      const TaskConstMeta(
+        debugName: 'ProjectManager_git_pull',
+        argNames: ['that', 'branch', 'credentialsJson'],
+      );
+
+  @override
+  Future<String> crateApiManagerProjectManagerGitPush(
+      {required ProjectManager that,
+      required String branch,
+      required String credentialsJson}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProjectManager(
+            that, serializer);
+        sse_encode_String(branch, serializer);
+        sse_encode_String(credentialsJson, serializer);
+        pdeCallFfi(generalizedFrbRustBinding, serializer,
+            funcId: 31, port: port_);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_String,
+        decodeErrorData: sse_decode_project_error,
+      ),
       constMeta: kCrateApiManagerProjectManagerGitPushConstMeta,
       argValues: [that, branch, credentialsJson],
       apiImpl: this,
@@ -1246,8 +1282,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   TaskConstMeta get kCrateApiManagerProjectManagerGitPushConstMeta =>
       const TaskConstMeta(
-        debugName: "ProjectManager_git_push",
-        argNames: ["that", "branch", "credentialsJson"],
+        debugName: 'ProjectManager_git_push',
+        argNames: ['that', 'branch', 'credentialsJson'],
       );
 
   @override
@@ -1260,7 +1296,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             that, serializer);
         sse_encode_String(name, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 31, port: port_);
+            funcId: 32, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_String,
@@ -1274,8 +1310,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   TaskConstMeta get kCrateApiManagerProjectManagerGitRemoteUrlConstMeta =>
       const TaskConstMeta(
-        debugName: "ProjectManager_git_remote_url",
-        argNames: ["that", "name"],
+        debugName: 'ProjectManager_git_remote_url',
+        argNames: ['that', 'name'],
       );
 
   @override
@@ -1287,7 +1323,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProjectManager(
             that, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 32, port: port_);
+            funcId: 33, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_String,
@@ -1301,8 +1337,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   TaskConstMeta get kCrateApiManagerProjectManagerGitRemotesConstMeta =>
       const TaskConstMeta(
-        debugName: "ProjectManager_git_remotes",
-        argNames: ["that"],
+        debugName: 'ProjectManager_git_remotes',
+        argNames: ['that'],
       );
 
   @override
@@ -1318,7 +1354,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_String(path, serializer);
         sse_encode_String(resolutionJson, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 33, port: port_);
+            funcId: 34, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_String,
@@ -1332,8 +1368,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   TaskConstMeta get kCrateApiManagerProjectManagerGitResolveConflictConstMeta =>
       const TaskConstMeta(
-        debugName: "ProjectManager_git_resolve_conflict",
-        argNames: ["that", "path", "resolutionJson"],
+        debugName: 'ProjectManager_git_resolve_conflict',
+        argNames: ['that', 'path', 'resolutionJson'],
       );
 
   @override
@@ -1349,7 +1385,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_String(name, serializer);
         sse_encode_String(url, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 34, port: port_);
+            funcId: 35, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_String,
@@ -1363,8 +1399,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   TaskConstMeta get kCrateApiManagerProjectManagerGitSetRemoteConstMeta =>
       const TaskConstMeta(
-        debugName: "ProjectManager_git_set_remote",
-        argNames: ["that", "name", "url"],
+        debugName: 'ProjectManager_git_set_remote',
+        argNames: ['that', 'name', 'url'],
       );
 
   @override
@@ -1376,7 +1412,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProjectManager(
             that, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 35, port: port_);
+            funcId: 36, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_String,
@@ -1390,8 +1426,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   TaskConstMeta get kCrateApiManagerProjectManagerGitStatusConstMeta =>
       const TaskConstMeta(
-        debugName: "ProjectManager_git_status",
-        argNames: ["that"],
+        debugName: 'ProjectManager_git_status',
+        argNames: ['that'],
       );
 
   @override
@@ -1403,7 +1439,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProjectManager(
             that, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 36, port: port_);
+            funcId: 37, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_list_String,
@@ -1417,8 +1453,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   TaskConstMeta get kCrateApiManagerProjectManagerListExportsConstMeta =>
       const TaskConstMeta(
-        debugName: "ProjectManager_list_exports",
-        argNames: ["that"],
+        debugName: 'ProjectManager_list_exports',
+        argNames: ['that'],
       );
 
   @override
@@ -1431,7 +1467,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             that, serializer);
         sse_encode_String(dir, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 37, port: port_);
+            funcId: 38, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_list_String,
@@ -1445,39 +1481,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   TaskConstMeta get kCrateApiManagerProjectManagerListFilesConstMeta =>
       const TaskConstMeta(
-        debugName: "ProjectManager_list_files",
-        argNames: ["that", "dir"],
+        debugName: 'ProjectManager_list_files',
+        argNames: ['that', 'dir'],
       );
 
   @override
   Future<List<String>> crateApiManagerProjectManagerListFormats(
-      {required ProjectManager that}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProjectManager(
-            that, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 38, port: port_);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_list_String,
-        decodeErrorData: null,
-      ),
-      constMeta: kCrateApiManagerProjectManagerListFormatsConstMeta,
-      argValues: [that],
-      apiImpl: this,
-    ));
-  }
-
-  TaskConstMeta get kCrateApiManagerProjectManagerListFormatsConstMeta =>
-      const TaskConstMeta(
-        debugName: "ProjectManager_list_formats",
-        argNames: ["that"],
-      );
-
-  @override
-  Future<List<String>> crateApiManagerProjectManagerListLayouts(
       {required ProjectManager that}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
@@ -1491,20 +1500,20 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeSuccessData: sse_decode_list_String,
         decodeErrorData: null,
       ),
-      constMeta: kCrateApiManagerProjectManagerListLayoutsConstMeta,
+      constMeta: kCrateApiManagerProjectManagerListFormatsConstMeta,
       argValues: [that],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kCrateApiManagerProjectManagerListLayoutsConstMeta =>
+  TaskConstMeta get kCrateApiManagerProjectManagerListFormatsConstMeta =>
       const TaskConstMeta(
-        debugName: "ProjectManager_list_layouts",
-        argNames: ["that"],
+        debugName: 'ProjectManager_list_formats',
+        argNames: ['that'],
       );
 
   @override
-  Future<List<String>> crateApiManagerProjectManagerListSessions(
+  Future<List<String>> crateApiManagerProjectManagerListLayouts(
       {required ProjectManager that}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
@@ -1518,6 +1527,33 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeSuccessData: sse_decode_list_String,
         decodeErrorData: null,
       ),
+      constMeta: kCrateApiManagerProjectManagerListLayoutsConstMeta,
+      argValues: [that],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta get kCrateApiManagerProjectManagerListLayoutsConstMeta =>
+      const TaskConstMeta(
+        debugName: 'ProjectManager_list_layouts',
+        argNames: ['that'],
+      );
+
+  @override
+  Future<List<String>> crateApiManagerProjectManagerListSessions(
+      {required ProjectManager that}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProjectManager(
+            that, serializer);
+        pdeCallFfi(generalizedFrbRustBinding, serializer,
+            funcId: 41, port: port_);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_list_String,
+        decodeErrorData: null,
+      ),
       constMeta: kCrateApiManagerProjectManagerListSessionsConstMeta,
       argValues: [that],
       apiImpl: this,
@@ -1526,8 +1562,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   TaskConstMeta get kCrateApiManagerProjectManagerListSessionsConstMeta =>
       const TaskConstMeta(
-        debugName: "ProjectManager_list_sessions",
-        argNames: ["that"],
+        debugName: 'ProjectManager_list_sessions',
+        argNames: ['that'],
       );
 
   @override
@@ -1539,7 +1575,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProjectManager(
             that, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 41, port: port_);
+            funcId: 42, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_String,
@@ -1553,39 +1589,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   TaskConstMeta get kCrateApiManagerProjectManagerPathConstMeta =>
       const TaskConstMeta(
-        debugName: "ProjectManager_path",
-        argNames: ["that"],
+        debugName: 'ProjectManager_path',
+        argNames: ['that'],
       );
 
   @override
   Future<String?> crateApiManagerProjectManagerReadBackup(
-      {required ProjectManager that}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProjectManager(
-            that, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 42, port: port_);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_opt_String,
-        decodeErrorData: null,
-      ),
-      constMeta: kCrateApiManagerProjectManagerReadBackupConstMeta,
-      argValues: [that],
-      apiImpl: this,
-    ));
-  }
-
-  TaskConstMeta get kCrateApiManagerProjectManagerReadBackupConstMeta =>
-      const TaskConstMeta(
-        debugName: "ProjectManager_read_backup",
-        argNames: ["that"],
-      );
-
-  @override
-  Future<String?> crateApiManagerProjectManagerReadBinder(
       {required ProjectManager that}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
@@ -1599,20 +1608,20 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeSuccessData: sse_decode_opt_String,
         decodeErrorData: null,
       ),
-      constMeta: kCrateApiManagerProjectManagerReadBinderConstMeta,
+      constMeta: kCrateApiManagerProjectManagerReadBackupConstMeta,
       argValues: [that],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kCrateApiManagerProjectManagerReadBinderConstMeta =>
+  TaskConstMeta get kCrateApiManagerProjectManagerReadBackupConstMeta =>
       const TaskConstMeta(
-        debugName: "ProjectManager_read_binder",
-        argNames: ["that"],
+        debugName: 'ProjectManager_read_backup',
+        argNames: ['that'],
       );
 
   @override
-  Future<String?> crateApiManagerProjectManagerReadCorkboard(
+  Future<String?> crateApiManagerProjectManagerReadBinder(
       {required ProjectManager that}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
@@ -1626,6 +1635,33 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeSuccessData: sse_decode_opt_String,
         decodeErrorData: null,
       ),
+      constMeta: kCrateApiManagerProjectManagerReadBinderConstMeta,
+      argValues: [that],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta get kCrateApiManagerProjectManagerReadBinderConstMeta =>
+      const TaskConstMeta(
+        debugName: 'ProjectManager_read_binder',
+        argNames: ['that'],
+      );
+
+  @override
+  Future<String?> crateApiManagerProjectManagerReadCorkboard(
+      {required ProjectManager that}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProjectManager(
+            that, serializer);
+        pdeCallFfi(generalizedFrbRustBinding, serializer,
+            funcId: 45, port: port_);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_opt_String,
+        decodeErrorData: null,
+      ),
       constMeta: kCrateApiManagerProjectManagerReadCorkboardConstMeta,
       argValues: [that],
       apiImpl: this,
@@ -1634,8 +1670,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   TaskConstMeta get kCrateApiManagerProjectManagerReadCorkboardConstMeta =>
       const TaskConstMeta(
-        debugName: "ProjectManager_read_corkboard",
-        argNames: ["that"],
+        debugName: 'ProjectManager_read_corkboard',
+        argNames: ['that'],
       );
 
   @override
@@ -1648,7 +1684,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             that, serializer);
         sse_encode_String(id, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 45, port: port_);
+            funcId: 46, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_opt_String,
@@ -1662,8 +1698,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   TaskConstMeta get kCrateApiManagerProjectManagerReadExportConstMeta =>
       const TaskConstMeta(
-        debugName: "ProjectManager_read_export",
-        argNames: ["that", "id"],
+        debugName: 'ProjectManager_read_export',
+        argNames: ['that', 'id'],
       );
 
   @override
@@ -1676,7 +1712,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             that, serializer);
         sse_encode_String(relativePath, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 46, port: port_);
+            funcId: 47, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_opt_String,
@@ -1690,8 +1726,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   TaskConstMeta get kCrateApiManagerProjectManagerReadFileConstMeta =>
       const TaskConstMeta(
-        debugName: "ProjectManager_read_file",
-        argNames: ["that", "relativePath"],
+        debugName: 'ProjectManager_read_file',
+        argNames: ['that', 'relativePath'],
       );
 
   @override
@@ -1704,7 +1740,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             that, serializer);
         sse_encode_String(id, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 47, port: port_);
+            funcId: 48, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_opt_String,
@@ -1718,8 +1754,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   TaskConstMeta get kCrateApiManagerProjectManagerReadFormatConstMeta =>
       const TaskConstMeta(
-        debugName: "ProjectManager_read_format",
-        argNames: ["that", "id"],
+        debugName: 'ProjectManager_read_format',
+        argNames: ['that', 'id'],
       );
 
   @override
@@ -1731,7 +1767,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProjectManager(
             that, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 48, port: port_);
+            funcId: 49, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_opt_String,
@@ -1745,8 +1781,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   TaskConstMeta get kCrateApiManagerProjectManagerReadIconConstMeta =>
       const TaskConstMeta(
-        debugName: "ProjectManager_read_icon",
-        argNames: ["that"],
+        debugName: 'ProjectManager_read_icon',
+        argNames: ['that'],
       );
 
   @override
@@ -1759,7 +1795,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             that, serializer);
         sse_encode_String(id, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 49, port: port_);
+            funcId: 50, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_opt_String,
@@ -1773,8 +1809,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   TaskConstMeta get kCrateApiManagerProjectManagerReadLayoutConstMeta =>
       const TaskConstMeta(
-        debugName: "ProjectManager_read_layout",
-        argNames: ["that", "id"],
+        debugName: 'ProjectManager_read_layout',
+        argNames: ['that', 'id'],
       );
 
   @override
@@ -1786,7 +1822,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProjectManager(
             that, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 50, port: port_);
+            funcId: 51, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_opt_String,
@@ -1800,40 +1836,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   TaskConstMeta get kCrateApiManagerProjectManagerReadMetadataConstMeta =>
       const TaskConstMeta(
-        debugName: "ProjectManager_read_metadata",
-        argNames: ["that"],
+        debugName: 'ProjectManager_read_metadata',
+        argNames: ['that'],
       );
 
   @override
   Future<String?> crateApiManagerProjectManagerReadNodeComments(
-      {required ProjectManager that, required String id}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProjectManager(
-            that, serializer);
-        sse_encode_String(id, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 51, port: port_);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_opt_String,
-        decodeErrorData: sse_decode_project_error,
-      ),
-      constMeta: kCrateApiManagerProjectManagerReadNodeCommentsConstMeta,
-      argValues: [that, id],
-      apiImpl: this,
-    ));
-  }
-
-  TaskConstMeta get kCrateApiManagerProjectManagerReadNodeCommentsConstMeta =>
-      const TaskConstMeta(
-        debugName: "ProjectManager_read_node_comments",
-        argNames: ["that", "id"],
-      );
-
-  @override
-  Future<String?> crateApiManagerProjectManagerReadNodeContent(
       {required ProjectManager that, required String id}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
@@ -1848,20 +1856,20 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeSuccessData: sse_decode_opt_String,
         decodeErrorData: sse_decode_project_error,
       ),
-      constMeta: kCrateApiManagerProjectManagerReadNodeContentConstMeta,
+      constMeta: kCrateApiManagerProjectManagerReadNodeCommentsConstMeta,
       argValues: [that, id],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kCrateApiManagerProjectManagerReadNodeContentConstMeta =>
+  TaskConstMeta get kCrateApiManagerProjectManagerReadNodeCommentsConstMeta =>
       const TaskConstMeta(
-        debugName: "ProjectManager_read_node_content",
-        argNames: ["that", "id"],
+        debugName: 'ProjectManager_read_node_comments',
+        argNames: ['that', 'id'],
       );
 
   @override
-  Future<String?> crateApiManagerProjectManagerReadNodeNotes(
+  Future<String?> crateApiManagerProjectManagerReadNodeContent(
       {required ProjectManager that, required String id}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
@@ -1876,20 +1884,20 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeSuccessData: sse_decode_opt_String,
         decodeErrorData: sse_decode_project_error,
       ),
-      constMeta: kCrateApiManagerProjectManagerReadNodeNotesConstMeta,
+      constMeta: kCrateApiManagerProjectManagerReadNodeContentConstMeta,
       argValues: [that, id],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kCrateApiManagerProjectManagerReadNodeNotesConstMeta =>
+  TaskConstMeta get kCrateApiManagerProjectManagerReadNodeContentConstMeta =>
       const TaskConstMeta(
-        debugName: "ProjectManager_read_node_notes",
-        argNames: ["that", "id"],
+        debugName: 'ProjectManager_read_node_content',
+        argNames: ['that', 'id'],
       );
 
   @override
-  Future<String?> crateApiManagerProjectManagerReadNodeSynopsis(
+  Future<String?> crateApiManagerProjectManagerReadNodeNotes(
       {required ProjectManager that, required String id}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
@@ -1904,6 +1912,34 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeSuccessData: sse_decode_opt_String,
         decodeErrorData: sse_decode_project_error,
       ),
+      constMeta: kCrateApiManagerProjectManagerReadNodeNotesConstMeta,
+      argValues: [that, id],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta get kCrateApiManagerProjectManagerReadNodeNotesConstMeta =>
+      const TaskConstMeta(
+        debugName: 'ProjectManager_read_node_notes',
+        argNames: ['that', 'id'],
+      );
+
+  @override
+  Future<String?> crateApiManagerProjectManagerReadNodeSynopsis(
+      {required ProjectManager that, required String id}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProjectManager(
+            that, serializer);
+        sse_encode_String(id, serializer);
+        pdeCallFfi(generalizedFrbRustBinding, serializer,
+            funcId: 55, port: port_);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_opt_String,
+        decodeErrorData: sse_decode_project_error,
+      ),
       constMeta: kCrateApiManagerProjectManagerReadNodeSynopsisConstMeta,
       argValues: [that, id],
       apiImpl: this,
@@ -1912,39 +1948,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   TaskConstMeta get kCrateApiManagerProjectManagerReadNodeSynopsisConstMeta =>
       const TaskConstMeta(
-        debugName: "ProjectManager_read_node_synopsis",
-        argNames: ["that", "id"],
+        debugName: 'ProjectManager_read_node_synopsis',
+        argNames: ['that', 'id'],
       );
 
   @override
   Future<String?> crateApiManagerProjectManagerReadSearch(
-      {required ProjectManager that}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProjectManager(
-            that, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 55, port: port_);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_opt_String,
-        decodeErrorData: null,
-      ),
-      constMeta: kCrateApiManagerProjectManagerReadSearchConstMeta,
-      argValues: [that],
-      apiImpl: this,
-    ));
-  }
-
-  TaskConstMeta get kCrateApiManagerProjectManagerReadSearchConstMeta =>
-      const TaskConstMeta(
-        debugName: "ProjectManager_read_search",
-        argNames: ["that"],
-      );
-
-  @override
-  Future<String?> crateApiManagerProjectManagerReadSections(
       {required ProjectManager that}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
@@ -1958,6 +1967,33 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeSuccessData: sse_decode_opt_String,
         decodeErrorData: null,
       ),
+      constMeta: kCrateApiManagerProjectManagerReadSearchConstMeta,
+      argValues: [that],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta get kCrateApiManagerProjectManagerReadSearchConstMeta =>
+      const TaskConstMeta(
+        debugName: 'ProjectManager_read_search',
+        argNames: ['that'],
+      );
+
+  @override
+  Future<String?> crateApiManagerProjectManagerReadSections(
+      {required ProjectManager that}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProjectManager(
+            that, serializer);
+        pdeCallFfi(generalizedFrbRustBinding, serializer,
+            funcId: 57, port: port_);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_opt_String,
+        decodeErrorData: null,
+      ),
       constMeta: kCrateApiManagerProjectManagerReadSectionsConstMeta,
       argValues: [that],
       apiImpl: this,
@@ -1966,8 +2002,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   TaskConstMeta get kCrateApiManagerProjectManagerReadSectionsConstMeta =>
       const TaskConstMeta(
-        debugName: "ProjectManager_read_sections",
-        argNames: ["that"],
+        debugName: 'ProjectManager_read_sections',
+        argNames: ['that'],
       );
 
   @override
@@ -1980,7 +2016,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             that, serializer);
         sse_encode_String(date, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 57, port: port_);
+            funcId: 58, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_opt_String,
@@ -1994,8 +2030,35 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   TaskConstMeta get kCrateApiManagerProjectManagerReadSessionConstMeta =>
       const TaskConstMeta(
-        debugName: "ProjectManager_read_session",
-        argNames: ["that", "date"],
+        debugName: 'ProjectManager_read_session',
+        argNames: ['that', 'date'],
+      );
+
+  @override
+  Future<String?> crateApiManagerProjectManagerReadStyles(
+      {required ProjectManager that}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProjectManager(
+            that, serializer);
+        pdeCallFfi(generalizedFrbRustBinding, serializer,
+            funcId: 59, port: port_);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_opt_String,
+        decodeErrorData: null,
+      ),
+      constMeta: kCrateApiManagerProjectManagerReadStylesConstMeta,
+      argValues: [that],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta get kCrateApiManagerProjectManagerReadStylesConstMeta =>
+      const TaskConstMeta(
+        debugName: 'ProjectManager_read_styles',
+        argNames: ['that'],
       );
 
   @override
@@ -2007,7 +2070,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProjectManager(
             that, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 58, port: port_);
+            funcId: 60, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_opt_String,
@@ -2021,8 +2084,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   TaskConstMeta get kCrateApiManagerProjectManagerReadTargetConstMeta =>
       const TaskConstMeta(
-        debugName: "ProjectManager_read_target",
-        argNames: ["that"],
+        debugName: 'ProjectManager_read_target',
+        argNames: ['that'],
       );
 
   @override
@@ -2034,7 +2097,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProjectManager(
             that, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 59, port: port_);
+            funcId: 61, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_String,
@@ -2048,8 +2111,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   TaskConstMeta get kCrateApiManagerProjectManagerReindexSearchConstMeta =>
       const TaskConstMeta(
-        debugName: "ProjectManager_reindex_search",
-        argNames: ["that"],
+        debugName: 'ProjectManager_reindex_search',
+        argNames: ['that'],
       );
 
   @override
@@ -2067,7 +2130,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_String(optionsJson, serializer);
         sse_encode_String(mode, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 60, port: port_);
+            funcId: 62, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_String,
@@ -2081,8 +2144,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   TaskConstMeta get kCrateApiManagerProjectManagerSearchConstMeta =>
       const TaskConstMeta(
-        debugName: "ProjectManager_search",
-        argNames: ["that", "query", "optionsJson", "mode"],
+        debugName: 'ProjectManager_search',
+        argNames: ['that', 'query', 'optionsJson', 'mode'],
       );
 
   @override
@@ -2094,7 +2157,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProjectManager(
             that, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 61, port: port_);
+            funcId: 63, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_String,
@@ -2108,8 +2171,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   TaskConstMeta get kCrateApiManagerProjectManagerSearchStatusConstMeta =>
       const TaskConstMeta(
-        debugName: "ProjectManager_search_status",
-        argNames: ["that"],
+        debugName: 'ProjectManager_search_status',
+        argNames: ['that'],
       );
 
   @override
@@ -2122,7 +2185,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             that, serializer);
         sse_encode_i_32(version, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 62, port: port_);
+            funcId: 64, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_String,
@@ -2136,67 +2199,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   TaskConstMeta get kCrateApiManagerProjectManagerSnapshotCreateConstMeta =>
       const TaskConstMeta(
-        debugName: "ProjectManager_snapshot_create",
-        argNames: ["that", "version"],
+        debugName: 'ProjectManager_snapshot_create',
+        argNames: ['that', 'version'],
       );
 
   @override
   Future<String> crateApiManagerProjectManagerSnapshotDelete(
-      {required ProjectManager that, required String snapshotId}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProjectManager(
-            that, serializer);
-        sse_encode_String(snapshotId, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 63, port: port_);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_String,
-        decodeErrorData: sse_decode_project_error,
-      ),
-      constMeta: kCrateApiManagerProjectManagerSnapshotDeleteConstMeta,
-      argValues: [that, snapshotId],
-      apiImpl: this,
-    ));
-  }
-
-  TaskConstMeta get kCrateApiManagerProjectManagerSnapshotDeleteConstMeta =>
-      const TaskConstMeta(
-        debugName: "ProjectManager_snapshot_delete",
-        argNames: ["that", "snapshotId"],
-      );
-
-  @override
-  Future<String> crateApiManagerProjectManagerSnapshotList(
-      {required ProjectManager that}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProjectManager(
-            that, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 64, port: port_);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_String,
-        decodeErrorData: sse_decode_project_error,
-      ),
-      constMeta: kCrateApiManagerProjectManagerSnapshotListConstMeta,
-      argValues: [that],
-      apiImpl: this,
-    ));
-  }
-
-  TaskConstMeta get kCrateApiManagerProjectManagerSnapshotListConstMeta =>
-      const TaskConstMeta(
-        debugName: "ProjectManager_snapshot_list",
-        argNames: ["that"],
-      );
-
-  @override
-  Future<String> crateApiManagerProjectManagerSnapshotRestore(
       {required ProjectManager that, required String snapshotId}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
@@ -2211,6 +2219,61 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeSuccessData: sse_decode_String,
         decodeErrorData: sse_decode_project_error,
       ),
+      constMeta: kCrateApiManagerProjectManagerSnapshotDeleteConstMeta,
+      argValues: [that, snapshotId],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta get kCrateApiManagerProjectManagerSnapshotDeleteConstMeta =>
+      const TaskConstMeta(
+        debugName: 'ProjectManager_snapshot_delete',
+        argNames: ['that', 'snapshotId'],
+      );
+
+  @override
+  Future<String> crateApiManagerProjectManagerSnapshotList(
+      {required ProjectManager that}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProjectManager(
+            that, serializer);
+        pdeCallFfi(generalizedFrbRustBinding, serializer,
+            funcId: 66, port: port_);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_String,
+        decodeErrorData: sse_decode_project_error,
+      ),
+      constMeta: kCrateApiManagerProjectManagerSnapshotListConstMeta,
+      argValues: [that],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta get kCrateApiManagerProjectManagerSnapshotListConstMeta =>
+      const TaskConstMeta(
+        debugName: 'ProjectManager_snapshot_list',
+        argNames: ['that'],
+      );
+
+  @override
+  Future<String> crateApiManagerProjectManagerSnapshotRestore(
+      {required ProjectManager that, required String snapshotId}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProjectManager(
+            that, serializer);
+        sse_encode_String(snapshotId, serializer);
+        pdeCallFfi(generalizedFrbRustBinding, serializer,
+            funcId: 67, port: port_);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_String,
+        decodeErrorData: sse_decode_project_error,
+      ),
       constMeta: kCrateApiManagerProjectManagerSnapshotRestoreConstMeta,
       argValues: [that, snapshotId],
       apiImpl: this,
@@ -2219,8 +2282,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   TaskConstMeta get kCrateApiManagerProjectManagerSnapshotRestoreConstMeta =>
       const TaskConstMeta(
-        debugName: "ProjectManager_snapshot_restore",
-        argNames: ["that", "snapshotId"],
+        debugName: 'ProjectManager_snapshot_restore',
+        argNames: ['that', 'snapshotId'],
       );
 
   @override
@@ -2232,7 +2295,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProjectManager(
             that, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 66, port: port_);
+            funcId: 68, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_String,
@@ -2246,68 +2309,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   TaskConstMeta get kCrateApiManagerProjectManagerValidateConstMeta =>
       const TaskConstMeta(
-        debugName: "ProjectManager_validate",
-        argNames: ["that"],
+        debugName: 'ProjectManager_validate',
+        argNames: ['that'],
       );
 
   @override
   Future<void> crateApiManagerProjectManagerWriteBackup(
-      {required ProjectManager that, required String json}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProjectManager(
-            that, serializer);
-        sse_encode_String(json, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 67, port: port_);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_unit,
-        decodeErrorData: sse_decode_project_error,
-      ),
-      constMeta: kCrateApiManagerProjectManagerWriteBackupConstMeta,
-      argValues: [that, json],
-      apiImpl: this,
-    ));
-  }
-
-  TaskConstMeta get kCrateApiManagerProjectManagerWriteBackupConstMeta =>
-      const TaskConstMeta(
-        debugName: "ProjectManager_write_backup",
-        argNames: ["that", "json"],
-      );
-
-  @override
-  Future<void> crateApiManagerProjectManagerWriteBinder(
-      {required ProjectManager that, required String json}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProjectManager(
-            that, serializer);
-        sse_encode_String(json, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 68, port: port_);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_unit,
-        decodeErrorData: sse_decode_project_error,
-      ),
-      constMeta: kCrateApiManagerProjectManagerWriteBinderConstMeta,
-      argValues: [that, json],
-      apiImpl: this,
-    ));
-  }
-
-  TaskConstMeta get kCrateApiManagerProjectManagerWriteBinderConstMeta =>
-      const TaskConstMeta(
-        debugName: "ProjectManager_write_binder",
-        argNames: ["that", "json"],
-      );
-
-  @override
-  Future<void> crateApiManagerProjectManagerWriteCorkboard(
       {required ProjectManager that, required String json}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
@@ -2322,29 +2329,26 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeSuccessData: sse_decode_unit,
         decodeErrorData: sse_decode_project_error,
       ),
-      constMeta: kCrateApiManagerProjectManagerWriteCorkboardConstMeta,
+      constMeta: kCrateApiManagerProjectManagerWriteBackupConstMeta,
       argValues: [that, json],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kCrateApiManagerProjectManagerWriteCorkboardConstMeta =>
+  TaskConstMeta get kCrateApiManagerProjectManagerWriteBackupConstMeta =>
       const TaskConstMeta(
-        debugName: "ProjectManager_write_corkboard",
-        argNames: ["that", "json"],
+        debugName: 'ProjectManager_write_backup',
+        argNames: ['that', 'json'],
       );
 
   @override
-  Future<void> crateApiManagerProjectManagerWriteExport(
-      {required ProjectManager that,
-      required String id,
-      required String json}) {
+  Future<void> crateApiManagerProjectManagerWriteBinder(
+      {required ProjectManager that, required String json}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProjectManager(
             that, serializer);
-        sse_encode_String(id, serializer);
         sse_encode_String(json, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 70, port: port_);
@@ -2353,30 +2357,27 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeSuccessData: sse_decode_unit,
         decodeErrorData: sse_decode_project_error,
       ),
-      constMeta: kCrateApiManagerProjectManagerWriteExportConstMeta,
-      argValues: [that, id, json],
+      constMeta: kCrateApiManagerProjectManagerWriteBinderConstMeta,
+      argValues: [that, json],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kCrateApiManagerProjectManagerWriteExportConstMeta =>
+  TaskConstMeta get kCrateApiManagerProjectManagerWriteBinderConstMeta =>
       const TaskConstMeta(
-        debugName: "ProjectManager_write_export",
-        argNames: ["that", "id", "json"],
+        debugName: 'ProjectManager_write_binder',
+        argNames: ['that', 'json'],
       );
 
   @override
-  Future<void> crateApiManagerProjectManagerWriteFile(
-      {required ProjectManager that,
-      required String relativePath,
-      required String contents}) {
+  Future<void> crateApiManagerProjectManagerWriteCorkboard(
+      {required ProjectManager that, required String json}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProjectManager(
             that, serializer);
-        sse_encode_String(relativePath, serializer);
-        sse_encode_String(contents, serializer);
+        sse_encode_String(json, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 71, port: port_);
       },
@@ -2384,20 +2385,20 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeSuccessData: sse_decode_unit,
         decodeErrorData: sse_decode_project_error,
       ),
-      constMeta: kCrateApiManagerProjectManagerWriteFileConstMeta,
-      argValues: [that, relativePath, contents],
+      constMeta: kCrateApiManagerProjectManagerWriteCorkboardConstMeta,
+      argValues: [that, json],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kCrateApiManagerProjectManagerWriteFileConstMeta =>
+  TaskConstMeta get kCrateApiManagerProjectManagerWriteCorkboardConstMeta =>
       const TaskConstMeta(
-        debugName: "ProjectManager_write_file",
-        argNames: ["that", "relativePath", "contents"],
+        debugName: 'ProjectManager_write_corkboard',
+        argNames: ['that', 'json'],
       );
 
   @override
-  Future<void> crateApiManagerProjectManagerWriteFormat(
+  Future<void> crateApiManagerProjectManagerWriteExport(
       {required ProjectManager that,
       required String id,
       required String json}) {
@@ -2415,27 +2416,30 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeSuccessData: sse_decode_unit,
         decodeErrorData: sse_decode_project_error,
       ),
-      constMeta: kCrateApiManagerProjectManagerWriteFormatConstMeta,
+      constMeta: kCrateApiManagerProjectManagerWriteExportConstMeta,
       argValues: [that, id, json],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kCrateApiManagerProjectManagerWriteFormatConstMeta =>
+  TaskConstMeta get kCrateApiManagerProjectManagerWriteExportConstMeta =>
       const TaskConstMeta(
-        debugName: "ProjectManager_write_format",
-        argNames: ["that", "id", "json"],
+        debugName: 'ProjectManager_write_export',
+        argNames: ['that', 'id', 'json'],
       );
 
   @override
-  Future<void> crateApiManagerProjectManagerWriteIcon(
-      {required ProjectManager that, required String json}) {
+  Future<void> crateApiManagerProjectManagerWriteFile(
+      {required ProjectManager that,
+      required String relativePath,
+      required String contents}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProjectManager(
             that, serializer);
-        sse_encode_String(json, serializer);
+        sse_encode_String(relativePath, serializer);
+        sse_encode_String(contents, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 73, port: port_);
       },
@@ -2443,20 +2447,20 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeSuccessData: sse_decode_unit,
         decodeErrorData: sse_decode_project_error,
       ),
-      constMeta: kCrateApiManagerProjectManagerWriteIconConstMeta,
-      argValues: [that, json],
+      constMeta: kCrateApiManagerProjectManagerWriteFileConstMeta,
+      argValues: [that, relativePath, contents],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kCrateApiManagerProjectManagerWriteIconConstMeta =>
+  TaskConstMeta get kCrateApiManagerProjectManagerWriteFileConstMeta =>
       const TaskConstMeta(
-        debugName: "ProjectManager_write_icon",
-        argNames: ["that", "json"],
+        debugName: 'ProjectManager_write_file',
+        argNames: ['that', 'relativePath', 'contents'],
       );
 
   @override
-  Future<void> crateApiManagerProjectManagerWriteLayout(
+  Future<void> crateApiManagerProjectManagerWriteFormat(
       {required ProjectManager that,
       required String id,
       required String json}) {
@@ -2474,20 +2478,20 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeSuccessData: sse_decode_unit,
         decodeErrorData: sse_decode_project_error,
       ),
-      constMeta: kCrateApiManagerProjectManagerWriteLayoutConstMeta,
+      constMeta: kCrateApiManagerProjectManagerWriteFormatConstMeta,
       argValues: [that, id, json],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kCrateApiManagerProjectManagerWriteLayoutConstMeta =>
+  TaskConstMeta get kCrateApiManagerProjectManagerWriteFormatConstMeta =>
       const TaskConstMeta(
-        debugName: "ProjectManager_write_layout",
-        argNames: ["that", "id", "json"],
+        debugName: 'ProjectManager_write_format',
+        argNames: ['that', 'id', 'json'],
       );
 
   @override
-  Future<void> crateApiManagerProjectManagerWriteMetadata(
+  Future<void> crateApiManagerProjectManagerWriteIcon(
       {required ProjectManager that, required String json}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
@@ -2502,20 +2506,20 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeSuccessData: sse_decode_unit,
         decodeErrorData: sse_decode_project_error,
       ),
-      constMeta: kCrateApiManagerProjectManagerWriteMetadataConstMeta,
+      constMeta: kCrateApiManagerProjectManagerWriteIconConstMeta,
       argValues: [that, json],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kCrateApiManagerProjectManagerWriteMetadataConstMeta =>
+  TaskConstMeta get kCrateApiManagerProjectManagerWriteIconConstMeta =>
       const TaskConstMeta(
-        debugName: "ProjectManager_write_metadata",
-        argNames: ["that", "json"],
+        debugName: 'ProjectManager_write_icon',
+        argNames: ['that', 'json'],
       );
 
   @override
-  Future<void> crateApiManagerProjectManagerWriteNodeComments(
+  Future<void> crateApiManagerProjectManagerWriteLayout(
       {required ProjectManager that,
       required String id,
       required String json}) {
@@ -2533,20 +2537,48 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeSuccessData: sse_decode_unit,
         decodeErrorData: sse_decode_project_error,
       ),
-      constMeta: kCrateApiManagerProjectManagerWriteNodeCommentsConstMeta,
+      constMeta: kCrateApiManagerProjectManagerWriteLayoutConstMeta,
       argValues: [that, id, json],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kCrateApiManagerProjectManagerWriteNodeCommentsConstMeta =>
+  TaskConstMeta get kCrateApiManagerProjectManagerWriteLayoutConstMeta =>
       const TaskConstMeta(
-        debugName: "ProjectManager_write_node_comments",
-        argNames: ["that", "id", "json"],
+        debugName: 'ProjectManager_write_layout',
+        argNames: ['that', 'id', 'json'],
       );
 
   @override
-  Future<void> crateApiManagerProjectManagerWriteNodeContent(
+  Future<void> crateApiManagerProjectManagerWriteMetadata(
+      {required ProjectManager that, required String json}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProjectManager(
+            that, serializer);
+        sse_encode_String(json, serializer);
+        pdeCallFfi(generalizedFrbRustBinding, serializer,
+            funcId: 77, port: port_);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: sse_decode_project_error,
+      ),
+      constMeta: kCrateApiManagerProjectManagerWriteMetadataConstMeta,
+      argValues: [that, json],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta get kCrateApiManagerProjectManagerWriteMetadataConstMeta =>
+      const TaskConstMeta(
+        debugName: 'ProjectManager_write_metadata',
+        argNames: ['that', 'json'],
+      );
+
+  @override
+  Future<void> crateApiManagerProjectManagerWriteNodeComments(
       {required ProjectManager that,
       required String id,
       required String json}) {
@@ -2558,57 +2590,26 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_String(id, serializer);
         sse_encode_String(json, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 77, port: port_);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_unit,
-        decodeErrorData: sse_decode_project_error,
-      ),
-      constMeta: kCrateApiManagerProjectManagerWriteNodeContentConstMeta,
-      argValues: [that, id, json],
-      apiImpl: this,
-    ));
-  }
-
-  TaskConstMeta get kCrateApiManagerProjectManagerWriteNodeContentConstMeta =>
-      const TaskConstMeta(
-        debugName: "ProjectManager_write_node_content",
-        argNames: ["that", "id", "json"],
-      );
-
-  @override
-  Future<void> crateApiManagerProjectManagerWriteNodeNotes(
-      {required ProjectManager that,
-      required String id,
-      required String text}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProjectManager(
-            that, serializer);
-        sse_encode_String(id, serializer);
-        sse_encode_String(text, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 78, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
         decodeErrorData: sse_decode_project_error,
       ),
-      constMeta: kCrateApiManagerProjectManagerWriteNodeNotesConstMeta,
-      argValues: [that, id, text],
+      constMeta: kCrateApiManagerProjectManagerWriteNodeCommentsConstMeta,
+      argValues: [that, id, json],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kCrateApiManagerProjectManagerWriteNodeNotesConstMeta =>
+  TaskConstMeta get kCrateApiManagerProjectManagerWriteNodeCommentsConstMeta =>
       const TaskConstMeta(
-        debugName: "ProjectManager_write_node_notes",
-        argNames: ["that", "id", "text"],
+        debugName: 'ProjectManager_write_node_comments',
+        argNames: ['that', 'id', 'json'],
       );
 
   @override
-  Future<void> crateApiManagerProjectManagerWriteNodeSynopsis(
+  Future<void> crateApiManagerProjectManagerWriteNodeContent(
       {required ProjectManager that,
       required String id,
       required String json}) {
@@ -2626,6 +2627,68 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeSuccessData: sse_decode_unit,
         decodeErrorData: sse_decode_project_error,
       ),
+      constMeta: kCrateApiManagerProjectManagerWriteNodeContentConstMeta,
+      argValues: [that, id, json],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta get kCrateApiManagerProjectManagerWriteNodeContentConstMeta =>
+      const TaskConstMeta(
+        debugName: 'ProjectManager_write_node_content',
+        argNames: ['that', 'id', 'json'],
+      );
+
+  @override
+  Future<void> crateApiManagerProjectManagerWriteNodeNotes(
+      {required ProjectManager that,
+      required String id,
+      required String text}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProjectManager(
+            that, serializer);
+        sse_encode_String(id, serializer);
+        sse_encode_String(text, serializer);
+        pdeCallFfi(generalizedFrbRustBinding, serializer,
+            funcId: 80, port: port_);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: sse_decode_project_error,
+      ),
+      constMeta: kCrateApiManagerProjectManagerWriteNodeNotesConstMeta,
+      argValues: [that, id, text],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta get kCrateApiManagerProjectManagerWriteNodeNotesConstMeta =>
+      const TaskConstMeta(
+        debugName: 'ProjectManager_write_node_notes',
+        argNames: ['that', 'id', 'text'],
+      );
+
+  @override
+  Future<void> crateApiManagerProjectManagerWriteNodeSynopsis(
+      {required ProjectManager that,
+      required String id,
+      required String json}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProjectManager(
+            that, serializer);
+        sse_encode_String(id, serializer);
+        sse_encode_String(json, serializer);
+        pdeCallFfi(generalizedFrbRustBinding, serializer,
+            funcId: 81, port: port_);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: sse_decode_project_error,
+      ),
       constMeta: kCrateApiManagerProjectManagerWriteNodeSynopsisConstMeta,
       argValues: [that, id, json],
       apiImpl: this,
@@ -2634,8 +2697,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   TaskConstMeta get kCrateApiManagerProjectManagerWriteNodeSynopsisConstMeta =>
       const TaskConstMeta(
-        debugName: "ProjectManager_write_node_synopsis",
-        argNames: ["that", "id", "json"],
+        debugName: 'ProjectManager_write_node_synopsis',
+        argNames: ['that', 'id', 'json'],
       );
 
   @override
@@ -2648,7 +2711,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             that, serializer);
         sse_encode_String(json, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 80, port: port_);
+            funcId: 82, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -2662,8 +2725,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   TaskConstMeta get kCrateApiManagerProjectManagerWriteSectionsConstMeta =>
       const TaskConstMeta(
-        debugName: "ProjectManager_write_sections",
-        argNames: ["that", "json"],
+        debugName: 'ProjectManager_write_sections',
+        argNames: ['that', 'json'],
       );
 
   @override
@@ -2679,7 +2742,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_String(date, serializer);
         sse_encode_String(json, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 81, port: port_);
+            funcId: 83, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -2693,8 +2756,36 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   TaskConstMeta get kCrateApiManagerProjectManagerWriteSessionConstMeta =>
       const TaskConstMeta(
-        debugName: "ProjectManager_write_session",
-        argNames: ["that", "date", "json"],
+        debugName: 'ProjectManager_write_session',
+        argNames: ['that', 'date', 'json'],
+      );
+
+  @override
+  Future<void> crateApiManagerProjectManagerWriteStyles(
+      {required ProjectManager that, required String json}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProjectManager(
+            that, serializer);
+        sse_encode_String(json, serializer);
+        pdeCallFfi(generalizedFrbRustBinding, serializer,
+            funcId: 84, port: port_);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: sse_decode_project_error,
+      ),
+      constMeta: kCrateApiManagerProjectManagerWriteStylesConstMeta,
+      argValues: [that, json],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta get kCrateApiManagerProjectManagerWriteStylesConstMeta =>
+      const TaskConstMeta(
+        debugName: 'ProjectManager_write_styles',
+        argNames: ['that', 'json'],
       );
 
   @override
@@ -2707,7 +2798,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             that, serializer);
         sse_encode_String(json, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 82, port: port_);
+            funcId: 85, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -2721,8 +2812,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   TaskConstMeta get kCrateApiManagerProjectManagerWriteTargetConstMeta =>
       const TaskConstMeta(
-        debugName: "ProjectManager_write_target",
-        argNames: ["that", "json"],
+        debugName: 'ProjectManager_write_target',
+        argNames: ['that', 'json'],
       );
 
   @override
@@ -2731,7 +2822,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_String(path, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 83)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 86)!;
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -2745,8 +2836,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   TaskConstMeta get kCrateApiManagerCreateProjectSkeletonConstMeta =>
       const TaskConstMeta(
-        debugName: "create_project_skeleton",
-        argNames: ["path"],
+        debugName: 'create_project_skeleton',
+        argNames: ['path'],
       );
 
   @override
@@ -2755,7 +2846,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_String(path, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 84)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 87)!;
       },
       codec: SseCodec(
         decodeSuccessData:
@@ -2769,8 +2860,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta get kCrateApiManagerOpenProjectConstMeta => const TaskConstMeta(
-        debugName: "open_project",
-        argNames: ["path"],
+        debugName: 'open_project',
+        argNames: ['path'],
       );
 
   @override
@@ -2779,7 +2870,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_String(path, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 85)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 88)!;
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -2793,8 +2884,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   TaskConstMeta get kCrateApiManagerWriteGitignoreConstMeta =>
       const TaskConstMeta(
-        debugName: "write_gitignore",
-        argNames: ["path"],
+        debugName: 'write_gitignore',
+        argNames: ['path'],
       );
 
   RustArcIncrementStrongCountFnType
@@ -3161,6 +3252,11 @@ class ProjectManagerImpl extends RustOpaque implements ProjectManager {
   Future<void> deleteSession({required String date}) => RustLib.instance.api
       .crateApiManagerProjectManagerDeleteSession(that: this, date: date);
 
+  Future<void> deleteStyle() =>
+      RustLib.instance.api.crateApiManagerProjectManagerDeleteStyle(
+        that: this,
+      );
+
   /// Diffs two Quill deltas (JSON op arrays) and returns the result delta (JSON).
   Future<String> diffDelta(
           {required String beforeJson, required String afterJson}) =>
@@ -3407,6 +3503,11 @@ class ProjectManagerImpl extends RustOpaque implements ProjectManager {
   Future<String?> readSession({required String date}) => RustLib.instance.api
       .crateApiManagerProjectManagerReadSession(that: this, date: date);
 
+  Future<String?> readStyles() =>
+      RustLib.instance.api.crateApiManagerProjectManagerReadStyles(
+        that: this,
+      );
+
   Future<String?> readTarget() =>
       RustLib.instance.api.crateApiManagerProjectManagerReadTarget(
         that: this,
@@ -3514,6 +3615,9 @@ class ProjectManagerImpl extends RustOpaque implements ProjectManager {
   Future<void> writeSession({required String date, required String json}) =>
       RustLib.instance.api.crateApiManagerProjectManagerWriteSession(
           that: this, date: date, json: json);
+
+  Future<void> writeStyles({required String json}) => RustLib.instance.api
+      .crateApiManagerProjectManagerWriteStyles(that: this, json: json);
 
   Future<void> writeTarget({required String json}) => RustLib.instance.api
       .crateApiManagerProjectManagerWriteTarget(that: this, json: json);

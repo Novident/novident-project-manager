@@ -41,9 +41,10 @@ class SectionsCodec {
 
   static SectionManager decode(String json) {
     final map = jsonDecode(json) as Map<String, dynamic>;
-    final sections = ((map['sections'] as List?)?.cast<String>() ?? const <String>[])
-        .map((s) => Section(id: s, name: s))
-        .toList();
+    final sections =
+        ((map['sections'] as List?)?.cast<String>() ?? const <String>[])
+            .map((s) => Section(id: s, name: s))
+            .toList();
     final outline = map['outline'] as Map<String, dynamic>? ?? const {};
     return SectionManager(
       sections: sections,

@@ -4,6 +4,9 @@ The Dart package that **owns the `.nov` schema** and drives a **Rust engine** fo
 writing projects: binder tree, rich-text content, layouts/formats, writing
 sessions, targets, snapshots and git.
 
+> [!WARNING]
+> Placeholders like `<$custom:<metadata_field>>` or `<$include:<file>>` is not available yet.
+
 ```
 Dart (schema owner)  ⇄  JSON boundary  ⇄  Rust engine (I/O, git, search, diff, snapshots, validation)
 ```
@@ -24,16 +27,16 @@ Dart (schema owner)  ⇄  JSON boundary  ⇄  Rust engine (I/O, git, search, dif
 ### Understand the project
 
 - [ARCHITECT.md](ARCHITECT.md) — end-to-end architecture (Dart ⇄ Rust, boundary, testing).
-- [docs/engine.md](docs/engine.md) — the Rust engine: modules, JSON boundary, how to extend.
-- [docs/project-format.md](docs/project-format.md) — the `.nov` format, file by file.
-- [docs/getting-started.md](docs/getting-started.md) — setup, codegen, build, run tests.
+- [doc/engine.md](doc/engine.md) — the Rust engine: modules, JSON boundary, how to extend.
+- [doc/project-format.md](doc/project-format.md) — the `.nov` format, file by file.
+- [doc/getting-started.md](doc/getting-started.md) — setup, codegen, build, run tests.
 
 ### Use the API
 
-- [docs/stores-and-reducer.md](docs/stores-and-reducer.md) — stores/I/O interfaces and reducer ops.
-- [docs/models.md](docs/models.md) — every schema class and codec.
-- [docs/parsers-to-ast.md](docs/parsers-to-ast.md) — Layout/editor → AST parsers (usage + output formats).
-- [docs/placeholders.md](docs/placeholders.md) — the `<$…>` placeholder tokens.
+- [doc/stores-and-reducer.md](doc/stores-and-reducer.md) — stores/I/O interfaces and reducer ops.
+- [doc/models.md](doc/models.md) — every schema class and codec.
+- [doc/parsers-to-ast.md](doc/parsers-to-ast.md) — Layout/editor → AST parsers (usage + output formats).
+- [doc/placeholders.md](doc/placeholders.md) — the `<$…>` placeholder tokens.
 
 ---
 
@@ -94,8 +97,8 @@ await manager.adjustOpenSession(
 await manager.closeWritingSession(DateTime.now().toUtc(), author: 'Elena');
 ```
 
-See [docs/stores-and-reducer.md](docs/stores-and-reducer.md) for the session
-decision flow, and [docs/placeholders.md](docs/placeholders.md) for tokens the
+See [doc/stores-and-reducer.md](doc/stores-and-reducer.md) for the session
+decision flow, and [doc/placeholders.md](doc/placeholders.md) for tokens the
 compiler understands.
 
 ### Targets
@@ -173,21 +176,32 @@ Future<void> main() async {
 
 ## How a `.nov` project looks
 
-See [docs/project-format.md](docs/project-format.md) for details:
+A `.nov` **project is a directory** (optionally zipped for transport) with a
+git repository inside:
+
+See [doc/project-format.md](doc/project-format.md) for details:
 
 ```
-.nov/
-├── files/          metadata.json · backup.json · external/ · <node-id>/{content,synopsis,comments,notes}
-├── indexation/     binder · sections · icon · corkboard · target · search (engine-managed)
-├── layouts/        l<uuid>.json
-├── compiler/       formats/ · exports/
-├── history/        <yyyy-MM-dd>.json
-└── snapshots/      date-v<version>.zip · .git/
+files/
+  metadata.json              # identity, author, book, preferences, session state, statistics
+  backup.json                # compact tree mirror + checksum (generated)
+  external/                  # attached files <id>.<ext>
+  <node-uuid>/               # per node
+    content.json             # rich text: {"document": …} (editor Document)
+    synopsis.json            # same content inside an envelope
+    comments.json            # { "<id>[-<username>]": { path, date, content } }
+    notes.txt                # plain text
+indexation/
+  binder.index.json          # tree + lookup + external_files (source of truth of hierarchy)
+  sections.index.json        # sections + depth outline
+  icon.index.json            # icon rules (defaults + per-node overrides)
+  corkboard.index.json       # corkboard visual state
+  target.index.json          # writing targets (general + per-node)
+  search.index.json          # engine-managed full-text index (read-only for Dart)
+layouts/l<uuid>.json         # per-section presentation (Dart = source of truth)
+compiler/formats/f<uuid>.json # format = layout ids + replacements + page_setup
+compiler/exports/e<uuid>.json # export records (output_type, config, format_id)
+history/<yyyy-MM-dd>.json     # one writing session per day
+snapshots/                    # engine snapshots: <stamp>-v<version>.zip (stamp = UTC YYYY-MM-DD_HH-MM-SS)
+.gitignore  .git/
 ```
-
-## Documentation
-
-- [docs/index.md](docs/index.md) — the documentation index.
-- [ARCHITECT.md](ARCHITECT.md) — how the whole system fits together.
-- [AGENTS.md](AGENTS.md) — repository map, quality, non-negotiables.
-- [SECURITY.md](SECURITY.md) / [CONTRIBUTING.md](CONTRIBUTING.md).

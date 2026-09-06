@@ -19,6 +19,7 @@ void main() {
     expect(decoded.name, format.name);
     expect(decoded.fontFamily, format.fontFamily);
     expect(decoded.canChange, format.canChange);
-    expect(decoded.layouts, isEmpty); // ids are not embedded; store resolves them
+    expect(
+        decoded.layouts, isEmpty); // ids are not embedded; store resolves them
   });
 }

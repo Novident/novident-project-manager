@@ -1,4 +1,3 @@
-
 import 'package:novident_editor_delta_simplify/novident_editor_delta_simplify.dart';
 import 'package:novident_editor_document/novident_editor_document.dart';
 
