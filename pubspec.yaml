@@ -3,7 +3,7 @@ description: >
   Dart for `.nov` projects to manages: 
   binder tree, rich-text content, layouts/formats, 
   writing sessions, targets, snapshots and git"
-version: 1.0.0
+version: 1.0.1
 homepage: https://github.com/Novident/
 repository: https://github.com/Novident/novident-project-manager/
 documentation: https://github.com/Novident/novident-project-manager/
