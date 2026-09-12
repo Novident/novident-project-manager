@@ -25,6 +25,7 @@ import 'package:novident_project_manager/src/project/target/target.dart';
 import 'package:novident_project_manager/src/project/target/target_resolver.dart';
 import 'package:novident_project_manager/src/reducer/binder_actions.dart';
 import 'package:novident_project_manager/src/reducer/binder_counts.dart';
+import 'package:novident_project_manager/src/rust/frb_generated.dart';
 import 'exceptions/reducer_exceptions.dart';
 import 'package:novident_project_manager/src/schema/migration/schema_migration.dart';
 import 'package:novident_project_manager/src/schema/registry.dart';
@@ -72,6 +73,30 @@ class ProjectManager {
   final CollectionStore<Export> _exports;
   final CollectionStore<Session> _sessions;
   Metadata? _metadata;
+
+  /// Initialize flutter_rust_bridge
+  ///
+  /// When [mock] is true this initialize flutter_rust_bridge in mock mode.
+  /// No libraries for FFI are loaded.
+  static Future<void> initRustLib({bool mock = false, RustLibApi? api}) async {
+    if (mock) {
+      assert(
+        api != null,
+        'api property should be defined '
+        'when "mock" property is true',
+      );
+      return RustLib.initMock(api: api!);
+    }
+    return RustLib.init();
+  }
+
+  /// Dispose flutter_rust_bridge
+  ///
+  /// The call to this function is optional, since flutter_rust_bridge (and everything else)
+  /// is automatically disposed when the app stops.
+  static void disposeRustLib() {
+    RustLib.dispose();
+  }
 
   /// Low-level engine access (I/O, git, search, snapshots, diff, validation).
   EngineClient get engine => _engine;

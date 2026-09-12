@@ -423,10 +423,10 @@ packages:
     dependency: "direct main"
     description:
       name: novident_document_format
-      sha256: ae187b5fa58a601c5d33480ef1bd64be903f4d8a569fae8ae25bdb18bf71d00c
+      sha256: bb0111256080fb3e04e5ff35a07549309d4fcc2800d04a671acd02ea7f68025c
       url: "https://pub.dev"
     source: hosted
-    version: "1.0.0"
+    version: "1.0.1"
   novident_editor_core:
     dependency: "direct main"
     description:
@@ -463,10 +463,10 @@ packages:
     dependency: "direct main"
     description:
       name: novident_nodes
-      sha256: f547ec25fb977f0403554224298ca16b04fa361e98a3e3062dc388b3b6703d0f
+      sha256: "5063d77d53fc860e7492484475dc5e4bd303f3e29a066af89bb0e667f48356cc"
       url: "https://pub.dev"
     source: hosted
-    version: "1.2.4"
+    version: "1.2.5"
   novident_tree_view:
     dependency: transitive
     description:

@@ -57,6 +57,24 @@ the affected files.
 | Exports | `exports` | Records of performed exports |
 | Sessions | `sessions` | Day-by-day writing-session history |
 
+
+### Initialize flutter_rust_bridge
+
+Just call this once, and forget about it.
+
+```dart
+void main() async {
+  await ProjectManager.initRustLib();
+
+  runApp(const MyApp());
+
+  // optionally you can dispose the flutter_rust_bridge
+  // (flutter_rust_bridge automatically dispose this when required)
+  //
+  // ProjectManager.disposeRustLib();
+}
+```
+
 ### Binder (tree) operations
 
 `createDocument`, `createFolder`, `renameNode`, `moveNode`, `trashNode`,
