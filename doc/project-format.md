@@ -10,6 +10,7 @@ git repository inside:
 ```
 files/
   metadata.json              # identity, author, book, preferences, session state, statistics
+  styles.json                # (optional) compact list of elements that describes all the NovidentStyleDefinition instances created for the project 
   backup.json                # compact tree mirror + checksum (generated)
   external/                  # attached files <id>.<ext>
   <node-uuid>/               # per node

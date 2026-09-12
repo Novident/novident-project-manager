@@ -5,7 +5,7 @@ writing projects: binder tree, rich-text content, layouts/formats, writing
 sessions, targets, snapshots and git.
 
 > [!WARNING]
-> Placeholders like `<$custom:<metadata_field>>` or `<$include:<file>>` is not available yet.
+> Placeholders like `<$custom:<metadata_field>>` or `<$include:<file>>` are not available yet.
 
 ```
 Dart (schema owner)  ⇄  JSON boundary  ⇄  Rust engine (I/O, git, search, diff, snapshots, validation)
@@ -183,25 +183,27 @@ See [doc/project-format.md](doc/project-format.md) for details:
 
 ```
 files/
-  metadata.json              # identity, author, book, preferences, session state, statistics
-  backup.json                # compact tree mirror + checksum (generated)
-  external/                  # attached files <id>.<ext>
-  <node-uuid>/               # per node
-    content.json             # rich text: {"document": …} (editor Document)
-    synopsis.json            # same content inside an envelope
-    comments.json            # { "<id>[-<username>]": { path, date, content } }
-    notes.txt                # plain text
+  metadata.json               # identity, author, book, preferences, session state, statistics
+  backup.json                 # compact tree mirror + checksum (generated)
+  styles.json                 # (optional) compact list of elements that describes all the NovidentStyleDefinition instances created for the project 
+  external/                   # attached files <id>.<ext>
+  <node-uuid>/                # per node
+    content.json              # rich text: {"document": …} (editor Document)
+    synopsis.json             # same content inside an envelope
+    comments.json             # { "<id>[-<username>]": { path, date, content } }
+    notes.txt                 # plain text
 indexation/
-  binder.index.json          # tree + lookup + external_files (source of truth of hierarchy)
-  sections.index.json        # sections + depth outline
-  icon.index.json            # icon rules (defaults + per-node overrides)
-  corkboard.index.json       # corkboard visual state
-  target.index.json          # writing targets (general + per-node)
-  search.index.json          # engine-managed full-text index (read-only for Dart)
-layouts/l<uuid>.json         # per-section presentation (Dart = source of truth)
+  binder.index.json           # tree + lookup + external_files (source of truth of hierarchy)
+  sections.index.json         # sections + depth outline
+  icon.index.json             # icon rules (defaults + per-node overrides)
+  corkboard.index.json        # corkboard visual state
+  target.index.json           # writing targets (general + per-node)
+  search.index.json           # engine-managed full-text index (read-only for Dart)
+layouts/l<uuid>.json          # per-section presentation (Dart = source of truth)
 compiler/formats/f<uuid>.json # format = layout ids + replacements + page_setup
 compiler/exports/e<uuid>.json # export records (output_type, config, format_id)
 history/<yyyy-MM-dd>.json     # one writing session per day
 snapshots/                    # engine snapshots: <stamp>-v<version>.zip (stamp = UTC YYYY-MM-DD_HH-MM-SS)
-.gitignore  .git/
+.gitignore  
+.git/
 ```
